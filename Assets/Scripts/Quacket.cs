@@ -5,7 +5,7 @@ using UnityEngine;
 public class Quacket : MonoBehaviour
 {
     [SerializeField]
-    private Transform acidDuck;
+    private DucksSO ducksSO;
 
     [SerializeField]
     private Transform palletTopPoint;
@@ -13,8 +13,8 @@ public class Quacket : MonoBehaviour
     public void Interact()
     {
         Debug.Log("I am interacting with a "+gameObject.transform.name);
-        Transform acidDuckTransform = Instantiate(acidDuck,palletTopPoint);
-        acidDuckTransform.localPosition = Vector3.zero;
+        Transform duckTransform = Instantiate(ducksSO.prefab,palletTopPoint);
+        duckTransform.localPosition = Vector3.zero;
 
     }
 }
