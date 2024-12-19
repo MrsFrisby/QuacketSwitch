@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectedDuckVisual : MonoBehaviour
+public class SelectedQuacketVisual : MonoBehaviour
 {
 
     [SerializeField] private Quacket quacket;

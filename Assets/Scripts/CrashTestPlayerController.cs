@@ -323,6 +323,7 @@ public class CrashTestPlayerController : MonoBehaviour
                     //
                     if (quacket != selectedQuacket)
                     {
+                        Debug.Log("I hit a" + raycastHit.transform.name);
                         SetSelectedQuacket(quacket);
                     }
 
