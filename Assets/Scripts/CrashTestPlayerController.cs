@@ -1,11 +1,22 @@
 //https://www.youtube.com/watch?v=Weu305NLMqo&list=PLyDa4NP_nvPeSosMrZ0Gv03v5s4k7Le7N&index=1
 //Made following active ragdoll tutorials by Pretty Fly Games
+//and Learn Unity Beginner?Intermediate 2024: code Monkey
+//https://www.youtube.com/watch?v=AmGSEH7QcDg&t=6477s
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CrashTestPlayerController : MonoBehaviour
 {
+    //singleton pattern
+    public static CrashTestPlayerController Instance { get; private set; }
+
+    public event EventHandler <OnSelectedQuacketChangedEventArgs> OnSelectedQuacketChanged;
+    public class OnSelectedQuacketChangedEventArgs : EventArgs
+    {
+        public Quacket selectedQuacket;
+    }
 
     [SerializeField]
     Rigidbody rigidBody3D;
@@ -57,6 +68,7 @@ public class CrashTestPlayerController : MonoBehaviour
     Vector3 lastInderactDir;
     [SerializeField]
     private LayerMask ducksLayerMask;
+    private Quacket selectedQuacket;
 
 
     private void Awake()
@@ -64,6 +76,8 @@ public class CrashTestPlayerController : MonoBehaviour
         syncPhysicsObjects = GetComponentsInChildren<SyncPhysics>();
 
         handGrabHandlers = GetComponentsInChildren<HandGrabHandler>();
+
+        Instance = this;
     }
 
     // Start is called before the first frame update
@@ -136,26 +150,6 @@ public class CrashTestPlayerController : MonoBehaviour
     void Update()
     {
         moveInputVector = gameInput.GetMovementVectorNormalized();
-        //moveInputVector.x = Input.GetAxis("Horizontal");
-        //moveInputVector.y = Input.GetAxis("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //isJumpButtonPressed = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            //isRevivedButtonPressed = true;
-        }
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            //HandleInteractions();
-        }
-
-
-        //isGrabPressed = Input.GetKey(KeyCode.G);
 
         if(isGrabPressed)
         {
@@ -326,17 +320,45 @@ public class CrashTestPlayerController : MonoBehaviour
 
                 if (raycastHit.transform.TryGetComponent(out Quacket quacket))
                 {
-                    quacket.Interact();
+                    //
+                    if (quacket != selectedQuacket)
+                    {
+                        SetSelectedQuacket(quacket);
+                    }
+
+
+
+
+                    //quacket.Interact();//where does this happen?
                 }
                 else
-                    Debug.Log(raycastHit.transform.name);
+                {
+                    SetSelectedQuacket(null);
+                    Debug.Log("Not a quacket: "+raycastHit.transform.name);
+                }
+                    
+            }
+            else
+            {
+                SetSelectedQuacket(null);
+                Debug.Log("Not a quacket: " + raycastHit.transform.name);
             }
 
         }
 
+        
+
     }
 
+    private void SetSelectedQuacket(Quacket selectedQuacket)
+    {
+        this.selectedQuacket = selectedQuacket;
 
+        OnSelectedQuacketChanged?.Invoke(this, new OnSelectedQuacketChangedEventArgs
+        {
+            selectedQuacket = selectedQuacket
+        });
+    }
     /*
     void OnCollisionEnter(Collision collision)
     {
