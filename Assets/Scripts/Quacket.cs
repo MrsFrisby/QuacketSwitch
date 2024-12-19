@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Quacket : MonoBehaviour
 {
+    [SerializeField]
+    private Transform acidDuck;
+
+    [SerializeField]
+    private Transform palletTopPoint;
+
     public void Interact()
     {
-        Debug.Log("You are near a "+gameObject.transform.name);
+        Debug.Log("I am interacting with a "+gameObject.transform.name);
+        Transform acidDuckTransform = Instantiate(acidDuck,palletTopPoint);
+        acidDuckTransform.localPosition = Vector3.zero;
+
     }
 }

@@ -67,7 +67,7 @@ public class CrashTestPlayerController : MonoBehaviour
 
     Vector3 lastInderactDir;
     [SerializeField]
-    private LayerMask ducksLayerMask;
+    private LayerMask interactLayerMask;
     private Quacket selectedQuacket;
 
 
@@ -313,7 +313,7 @@ public class CrashTestPlayerController : MonoBehaviour
         Debug.DrawRay(rayOrigin, 10f * lastInderactDir, Color.red);
 
         //raycast will return info about objects in front of player even if player is not moving
-        if (Physics.Raycast(rayOrigin, lastInderactDir, out RaycastHit raycastHit, interactDistance, ducksLayerMask))
+        if (Physics.Raycast(rayOrigin, lastInderactDir, out RaycastHit raycastHit, interactDistance, interactLayerMask))
         {
             if (raycastHit.transform.tag != "ownBody" && raycastHit.transform != gameObject.transform)
             {
@@ -323,8 +323,10 @@ public class CrashTestPlayerController : MonoBehaviour
                     //
                     if (quacket != selectedQuacket)
                     {
-                        Debug.Log("I hit a" + raycastHit.transform.name);
+                        Debug.Log("I hit a " + raycastHit.transform.name);
+                        
                         SetSelectedQuacket(quacket);
+                        selectedQuacket.Interact();
                     }
 
 

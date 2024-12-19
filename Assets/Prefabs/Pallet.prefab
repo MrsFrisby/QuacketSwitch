@@ -79,6 +79,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quacket: {fileID: 7473661716672465761}
   visualGameObject: {fileID: 6842797633082917874}
+--- !u!1 &4478915247852008552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2129022305287922269}
+  m_Layer: 0
+  m_Name: PalletTop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2129022305287922269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478915247852008552}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7680047381031654277}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8620610005513173807
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +143,7 @@ Transform:
   m_Children:
   - {fileID: 8466339580054651919}
   - {fileID: 5965150305703202849}
+  - {fileID: 2129022305287922269}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7473661716672465761
@@ -126,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4910b63abca614ceeac69941b3ddbc2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acidDuck: {fileID: 0}
 --- !u!65 &3708266838264502106
 BoxCollider:
   m_ObjectHideFlags: 0

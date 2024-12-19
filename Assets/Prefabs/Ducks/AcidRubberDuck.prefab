@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 8789926929637761163}
   - component: {fileID: 7017767729834188558}
   - component: {fileID: 1526116363439887913}
-  - component: {fileID: 2650074185608412248}
   m_Layer: 7
   m_Name: AcidRubberDuck
   m_TagString: Untagged
@@ -187,18 +186,6 @@ CapsuleCollider:
   m_Height: 0.12
   m_Direction: 1
   m_Center: {x: -0.025, y: 0, z: 0.025}
---- !u!114 &2650074185608412248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2297408298249857395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4910b63abca614ceeac69941b3ddbc2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8210016189373933605
 GameObject:
   m_ObjectHideFlags: 0
