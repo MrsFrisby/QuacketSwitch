@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 796450209800186992}
   - component: {fileID: 7670527527119356781}
   - component: {fileID: 3052597862724106178}
+  - component: {fileID: -577790379188092460}
   m_Layer: 7
-  m_Name: HTTPduck
+  m_Name: FTPduck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,6 +156,19 @@ CapsuleCollider:
   m_Height: 0.12
   m_Direction: 1
   m_Center: {x: -0.025, y: 0, z: 0.025}
+--- !u!114 &-577790379188092460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557837787928313663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb8368d3d38847209d1d2e5239d0a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duckObjectSO: {fileID: 11400000, guid: 649a52ebf73c24359998c6aafbbc99be, type: 2}
 --- !u!1 &4446137231056227666
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +413,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c4e91e8be1f4b4f44954a618d356eac5, type: 2}
+      objectReference: {fileID: 2100000, guid: 52bb6c0ddd4ff4dfaa5f397c66a43303, type: 2}
     - target: {fileID: 919132149155446097, guid: 5acdbf5d443c44307bf595533d88fa58,
         type: 3}
       propertyPath: m_Name
