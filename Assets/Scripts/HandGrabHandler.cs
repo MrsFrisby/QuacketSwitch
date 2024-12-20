@@ -34,10 +34,10 @@ public class HandGrabHandler : MonoBehaviour
             //if we are already carrying something
             if (fixedJoint != null)
             {
-                //apply throwing force to connect object on release
+                //apply throwing force to connected object on release
                 if(fixedJoint.connectedBody != null)
                 {
-                    float forceAmountMultiplier = 1.2f;
+                    float forceAmountMultiplier = 0.8f;
 
 
 
