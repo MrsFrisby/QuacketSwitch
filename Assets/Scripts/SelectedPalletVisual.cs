@@ -6,7 +6,7 @@ using UnityEngine;
 public class SelectedPalletVisual : MonoBehaviour
 {
 
-    [SerializeField] private Pallet pallet;
+    [SerializeField] private BasePallet pallet;
     [SerializeField] private GameObject visualGameObject;
 
     private void Start()

@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     public event EventHandler <OnSelectedPalletChangedEventArgs> OnSelectedPalletChanged;
     public class OnSelectedPalletChangedEventArgs : EventArgs
     {
-        public Pallet selectedPallet;
+        public BasePallet selectedPallet;
     }
 
     [SerializeField]
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     Vector3 lastInderactDir;
     [SerializeField]
     private LayerMask interactLayerMask;
-    private Pallet selectedPallet;
+    private BasePallet selectedPallet;
     private DuckObject duckObject;
 
     [SerializeField]
@@ -322,14 +322,14 @@ public class Player : MonoBehaviour, IDuckObjectParent
             if (raycastHit.transform.tag != "ownBody" && raycastHit.transform != gameObject.transform)
             {
                 Debug.DrawRay(rayOrigin, 10f * lastInderactDir, Color.green);
-                if (raycastHit.transform.TryGetComponent(out Pallet pallet))
+                if (raycastHit.transform.TryGetComponent(out BasePallet basePallet))
                 {
                     //
-                    if (pallet != selectedPallet)
+                    if (basePallet != selectedPallet)
                     {
                         Debug.Log("I hit a " + raycastHit.transform.name);
                         
-                        SetSelectedPallet(pallet);
+                        SetSelectedPallet(basePallet);
                         //selectedPallet.Interact();
                     }
                 }
@@ -347,7 +347,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
         }
     }
 
-    private void SetSelectedPallet(Pallet selectedPallet)
+    private void SetSelectedPallet(BasePallet selectedPallet)
     {
         this.selectedPallet = selectedPallet;
 
