@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     bool isJumpButtonPressed = false;
     bool isRevivedButtonPressed = false;
     bool isGrabPressed = false;
-    bool isInteractPressed = false;
+    //bool isInteractPressed = false;
 
     //Controller
     float maxSpeed = 3;
@@ -98,20 +98,20 @@ public class Player : MonoBehaviour
     //grabbing
     private void GameInput_OnGrabAction(object sender, System.EventArgs e)
     {
-        Debug.Log("Inside Player controller: G");
+        //Debug.Log("Inside Player controller: G");
         isGrabPressed = true;
     }
 
     private void GameInput_OnGrabCancelAction(object sender, System.EventArgs e)
     {
-        Debug.Log("Inside Player controller: G released");
+        //Debug.Log("Inside Player controller: G released");
         isGrabPressed = false;
     }
 
     //jump
     private void GameInput_OnJumpAction(object sender, System.EventArgs e)
     {
-        Debug.Log("Inside Player controller: Space");
+        //Debug.Log("Inside Player controller: Space");
         isJumpButtonPressed = true;
     }
 
@@ -119,14 +119,14 @@ public class Player : MonoBehaviour
     //revive
     private void GameInput_OnReviveCancelAction(object sender, System.EventArgs e)
     {
-        Debug.Log("Inside Player controller: R released");
+        //Debug.Log("Inside Player controller: R released");
         isRevivedButtonPressed = false;
-        Debug.Log(isRevivedButtonPressed);
+        //Debug.Log(isRevivedButtonPressed);
     }
 
     private void GameInput_OnReviveAction(object sender, System.EventArgs e)
     {
-        Debug.Log("Inside Player controller: R");
+        //Debug.Log("Inside Player controller: R");
         isRevivedButtonPressed = true;
         
     }
@@ -134,16 +134,17 @@ public class Player : MonoBehaviour
     //interact
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
-        Debug.Log("Inside Player controller: E pressed");
-        isInteractPressed = true;
-        Debug.Log(isInteractPressed);
+        //Debug.Log("Inside Player controller: E pressed");
+        //isInteractPressed = true;
+        selectedPallet.Interact();
+        
     }
 
     private void GameInput_OnInteractCancelAction(object sender, System.EventArgs e)
     {
-        Debug.Log("Inside Player controller: E released");
-        isInteractPressed = false;
-        Debug.Log(isInteractPressed);
+        //Debug.Log("Inside Player controller: E released");
+        //isInteractPressed = false;
+        
     }
 
     // Update is called once per frame
@@ -156,10 +157,12 @@ public class Player : MonoBehaviour
             animator.SetBool("isGrabbing", true);
         }
 
-        if(isInteractPressed)
-        {
-            HandleInteractions();
-        }
+        HandleInteractions();
+
+        //if(isInteractPressed)
+        //{
+        //    HandleInteractions();
+        //}
 
     }
 
@@ -317,7 +320,7 @@ public class Player : MonoBehaviour
         {
             if (raycastHit.transform.tag != "ownBody" && raycastHit.transform != gameObject.transform)
             {
-
+                Debug.DrawRay(rayOrigin, 10f * lastInderactDir, Color.green);
                 if (raycastHit.transform.TryGetComponent(out Pallet pallet))
                 {
                     //
@@ -326,31 +329,21 @@ public class Player : MonoBehaviour
                         Debug.Log("I hit a " + raycastHit.transform.name);
                         
                         SetSelectedPallet(pallet);
-                        selectedPallet.Interact();
+                        //selectedPallet.Interact();
                     }
-
-
-
-
-                    //pallet.Interact();//where does this happen?
                 }
                 else
                 {
                     SetSelectedPallet(null);
                     Debug.Log("Not a pallet: "+raycastHit.transform.name);
-                }
-                    
+                }                    
             }
             else
             {
                 SetSelectedPallet(null);
                 Debug.Log("Not a pallet: " + raycastHit.transform.name);
             }
-
         }
-
-        
-
     }
 
     private void SetSelectedPallet(Pallet selectedPallet)
