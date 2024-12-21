@@ -293,7 +293,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8407736939665480653}
-  - component: {fileID: 2179942001361207740}
   m_Layer: 7
   m_Name: DuckSelected
   m_TagString: Untagged
@@ -317,20 +316,6 @@ Transform:
   - {fileID: 50929423567280769}
   m_Father: {fileID: 5186383002779545882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2179942001361207740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8360905871882965286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8200d737c8c834a3ea30475b8cb62eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quacket: {fileID: 0}
-  visualGameObject: {fileID: 5224166346920702956}
 --- !u!1001 &8295192380084975546
 PrefabInstance:
   m_ObjectHideFlags: 0

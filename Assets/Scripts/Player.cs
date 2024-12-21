@@ -12,10 +12,10 @@ public class Player : MonoBehaviour
     //singleton pattern
     public static Player Instance { get; private set; }
 
-    public event EventHandler <OnSelectedQuacketChangedEventArgs> OnSelectedQuacketChanged;
-    public class OnSelectedQuacketChangedEventArgs : EventArgs
+    public event EventHandler <OnSelectedPalletChangedEventArgs> OnSelectedPalletChanged;
+    public class OnSelectedPalletChangedEventArgs : EventArgs
     {
-        public Quacket selectedQuacket;
+        public Pallet selectedPallet;
     }
 
     [SerializeField]
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     Vector3 lastInderactDir;
     [SerializeField]
     private LayerMask interactLayerMask;
-    private Quacket selectedQuacket;
+    private Pallet selectedPallet;
 
 
     private void Awake()
@@ -318,33 +318,33 @@ public class Player : MonoBehaviour
             if (raycastHit.transform.tag != "ownBody" && raycastHit.transform != gameObject.transform)
             {
 
-                if (raycastHit.transform.TryGetComponent(out Quacket quacket))
+                if (raycastHit.transform.TryGetComponent(out Pallet pallet))
                 {
                     //
-                    if (quacket != selectedQuacket)
+                    if (pallet != selectedPallet)
                     {
                         Debug.Log("I hit a " + raycastHit.transform.name);
                         
-                        SetSelectedQuacket(quacket);
-                        selectedQuacket.Interact();
+                        SetSelectedPallet(pallet);
+                        selectedPallet.Interact();
                     }
 
 
 
 
-                    //quacket.Interact();//where does this happen?
+                    //pallet.Interact();//where does this happen?
                 }
                 else
                 {
-                    SetSelectedQuacket(null);
-                    Debug.Log("Not a quacket: "+raycastHit.transform.name);
+                    SetSelectedPallet(null);
+                    Debug.Log("Not a pallet: "+raycastHit.transform.name);
                 }
                     
             }
             else
             {
-                SetSelectedQuacket(null);
-                Debug.Log("Not a quacket: " + raycastHit.transform.name);
+                SetSelectedPallet(null);
+                Debug.Log("Not a pallet: " + raycastHit.transform.name);
             }
 
         }
@@ -353,13 +353,13 @@ public class Player : MonoBehaviour
 
     }
 
-    private void SetSelectedQuacket(Quacket selectedQuacket)
+    private void SetSelectedPallet(Pallet selectedPallet)
     {
-        this.selectedQuacket = selectedQuacket;
+        this.selectedPallet = selectedPallet;
 
-        OnSelectedQuacketChanged?.Invoke(this, new OnSelectedQuacketChangedEventArgs
+        OnSelectedPalletChanged?.Invoke(this, new OnSelectedPalletChangedEventArgs
         {
-            selectedQuacket = selectedQuacket
+            selectedPallet = selectedPallet
         });
     }
     /*

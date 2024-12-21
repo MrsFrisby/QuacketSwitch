@@ -3,20 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectedQuacketVisual : MonoBehaviour
+public class SelectedPalletVisual : MonoBehaviour
 {
 
-    [SerializeField] private Quacket quacket;
+    [SerializeField] private Pallet pallet;
     [SerializeField] private GameObject visualGameObject;
 
     private void Start()
     {
-        Player.Instance.OnSelectedQuacketChanged += Player_OnSelectedQuacketChanged;
+        Player.Instance.OnSelectedPalletChanged += Player_OnSelectedPalletChanged;
     }
 
-    private void Player_OnSelectedQuacketChanged(object sender, Player.OnSelectedQuacketChangedEventArgs e)
+    private void Player_OnSelectedPalletChanged(object sender, Player.OnSelectedPalletChangedEventArgs e)
     {
-        if (e.selectedQuacket == quacket)
+        if (e.selectedPallet == pallet)
         {
             Show();
         }

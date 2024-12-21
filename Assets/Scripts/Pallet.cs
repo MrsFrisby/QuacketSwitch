@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quacket : MonoBehaviour
+public class Pallet : MonoBehaviour
 {
     [SerializeField]
     private DucksSO ducksSO;
@@ -10,7 +10,7 @@ public class Quacket : MonoBehaviour
     [SerializeField]
     private Transform palletTopPoint;
 
-    [SerializeField] private Quacket secondQuacket;
+    [SerializeField] private Pallet secondPallet;
     [SerializeField] private bool testing;
 
     private DuckObject duckObject;
@@ -20,11 +20,11 @@ public class Quacket : MonoBehaviour
     {
         if (testing && Input.GetKeyDown(KeyCode.T))
         {
-            Debug.Log("QuacketScript: T key pressed");
+            Debug.Log("PalletScript: T key pressed");
             if (duckObject != null)
             {
-                duckObject.SetQuacket(secondQuacket);
-                //Debug.Log("Update:The parent of this " +duckObject.GetDucksSO().name + " is " + duckObject.GetQuacket());
+                duckObject.SetPallet(secondPallet);
+                //Debug.Log("Update:The parent of this " +duckObject.GetDucksSO().name + " is " + duckObject.GetPallet());
             }
         }
     }
@@ -39,7 +39,7 @@ public class Quacket : MonoBehaviour
             //spawn a new duck
             Transform duckTransform = Instantiate(ducksSO.prefab, palletTopPoint);
             //get the information about the spawned duck
-            duckTransform.GetComponent<DuckObject>().SetQuacket(this);
+            duckTransform.GetComponent<DuckObject>().SetPallet(this);
 
             //duckTransform.localPosition = Vector3.zero;
             //duckObject = duckTransform.GetComponent<DuckObject>();
@@ -48,7 +48,7 @@ public class Quacket : MonoBehaviour
         }
         else
         {
-            Debug.Log("Interact:This is a "+duckObject.GetDucksSO().name+" on this "+duckObject.GetQuacket());
+            Debug.Log("Interact:This is a "+duckObject.GetDucksSO().name+" on this "+duckObject.GetPallet());
         }
     }
 
