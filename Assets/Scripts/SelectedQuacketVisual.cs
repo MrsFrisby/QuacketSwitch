@@ -11,10 +11,10 @@ public class SelectedQuacketVisual : MonoBehaviour
 
     private void Start()
     {
-        CrashTestPlayerController.Instance.OnSelectedQuacketChanged += Player_OnSelectedQuacketChanged;
+        Player.Instance.OnSelectedQuacketChanged += Player_OnSelectedQuacketChanged;
     }
 
-    private void Player_OnSelectedQuacketChanged(object sender, CrashTestPlayerController.OnSelectedQuacketChangedEventArgs e)
+    private void Player_OnSelectedQuacketChanged(object sender, Player.OnSelectedQuacketChangedEventArgs e)
     {
         if (e.selectedQuacket == quacket)
         {

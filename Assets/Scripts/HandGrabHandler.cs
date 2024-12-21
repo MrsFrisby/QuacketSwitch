@@ -11,11 +11,11 @@ public class HandGrabHandler : MonoBehaviour
 
     Rigidbody rigidbody3D;
 
-    CrashTestPlayerController crashTest;
+    Player player;
 
     private void Awake()
     {
-        crashTest = transform.root.GetComponent<CrashTestPlayerController>();
+        player = transform.root.GetComponent<Player>();
         rigidbody3D = GetComponent<Rigidbody>();
 
         //change solver iterations to keep picked up item close to hand
@@ -25,7 +25,7 @@ public class HandGrabHandler : MonoBehaviour
     public void UpdateState()
     {
         //check player is trying to grab
-        if (crashTest.IsGrabbingActive)
+        if (player.IsGrabbingActive)
         {
             animator.SetBool("isGrabbing", true);
         }
@@ -41,7 +41,7 @@ public class HandGrabHandler : MonoBehaviour
 
 
 
-                    fixedJoint.connectedBody.AddForce((crashTest.transform.forward + Vector3.up * 0.25f) * forceAmountMultiplier, ForceMode.Impulse);
+                    fixedJoint.connectedBody.AddForce((player.transform.forward + Vector3.up * 0.25f) * forceAmountMultiplier, ForceMode.Impulse);
                 }
 
                 Destroy(fixedJoint);
@@ -56,16 +56,16 @@ public class HandGrabHandler : MonoBehaviour
     bool TryCarryObject(Collision collision)
     {
         //check ragdoll is active
-        if (!crashTest.IsActiveRagdoll)
+        if (!player.IsActiveRagdoll)
             return false;
         //check player is trying to grab
-        if (!crashTest.IsGrabbingActive)
+        if (!player.IsGrabbingActive)
             return false;
         //check ragdoll is not already carrying item
         if (fixedJoint != null)
             return false;
         //don't grab self
-        if (collision.transform.root == crashTest.transform)
+        if (collision.transform.root == player.transform)
             return false;
         //check item has rigid body
         if (!collision.collider.TryGetComponent(out Rigidbody otherObjectRigidbody))

@@ -7,10 +7,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrashTestPlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     //singleton pattern
-    public static CrashTestPlayerController Instance { get; private set; }
+    public static Player Instance { get; private set; }
 
     public event EventHandler <OnSelectedQuacketChangedEventArgs> OnSelectedQuacketChanged;
     public class OnSelectedQuacketChangedEventArgs : EventArgs

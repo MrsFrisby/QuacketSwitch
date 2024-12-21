@@ -5,7 +5,7 @@ using UnityEngine;
 public class DetectCollision : MonoBehaviour
 {
 
-    CrashTestPlayerController crashTest;
+    Player player;
 
     Rigidbody hitRigidbody;
 
@@ -13,7 +13,7 @@ public class DetectCollision : MonoBehaviour
 
     private void Awake()
     {
-        crashTest = GetComponentInParent<CrashTestPlayerController>();
+        player = GetComponentInParent<Player>();
         hitRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -25,14 +25,14 @@ public class DetectCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!crashTest.IsActiveRagdoll)
+        if (!player.IsActiveRagdoll)
             return;
 
         if (!collision.collider.CompareTag("CauseDamage"))
             return;
 
         //don't get knocked out while carrying ducks
-        if (collision.collider.transform.root == crashTest.transform)
+        if (collision.collider.transform.root == player.transform)
             return;
 
         int numberOfContacts = collision.GetContacts(contactPoints);
@@ -48,7 +48,7 @@ public class DetectCollision : MonoBehaviour
             if (contactImpulse.magnitude < 15)
                 continue; //check next i
 
-            crashTest.OnBodyPartHit();
+            player.OnBodyPartHit();
 
             Vector3 forceDirection = (contactImpulse + Vector3.up) * 0.5f;
 
