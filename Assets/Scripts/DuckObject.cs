@@ -6,7 +6,7 @@ public class DuckObject : MonoBehaviour
 {
     [SerializeField] private DucksSO duckObjectSO;
 
-    private Pallet pallet;
+    private IDuckObjectParent duckObjectParent;
 
     public DucksSO GetDucksSO()
     {
@@ -15,32 +15,32 @@ public class DuckObject : MonoBehaviour
 
 
     //the argument passed into this function is the new pallet parent that the duckObject is moving to
-    public void SetPallet(Pallet pallet)
+    public void SetDuckObjectParent(IDuckObjectParent duckObjectParent)
     {
         //this.pallet refers to the current/orginal parent
-        if (this.pallet != null)
+        if (this.duckObjectParent != null)
         {
-            this.pallet.ClearDuckObject();
+            this.duckObjectParent.ClearDuckObject();
         }
 
         //here we reset to the new parent
-        this.pallet = pallet;
+        this.duckObjectParent = duckObjectParent;
 
-        if(pallet.HasDuckObject())
+        if(duckObjectParent.HasDuckObject())
         {
-            Debug.LogError("pallet already has child duckObject");
+            Debug.LogError("duckObjcetParent already has child duckObject");
         }
 
 
-        pallet.SetDuckObject(this);
+        duckObjectParent.SetDuckObject(this);
 
         //this is the position on the new parent object that the duck will move to
-        transform.parent = pallet.GetDuckObjectFolllowTransform();
+        transform.parent = duckObjectParent.GetDuckObjectFollowTransform();
         transform.localPosition = Vector3.zero;
     }
 
-    public Pallet GetPallet()
+    public IDuckObjectParent GetDuckObjectParent()
     {
-        return pallet;
+        return duckObjectParent;
     }
 }

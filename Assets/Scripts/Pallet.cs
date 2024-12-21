@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pallet : MonoBehaviour
+public class Pallet : MonoBehaviour, IDuckObjectParent
 {
     [SerializeField]
     private DucksSO ducksSO;
@@ -23,13 +23,13 @@ public class Pallet : MonoBehaviour
             Debug.Log("PalletScript: T key pressed");
             if (duckObject != null)
             {
-                duckObject.SetPallet(secondPallet);
+                duckObject.SetDuckObjectParent(secondPallet);
                 //Debug.Log("Update:The parent of this " +duckObject.GetDucksSO().name + " is " + duckObject.GetPallet());
             }
         }
     }
 
-    public void Interact()
+    public void Interact(Player player)
     {
         //Debug.Log("I am interacting with a "+gameObject.transform.name);
 
@@ -39,7 +39,7 @@ public class Pallet : MonoBehaviour
             //spawn a new duck
             Transform duckTransform = Instantiate(ducksSO.prefab, palletTopPoint);
             //get the information about the spawned duck
-            duckTransform.GetComponent<DuckObject>().SetPallet(this);
+            duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
 
             //duckTransform.localPosition = Vector3.zero;
             //duckObject = duckTransform.GetComponent<DuckObject>();
@@ -48,11 +48,13 @@ public class Pallet : MonoBehaviour
         }
         else
         {
-            Debug.Log("Interact:This is a "+duckObject.GetDucksSO().name+" on this "+duckObject.GetPallet());
+            Debug.Log("Interact:This is a "+duckObject.GetDucksSO().name+" on this "+duckObject.GetDuckObjectParent());
+            //not sure if I want to do this 
+            duckObject.SetDuckObjectParent(player);
         }
     }
 
-    public Transform GetDuckObjectFolllowTransform()
+    public Transform GetDuckObjectFollowTransform()
     {
         return palletTopPoint;
     }

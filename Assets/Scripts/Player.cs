@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDuckObjectParent
 {
     //singleton pattern
     public static Player Instance { get; private set; }
@@ -69,6 +69,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private LayerMask interactLayerMask;
     private Pallet selectedPallet;
+    private DuckObject duckObject;
+
+    [SerializeField]
+    private Transform duckHoldPoint;
+    //don't want to use this as already have grab mechanics
+
 
 
     private void Awake()
@@ -136,7 +142,7 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("Inside Player controller: E pressed");
         //isInteractPressed = true;
-        selectedPallet.Interact();
+        selectedPallet.Interact(this);
         
     }
 
@@ -158,11 +164,6 @@ public class Player : MonoBehaviour
         }
 
         HandleInteractions();
-
-        //if(isInteractPressed)
-        //{
-        //    HandleInteractions();
-        //}
 
     }
 
@@ -355,15 +356,42 @@ public class Player : MonoBehaviour
             selectedPallet = selectedPallet
         });
     }
-    /*
-    void OnCollisionEnter(Collision collision)
+
+    public Transform GetDuckObjectFollowTransform()
     {
-        if (collision.transform.CompareTag("CauseDamage"))
-        {
-            MakeRagdoll();
-        }
-        
-    }*/
+        return duckHoldPoint;
+    }
+
+
+    public void SetDuckObject(DuckObject duckObject)
+    {
+        this.duckObject = duckObject;
+    }
+
+    public DuckObject GetDuckObject()
+    {
+        return duckObject;
+    }
+
+    public void ClearDuckObject()
+    {
+        duckObject = null;
+    }
+
+    public bool HasDuckObject()
+    {
+        return duckObject != null;
+    }
+
+    /*
+void OnCollisionEnter(Collision collision)
+{
+   if (collision.transform.CompareTag("CauseDamage"))
+   {
+       MakeRagdoll();
+   }
+
+}*/
 
 }
 
