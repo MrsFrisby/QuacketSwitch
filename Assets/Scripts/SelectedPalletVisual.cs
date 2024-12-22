@@ -6,8 +6,8 @@ using UnityEngine;
 public class SelectedPalletVisual : MonoBehaviour
 {
 
-    [SerializeField] private BasePallet pallet;
-    [SerializeField] private GameObject visualGameObject;
+    [SerializeField] private BasePallet basePallet;
+    [SerializeField] private GameObject[] visualGameObjectArray;
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class SelectedPalletVisual : MonoBehaviour
 
     private void Player_OnSelectedPalletChanged(object sender, Player.OnSelectedPalletChangedEventArgs e)
     {
-        if (e.selectedPallet == pallet)
+        if (e.selectedPallet == basePallet)
         {
             Show();
         }
@@ -28,12 +28,19 @@ public class SelectedPalletVisual : MonoBehaviour
 
     private void Show()
     {
-        visualGameObject.SetActive(true);
+        foreach (GameObject visualGameObject in visualGameObjectArray)
+        {
+            visualGameObject.SetActive(true);
+        }
+        
     }
 
     private void Hide()
     {
-        visualGameObject.SetActive(false);
+        foreach (GameObject visualGameObject in visualGameObjectArray)
+        {
+            visualGameObject.SetActive(false);
+        }
     }
 
 }

@@ -19,12 +19,8 @@ public class Container : BasePallet, IDuckObjectParent
         
         if (duckObject == null)
         {
-
-            
             Transform duckTransform = Instantiate(ducksSO.prefab, palletTopPoint);
-            
             duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
-
         }
         else
         { 
