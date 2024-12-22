@@ -2,55 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Container : BasePallet, IDuckObjectParent
+public class Container : BasePallet
 {
 
     [SerializeField]
     private DucksSO ducksSO;
 
-    [SerializeField]
-    private Transform palletTopPoint;
+    //[SerializeField]
+    //private Transform palletTopPoint;
 
-    private DuckObject duckObject;
+    //private DuckObject duckObject;
 
 
     public override void Interact(Player player)
     {
-        
-        if (duckObject == null)
+
+        if (!HasDuckObject())
         {
-            Transform duckTransform = Instantiate(ducksSO.prefab, palletTopPoint);
-            duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
+            Transform duckTransform = Instantiate(ducksSO.prefab);
+            duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(player);
         }
         else
-        { 
-            duckObject.SetDuckObjectParent(player);
+        {
+           // duckObject.SetDuckObjectParent(player);
         }
     }
 
-    public Transform GetDuckObjectFollowTransform()
-    {
-        return palletTopPoint;
-    }
+    //public Transform GetDuckObjectFollowTransform()
+    //{
+    //    return palletTopPoint;
+    //}
 
 
-    public void SetDuckObject(DuckObject duckObject)
-    {
-        this.duckObject = duckObject;
-    }
+    //public void SetDuckObject(DuckObject duckObject)
+    //{
+    //    this.duckObject = duckObject;
+    //}
 
-    public DuckObject GetDuckObject()
-    {
-        return duckObject;
-    }
+    //public DuckObject GetDuckObject()
+    //{
+    //    return duckObject;
+    //}
 
-    public void ClearDuckObject()
-    {
-        duckObject = null;
-    }
+    //public void ClearDuckObject()
+    //{
+    //    duckObject = null;
+    //}
 
-    public bool HasDuckObject()
-    {
-        return duckObject != null;
-    }
+    //public bool HasDuckObject()
+    //{
+    //    return duckObject != null;
+    //}
 }

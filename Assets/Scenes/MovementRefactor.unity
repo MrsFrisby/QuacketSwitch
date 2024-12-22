@@ -5259,8 +5259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932d99cf0deea49c49b1bd1d41417a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ducksSO: {fileID: 11400000, guid: 3ffb5ca176cb54620b9fef36fcb4e1ce, type: 2}
   palletTopPoint: {fileID: 358743153}
+  ducksSO: {fileID: 11400000, guid: 3ffb5ca176cb54620b9fef36fcb4e1ce, type: 2}
 --- !u!1001 &1027109104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9300,7 +9300,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ducksSO
       value: 
-      objectReference: {fileID: 11400000, guid: 3ffb5ca176cb54620b9fef36fcb4e1ce,
+      objectReference: {fileID: 11400000, guid: 5c19819b9cbc448b390ed1482f75ba22,
         type: 2}
     - target: {fileID: 7970265484356671298, guid: 806b1bb27e14d4b8d8a4961067e77175,
         type: 3}

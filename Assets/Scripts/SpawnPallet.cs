@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pallet : BasePallet, IDuckObjectParent
+public class SpawnPallet : BasePallet
 {
     [SerializeField]
     private DucksSO ducksSO;
 
-    [SerializeField]
-    private Transform palletTopPoint;
+    //[SerializeField]
+    //private Transform palletTopPoint;
 
     //[SerializeField] private Pallet secondPallet;
     //[SerializeField] private bool testing;
 
-    private DuckObject duckObject;
+    //private DuckObject duckObject;
 
 
     //private void Update()
@@ -34,12 +34,19 @@ public class Pallet : BasePallet, IDuckObjectParent
         //Debug.Log("I am interacting with a "+gameObject.transform.name);
 
         //if there isn't already a duck
-        if (duckObject == null) {
+        if (!HasDuckObject()) {
 
             //spawn a new duck
-            Transform duckTransform = Instantiate(ducksSO.prefab, palletTopPoint);
+            Transform spawnPoint = GetDuckObjectFollowTransform();
+
+            Transform duckTransform = Instantiate(ducksSO.prefab, spawnPoint);
+
+            //Transform duckTransform = Instantiate(ducksSO.prefab);
             //get the information about the spawned duck
             duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
+
+            //hand spawned object directly to player
+            //duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(player);
 
             //duckTransform.localPosition = Vector3.zero;
             //duckObject = duckTransform.GetComponent<DuckObject>();
@@ -48,35 +55,36 @@ public class Pallet : BasePallet, IDuckObjectParent
         }
         else
         {
-            Debug.Log("Interact:This is a "+duckObject.GetDucksSO().name+" on this "+duckObject.GetDuckObjectParent());
-            //not sure if I want to do this 
-            duckObject.SetDuckObjectParent(player);
+            //Debug.Log("Interact:This is a "+duckObject.GetDucksSO().name+" on this "+duckObject.GetDuckObjectParent());
+            //not sure if I want to do this
+
+            //duckObject.SetDuckObjectParent(player);
         }
     }
 
-    public Transform GetDuckObjectFollowTransform()
-    {
-        return palletTopPoint;
-    }
+    //public Transform GetDuckObjectFollowTransform()
+    //{
+    //    return palletTopPoint;
+    //}
 
 
-    public void SetDuckObject(DuckObject duckObject)
-    {
-        this.duckObject = duckObject;
-    }
+    //public void SetDuckObject(DuckObject duckObject)
+    //{
+    //    this.duckObject = duckObject;
+    //}
 
-    public DuckObject GetDuckObject()
-    {
-        return duckObject;
-    }
+    //public DuckObject GetDuckObject()
+    //{
+    //    return duckObject;
+    //}
 
-    public void ClearDuckObject()
-    {
-        duckObject = null;
-    }
+    //public void ClearDuckObject()
+    //{
+    //    duckObject = null;
+    //}
 
-    public bool HasDuckObject()
-    {
-        return duckObject != null;
-    }
+    //public bool HasDuckObject()
+    //{
+    //    return duckObject != null;
+    //}
 }
