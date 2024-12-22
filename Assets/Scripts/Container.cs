@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Container : BasePallet
 {
+    public event EventHandler OnPlayerGrabbedObject;
+
 
     [SerializeField]
     private DucksSO ducksSO;
@@ -16,11 +19,13 @@ public class Container : BasePallet
 
     public override void Interact(Player player)
     {
-
+        //if the player is not already carrying something
         if (!HasDuckObject())
         {
             Transform duckTransform = Instantiate(ducksSO.prefab);
             duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(player);
+
+            OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
         }
         else
         {
@@ -28,29 +33,5 @@ public class Container : BasePallet
         }
     }
 
-    //public Transform GetDuckObjectFollowTransform()
-    //{
-    //    return palletTopPoint;
-    //}
-
-
-    //public void SetDuckObject(DuckObject duckObject)
-    //{
-    //    this.duckObject = duckObject;
-    //}
-
-    //public DuckObject GetDuckObject()
-    //{
-    //    return duckObject;
-    //}
-
-    //public void ClearDuckObject()
-    //{
-    //    duckObject = null;
-    //}
-
-    //public bool HasDuckObject()
-    //{
-    //    return duckObject != null;
-    //}
+   
 }

@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearPallet : BasePallet
+public class AssemblyPallet : BasePallet
+
 {
     [SerializeField]
-    private DucksSO ducksSO;
-
-    //[SerializeField]
-    //private Transform palletTopPoint;
-
-    //private DuckObject duckObject;
+    private DucksSO assembledQuacket;
 
 
     public override void Interact(Player player)
     {
+        Debug.Log("E pressed");
 
         if (!HasDuckObject())
         {   //no duck already on pallet
@@ -43,5 +40,23 @@ public class ClearPallet : BasePallet
         }
     }
 
-    
+
+
+    public override void InteractAlternate(Player player)
+    {
+        Debug.Log("F pressed");
+       
+        //duck already on pallet
+        if (HasDuckObject())
+        {
+            GetDuckObject().DestroySelf();
+            Transform duckTransform = Instantiate(assembledQuacket.prefab);
+            duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
+        }
+        else
+        {
+            
+        }
+        
+    }
 }

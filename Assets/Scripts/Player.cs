@@ -71,6 +71,8 @@ public class Player : MonoBehaviour, IDuckObjectParent
     private BasePallet selectedPallet;
     private DuckObject duckObject;
 
+    //public DuckObject grabbedDuck = null;
+
     [SerializeField]
     private Transform duckHoldPoint;
     //don't want to use this as already have grab mechanics
@@ -92,12 +94,13 @@ public class Player : MonoBehaviour, IDuckObjectParent
         startSlerpPositionSpring = mainJoint.slerpDrive.positionSpring;
 
         gameInput.OnInteractAction += GameInput_OnInteractAction;
-        gameInput.OnInteractCancelAction += GameInput_OnInteractCancelAction;
+        //gameInput.OnInteractCancelAction += GameInput_OnInteractCancelAction;
         gameInput.OnReviveAction += GameInput_OnReviveAction;
         gameInput.OnReviveCancelAction += GameInput_OnReviveCancelAction;
         gameInput.OnGrabAction += GameInput_OnGrabAction;
         gameInput.OnJumpAction += GameInput_OnJumpAction;
         gameInput.OnGrabCancelAction += GameInput_OnGrabCancelAction;
+        gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
     }
 
 
@@ -142,15 +145,27 @@ public class Player : MonoBehaviour, IDuckObjectParent
     {
         //Debug.Log("Inside Player controller: E pressed");
         //isInteractPressed = true;
-        selectedPallet.Interact(this);
-        
+        if (selectedPallet != null)
+        {
+            selectedPallet.Interact(this);
+        }
+
     }
 
-    private void GameInput_OnInteractCancelAction(object sender, System.EventArgs e)
-    {
-        //Debug.Log("Inside Player controller: E released");
-        //isInteractPressed = false;
+    //private void GameInput_OnInteractCancelAction(object sender, System.EventArgs e)
+    //{
+    //    //Debug.Log("Inside Player controller: E released");
+    //    //isInteractPressed = false;
         
+    //}
+
+    private void GameInput_OnInteractAlternateAction(object sender, System.EventArgs e)
+    {
+        if (selectedPallet != null)
+        {
+
+            selectedPallet.InteractAlternate(this);
+        }
     }
 
     // Update is called once per frame
@@ -203,12 +218,16 @@ public class Player : MonoBehaviour, IDuckObjectParent
             MakeActiveRagdoll();
         }
 
+        //if G key held down set grabbingActive bool to true
+        isGrabbingActive = isGrabPressed;
+
         foreach (HandGrabHandler handGrabHandler in handGrabHandlers)
         {
+            //for each hand constantly update to check if object has been grabbed
             handGrabHandler.UpdateState();
         }
 
-        isGrabbingActive = isGrabPressed;
+        
 
         if (isActiveRagdoll)
         {
@@ -327,7 +346,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
                     //
                     if (basePallet != selectedPallet)
                     {
-                        Debug.Log("I hit a " + raycastHit.transform.name);
+                        //Debug.Log("I hit a " + raycastHit.transform.name);
                         
                         SetSelectedPallet(basePallet);
                         //selectedPallet.Interact();
@@ -336,13 +355,13 @@ public class Player : MonoBehaviour, IDuckObjectParent
                 else
                 {
                     SetSelectedPallet(null);
-                    Debug.Log("Not a pallet: "+raycastHit.transform.name);
+                    //Debug.Log("Not a pallet: "+raycastHit.transform.name);
                 }                    
             }
             else
             {
                 SetSelectedPallet(null);
-                Debug.Log("Not a pallet: " + raycastHit.transform.name);
+                //Debug.Log("Not a pallet: " + raycastHit.transform.name);
             }
         }
     }

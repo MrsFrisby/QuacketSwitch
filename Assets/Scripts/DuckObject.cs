@@ -43,4 +43,12 @@ public class DuckObject : MonoBehaviour
     {
         return duckObjectParent;
     }
+
+    public void DestroySelf()
+    {
+        duckObjectParent.ClearDuckObject();
+
+        Destroy(gameObject);
+    }
+
 }
