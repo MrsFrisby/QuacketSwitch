@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72710c147af8c47c0939616daeec68de, type: 3}
-  m_Name: RedDuckAssembly
+  m_Script: {fileID: 11500000, guid: abf257d85bf3e4b3f985cc6653cda4d4, type: 3}
+  m_Name: CorruptDuck
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 3ffb5ca176cb54620b9fef36fcb4e1ce, type: 2}
-  output: {fileID: 11400000, guid: cdfbd15823e5543fd9f18909f37110ac, type: 2}
-  assemblyProgressMax: 5
+  prefab: {fileID: 5129928233040908356, guid: ad6ecb5de11ad43ceabfed23862bdd5d, type: 3}
+  sprite: {fileID: 21300000, guid: 7c8f303f5ea5343b2b448ad43d43297e, type: 3}
+  objectName: Corrupt Duck

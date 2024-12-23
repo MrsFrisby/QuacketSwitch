@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 1633cd28c10854c5494d78cdb1fce994, type: 2}
   output: {fileID: 11400000, guid: ad8accb2f6a1b4fb9b0a6d2005709b76, type: 2}
+  assemblyProgressMax: 3

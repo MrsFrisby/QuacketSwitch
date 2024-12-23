@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,14 @@ using UnityEngine;
 public class AssemblyPallet : BasePallet
 
 {
+    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
+
+    public class OnProgressChangedEventArgs : EventArgs
+    {
+        public float progressNormalized;
+
+    }
+
     [SerializeField]
     private AssemblySO[] assembledDucksSOArray;
 
@@ -30,6 +39,14 @@ public class AssemblyPallet : BasePallet
 
                     //when E is pressed the duck is parented to this pallet
                     player.GetDuckObject().SetDuckObjectParent(this);
+                    assemblyProgress = 0;
+
+                    AssemblySO assemblySO = GetAssemblySOWithInput(GetDuckObject().GetDucksSO());
+
+                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+                    {
+                        progressNormalized = (float)assemblyProgress / assemblySO.assemblyProgressMax
+                    });
                 }
             }
                 
@@ -49,7 +66,7 @@ public class AssemblyPallet : BasePallet
                 GetDuckObject().SetDuckObjectParent(player);
             }
         }
-        assemblyProgress = 0;
+      
     }
 
 
@@ -63,9 +80,16 @@ public class AssemblyPallet : BasePallet
         {//duck already on pallet and has match with available assemblySO
 
             assemblyProgress++;
-            //Debug.Log("has duck");
 
             AssemblySO assemblySO = GetAssemblySOWithInput(GetDuckObject().GetDucksSO());
+
+            OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+            {
+                progressNormalized = (float)assemblyProgress / assemblySO.assemblyProgressMax
+            });
+
+
+            //Debug.Log("has duck");
 
             if (assemblyProgress >= assemblySO.assemblyProgressMax)
             {//if local pallet count of number of times F key pressed >= max assembly count for assemblySO
