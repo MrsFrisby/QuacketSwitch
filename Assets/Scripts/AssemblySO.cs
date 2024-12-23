@@ -9,4 +9,5 @@ public class AssemblySO : ScriptableObject
 {
     public DucksSO input;
     public DucksSO output;
+    public int assemblyProgressMax;
 }

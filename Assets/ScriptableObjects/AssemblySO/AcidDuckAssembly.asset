@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72710c147af8c47c0939616daeec68de, type: 3}
   m_Name: AcidDuckAssembly
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 3ffb5ca176cb54620b9fef36fcb4e1ce, type: 2}
-  output: {fileID: 11400000, guid: cdfbd15823e5543fd9f18909f37110ac, type: 2}
+  input: {fileID: 11400000, guid: 1633cd28c10854c5494d78cdb1fce994, type: 2}
+  output: {fileID: 11400000, guid: ad8accb2f6a1b4fb9b0a6d2005709b76, type: 2}
