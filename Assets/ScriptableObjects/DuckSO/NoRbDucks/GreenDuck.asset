@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abf257d85bf3e4b3f985cc6653cda4d4, type: 3}
-  m_Name: AcidDuck
+  m_Name: GreenDuck
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7129157979511081641, guid: 9a391de20a1614ef8b3d77c2a2d03d31, type: 3}
-  sprite: {fileID: 21300000, guid: 8eda13cbff7b444d9b335670dd0c29b5, type: 3}
-  objectName: Acid Duck
+  prefab: {fileID: 3206660597330311884, guid: 95468dea52ebc4e9ca436dba4cd619ab, type: 3}
+  sprite: {fileID: 21300000, guid: a448f1e97c7224df6823d2f2084cd73d, type: 3}
+  objectName: Green Duck
