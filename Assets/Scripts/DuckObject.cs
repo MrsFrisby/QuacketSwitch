@@ -8,6 +8,8 @@ public class DuckObject : MonoBehaviour
 
     private IDuckObjectParent duckObjectParent;
 
+
+    //how is the SO set? - via Serialized field for object
     public DucksSO GetDucksSO()
     {
         return duckObjectSO;
@@ -49,6 +51,14 @@ public class DuckObject : MonoBehaviour
         duckObjectParent.ClearDuckObject();
 
         Destroy(gameObject);
+    }
+
+    public static DuckObject spawnDuckObject(DucksSO duckSO, IDuckObjectParent duckObjectParent)
+    {
+        Transform duckTransform = Instantiate(duckSO.prefab);
+        DuckObject duckObject = duckTransform.GetComponent<DuckObject>();
+        duckObject.SetDuckObjectParent(duckObjectParent);
+        return duckObject;
     }
 
 }

@@ -22,8 +22,7 @@ public class Container : BasePallet
         //if the player is not already carrying something
         if (!HasDuckObject())
         {
-            Transform duckTransform = Instantiate(ducksSO.prefab);
-            duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(player);
+            DuckObject.spawnDuckObject(ducksSO, player);
 
             OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
         }

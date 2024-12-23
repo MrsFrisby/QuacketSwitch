@@ -6,7 +6,13 @@ public class AssemblyPallet : BasePallet
 
 {
     [SerializeField]
-    private DucksSO assembledQuacket;
+    private AssemblySO[] assembledDucksSOArray;
+
+    //[SerializeField]
+    //private DucksSO assembledDuck;
+
+    //[SerializeField]
+    //private AssemblySO assembledDuckSO;
 
 
     public override void Interact(Player player)
@@ -49,14 +55,40 @@ public class AssemblyPallet : BasePallet
         //duck already on pallet
         if (HasDuckObject())
         {
+            Debug.Log("has duck");
+            DucksSO outputDuckSO = GetOutputForInput(GetDuckObject().GetDucksSO());
             GetDuckObject().DestroySelf();
-            Transform duckTransform = Instantiate(assembledQuacket.prefab);
-            duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
+            //DuckObject.spawnDuckObject(outputDuckSO, this);
+
+            //spawn function takes in duckSO but returns duckObject
+            DuckObject.spawnDuckObject(outputDuckSO, this);
         }
         else
         {
-            
+            Debug.Log("no duck");
         }
-        
     }
+
+    //this function takes in a ducksSO, matches it to the input of one of the items in the assemblySOarray
+    // and returns the output, a ducksSO
+    private DucksSO GetOutputForInput(DucksSO inputDuckSO)
+    {
+        foreach (AssemblySO assemblySO in assembledDucksSOArray)
+        {
+            if (assemblySO.input == inputDuckSO)
+            {
+                return assemblySO.output;
+            }
+        }
+        return null;
+    }
+
+    ////this function takes in an assemblySO object pair and returns the output
+    //private DucksSO GetOutputForInput(AssemblySO inputDuckSO)
+    //{
+
+    //    return inputDuckSO.output;
+
+
+    //}
 }

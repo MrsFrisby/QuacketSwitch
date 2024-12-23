@@ -71,5 +71,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8620610005513173807, guid: 04ac8fb6dba9049188fe78a1a91a30c1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 48632296511935042}
   m_SourcePrefab: {fileID: 100100000, guid: 04ac8fb6dba9049188fe78a1a91a30c1, type: 3}
+--- !u!1 &2865868006913361140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8620610005513173807, guid: 04ac8fb6dba9049188fe78a1a91a30c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5793622419028590555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &48632296511935042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865868006913361140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c90795acd0904cf5937e08e4c716676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  palletTopPoint: {fileID: 5615102964250303878}
+  assembledDucksSOArray:
+  - {fileID: 11400000, guid: b72bd5dd684d9449690b32d88f808cbd, type: 2}
+  - {fileID: 11400000, guid: 8a2e768829ea54709a2a444c4a46c789, type: 2}
+--- !u!4 &5615102964250303878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2129022305287922269, guid: 04ac8fb6dba9049188fe78a1a91a30c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5793622419028590555}
+  m_PrefabAsset: {fileID: 0}

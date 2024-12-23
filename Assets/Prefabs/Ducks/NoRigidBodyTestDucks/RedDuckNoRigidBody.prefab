@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb8368d3d38847209d1d2e5239d0a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duckObjectSO: {fileID: 11400000, guid: 5c19819b9cbc448b390ed1482f75ba22, type: 2}
+  duckObjectSO: {fileID: 11400000, guid: 3ffb5ca176cb54620b9fef36fcb4e1ce, type: 2}
 --- !u!1 &6482962161691423722
 GameObject:
   m_ObjectHideFlags: 0
