@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   palletTopPoint: {fileID: 7533617732601243437}
+  CookingSOArray:
+  - {fileID: 11400000, guid: 9795d4df746b9483f807eae093292be4, type: 2}
 --- !u!1 &3166461380255319682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6842797633082917874, guid: 04ac8fb6dba9049188fe78a1a91a30c1,

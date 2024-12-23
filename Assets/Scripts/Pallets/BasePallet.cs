@@ -16,7 +16,7 @@ public class BasePallet : MonoBehaviour, IDuckObjectParent
 
     public virtual void InteractAlternate(Player player)
     {
-        Debug.LogError("BaseCounter.InteractAlternate()");
+        //Debug.LogError("BaseCounter.InteractAlternate()");
     }
 
     public Transform GetDuckObjectFollowTransform()

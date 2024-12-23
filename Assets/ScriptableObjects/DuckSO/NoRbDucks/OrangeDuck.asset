@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf257d85bf3e4b3f985cc6653cda4d4, type: 3}
   m_Name: OrangeDuck
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3923827539509787492, guid: 6b715043cb58d4995b3665c80dad4c80, type: 3}
-  sprite: {fileID: 21300000, guid: 653ede3648f5346a5844bffc0057685c, type: 3}
-  objectName: Red Duck
+  prefab: {fileID: 2723041496634782092, guid: 2dea2b40d56f44ce8ae7c4bfc14cec34, type: 3}
+  sprite: {fileID: 21300000, guid: ff3f650f810f04dbeb93897248c5f7df, type: 3}
+  objectName: Orange Duck

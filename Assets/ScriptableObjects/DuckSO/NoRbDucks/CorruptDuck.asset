@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf257d85bf3e4b3f985cc6653cda4d4, type: 3}
   m_Name: CorruptDuck
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5129928233040908356, guid: ad6ecb5de11ad43ceabfed23862bdd5d, type: 3}
+  prefab: {fileID: 8006550956625328874, guid: ad6ecb5de11ad43ceabfed23862bdd5d, type: 3}
   sprite: {fileID: 21300000, guid: 7c8f303f5ea5343b2b448ad43d43297e, type: 3}
   objectName: Corrupt Duck

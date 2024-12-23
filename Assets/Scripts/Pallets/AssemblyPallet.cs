@@ -87,10 +87,7 @@ public class AssemblyPallet : BasePallet
             {
                 progressNormalized = (float)assemblyProgress / assemblySO.assemblyProgressMax
             });
-
-
             //Debug.Log("has duck");
-
             if (assemblyProgress >= assemblySO.assemblyProgressMax)
             {//if local pallet count of number of times F key pressed >= max assembly count for assemblySO
 
@@ -98,9 +95,7 @@ public class AssemblyPallet : BasePallet
                 GetDuckObject().DestroySelf();
                 //spawn function takes in duckSO but returns duckObject
                 DuckObject.spawnDuckObject(outputDuckSO, this);
-            }
-
-            
+            }          
         }
         else
         {
@@ -115,7 +110,6 @@ public class AssemblyPallet : BasePallet
         return assemblySO != null;
     }
 
-
     //this function takes in a ducksSO, matches it to the input of one of the items in the assemblySOarray
     // and returns the output, a ducksSO
     private DucksSO GetOutputForInput(DucksSO inputDuckSO)
@@ -128,11 +122,8 @@ public class AssemblyPallet : BasePallet
         else
         {
             return null;
-        }
-        
-        
+        }     
     }
-
 
     private AssemblySO GetAssemblySOWithInput(DucksSO inputDucksSO)
 

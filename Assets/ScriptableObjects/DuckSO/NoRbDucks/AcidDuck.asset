@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf257d85bf3e4b3f985cc6653cda4d4, type: 3}
   m_Name: AcidDuck
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7129157979511081641, guid: 9a391de20a1614ef8b3d77c2a2d03d31, type: 3}
+  prefab: {fileID: 9068972626555227806, guid: 110512976cf4244438403cae401e2bd3, type: 3}
   sprite: {fileID: 21300000, guid: 92ed2c656cea94d79b661ae2e9753acc, type: 3}
   objectName: Acid Duck
