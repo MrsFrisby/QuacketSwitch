@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssemblyPallet : BasePallet
+public class AssemblyPallet : BasePallet, IHasProgress
 
 {
-    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
 
     public class OnProgressChangedEventArgs : EventArgs
     {
@@ -43,7 +43,7 @@ public class AssemblyPallet : BasePallet
 
                     AssemblySO assemblySO = GetAssemblySOWithInput(GetDuckObject().GetDucksSO());
 
-                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
                         progressNormalized = (float)assemblyProgress / assemblySO.assemblyProgressMax
                     });
@@ -83,7 +83,7 @@ public class AssemblyPallet : BasePallet
 
             AssemblySO assemblySO = GetAssemblySOWithInput(GetDuckObject().GetDucksSO());
 
-            OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+            OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
             {
                 progressNormalized = (float)assemblyProgress / assemblySO.assemblyProgressMax
             });

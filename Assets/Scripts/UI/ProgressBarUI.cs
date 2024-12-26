@@ -6,20 +6,25 @@ using UnityEngine.UI;
 public class ProgressBarUI : MonoBehaviour
 {
     [SerializeField]
-    private Image progressBarImage;
+    private GameObject hasProgressGameObject;
 
     [SerializeField]
-    private AssemblyPallet assemblyPallet;
+    private Image progressBarImage;
+
+
+    private IHasProgress hasProgress;
+
 
     private void Start()
     {
-        assemblyPallet.OnProgressChanged += AssemblyPallet_OnProgressChanged;
+        hasProgress = hasProgressGameObject.GetComponent<IHasProgress>();
+        hasProgress.OnProgressChanged += HasProgress_OnProgressChanged;
         progressBarImage.fillAmount = 0f;
 
         Hide();
     }
 
-    private void AssemblyPallet_OnProgressChanged(object sender, AssemblyPallet.OnProgressChangedEventArgs e)
+    private void HasProgress_OnProgressChanged(object sender, IHasProgress.OnProgressChangedEventArgs e)
     {
         progressBarImage.fillAmount = e.progressNormalized;
 

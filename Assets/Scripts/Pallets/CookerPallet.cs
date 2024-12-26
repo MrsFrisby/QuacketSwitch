@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,14 @@ using UnityEngine;
 public class CookerPallet : BasePallet
 
 {
-    private enum State
+    public event EventHandler <OnStateChangedEventArgs> OnStateChanged;
+
+    public class OnStateChangedEventArgs : EventArgs
+    {
+        public State state;
+    }
+
+    public enum State
     {
         Idle,
         Green,
@@ -44,7 +52,7 @@ public class CookerPallet : BasePallet
     private void Start()
     {
 
-        state = State.Green;
+        state = State.Idle;
     }
 
     private void Update()
@@ -54,6 +62,10 @@ public class CookerPallet : BasePallet
             switch (state)
             {
                 case State.Idle:
+                    OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                    {
+                        state = state
+                    });
                     break;
                 case State.Green:
                     cookingTimer += Time.deltaTime;
@@ -66,6 +78,11 @@ public class CookerPallet : BasePallet
                         state = State.Red;
                         corruptionTimer = 0f;
                         corruptionSO = GetCorruptionSOWithInput(GetDuckObject().GetDucksSO());
+
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        {
+                            state = state
+                        });
                     }
                     break;
                 case State.Acid:
@@ -77,17 +94,19 @@ public class CookerPallet : BasePallet
                     break;
                 case State.Red:
                     corruptionTimer += Time.deltaTime;
-                    Debug.Log("CorruptTimer: " + cookingTimer);
                     if (corruptionTimer > corruptionSO.corruptionTimerMax)
-                    {
-                        //cooked
+                    {//corrupt
                         GetDuckObject().DestroySelf();
                         DuckObject.spawnDuckObject(corruptionSO.output, this);
                         state = State.Corrupt;
+
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        {
+                            state = state
+                        });
                     }
                     break;
-                case State.Corrupt:
-                    
+                case State.Corrupt:    
                     break;
 
             }
@@ -112,6 +131,12 @@ public class CookerPallet : BasePallet
                     cookingSO = GetCookingSOWithInput(GetDuckObject().GetDucksSO());
                     state = State.Green;
                     cookingTimer = 0f;
+
+
+                    OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                    {
+                        state = state
+                    });
                 }
                 else
                 {
@@ -127,6 +152,12 @@ public class CookerPallet : BasePallet
                 else
                 { //if player empty handed give duck to player
                     GetDuckObject().SetDuckObjectParent(player);
+                    state = State.Idle;
+
+                    OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                    {
+                        state = state
+                    });
                 }
             }
         }
@@ -161,7 +192,6 @@ public class CookerPallet : BasePallet
     }
 
     private CookingSO GetCookingSOWithInput(DucksSO inputDucksSO)
-
     {
         foreach (CookingSO cookingSO in CookingSOArray)
         {
@@ -174,7 +204,6 @@ public class CookerPallet : BasePallet
     }
 
     private CorruptionSO GetCorruptionSOWithInput(DucksSO inputDucksSO)
-
     {
         foreach (CorruptionSO corruptionSO in CorruptionSOArray)
         {
