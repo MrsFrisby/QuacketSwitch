@@ -3,9 +3,96 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CookerPallet : BasePallet
+
 {
+    private enum State
+    {
+        Idle,
+        Green,
+        Acid,
+        Yellow,
+        Orange,
+        Red,
+        Corrupt
+    }
+
+
     [SerializeField]
     private CookingSO[] CookingSOArray;
+
+    [SerializeField]
+    private CorruptionSO[] CorruptionSOArray;
+
+
+    private State state;
+    private float cookingTimer;
+    private float corruptionTimer;
+    private CookingSO cookingSO;
+    private CorruptionSO corruptionSO;
+
+    // //coroutine for timer
+    //private IEnumerator HandleCookingTimer()
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //}
+
+    //private void Start()
+    //{
+    //    StartCoroutine(HandleCookingTimer());
+    //}
+
+    private void Start()
+    {
+
+        state = State.Green;
+    }
+
+    private void Update()
+    {
+        if (HasDuckObject())
+        {
+            switch (state)
+            {
+                case State.Idle:
+                    break;
+                case State.Green:
+                    cookingTimer += Time.deltaTime;
+                    Debug.Log("Timer: " + cookingTimer);
+                    if (cookingTimer > cookingSO.cookingTimerMax)
+                    {
+                        //cooked
+                        GetDuckObject().DestroySelf();
+                        DuckObject.spawnDuckObject(cookingSO.output, this);
+                        state = State.Red;
+                        corruptionTimer = 0f;
+                        corruptionSO = GetCorruptionSOWithInput(GetDuckObject().GetDucksSO());
+                    }
+                    break;
+                case State.Acid:
+                    break;
+                case State.Yellow:
+                    
+                    break;
+                case State.Orange:
+                    break;
+                case State.Red:
+                    corruptionTimer += Time.deltaTime;
+                    Debug.Log("CorruptTimer: " + cookingTimer);
+                    if (corruptionTimer > corruptionSO.corruptionTimerMax)
+                    {
+                        //cooked
+                        GetDuckObject().DestroySelf();
+                        DuckObject.spawnDuckObject(corruptionSO.output, this);
+                        state = State.Corrupt;
+                    }
+                    break;
+                case State.Corrupt:
+                    
+                    break;
+
+            }
+        }
+    }
 
 
 
@@ -22,6 +109,9 @@ public class CookerPallet : BasePallet
 
                     //when E is pressed the duck is parented to this pallet
                     player.GetDuckObject().SetDuckObjectParent(this);
+                    cookingSO = GetCookingSOWithInput(GetDuckObject().GetDucksSO());
+                    state = State.Green;
+                    cookingTimer = 0f;
                 }
                 else
                 {
@@ -82,4 +172,18 @@ public class CookerPallet : BasePallet
         }
         return null;
     }
-   }
+
+    private CorruptionSO GetCorruptionSOWithInput(DucksSO inputDucksSO)
+
+    {
+        foreach (CorruptionSO corruptionSO in CorruptionSOArray)
+        {
+            if (corruptionSO.input == inputDucksSO)
+            {
+                return corruptionSO;
+            }
+        }
+        return null;
+    }
+
+}

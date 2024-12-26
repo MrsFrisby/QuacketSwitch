@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ef19751ff33645c994852fb6568c4d5, type: 3}
-  m_Name: RedGreenSO
+  m_Name: GreenRedSO
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 969d5cff3dfa54363a52c09e43bd0466, type: 2}
   output: {fileID: 11400000, guid: 3ffb5ca176cb54620b9fef36fcb4e1ce, type: 2}
