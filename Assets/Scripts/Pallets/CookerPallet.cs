@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CookerPallet : BasePallet
+public class CookerPallet : BasePallet, IHasProgress
 
 {
+
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
     public event EventHandler <OnStateChangedEventArgs> OnStateChanged;
 
     public class OnStateChangedEventArgs : EventArgs
@@ -69,7 +71,15 @@ public class CookerPallet : BasePallet
                     break;
                 case State.Green:
                     cookingTimer += Time.deltaTime;
-                    Debug.Log("Timer: " + cookingTimer);
+                    //Debug.Log("Timer: " + cookingTimer);
+
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = cookingTimer / cookingSO.cookingTimerMax
+                    });
+
+
+
                     if (cookingTimer > cookingSO.cookingTimerMax)
                     {
                         //cooked
@@ -94,6 +104,13 @@ public class CookerPallet : BasePallet
                     break;
                 case State.Red:
                     corruptionTimer += Time.deltaTime;
+
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = corruptionTimer / corruptionSO.corruptionTimerMax
+                    });
+
+
                     if (corruptionTimer > corruptionSO.corruptionTimerMax)
                     {//corrupt
                         GetDuckObject().DestroySelf();
@@ -103,6 +120,11 @@ public class CookerPallet : BasePallet
                         OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                         {
                             state = state
+                        });
+
+                        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                        {
+                            progressNormalized = 0f
                         });
                     }
                     break;
@@ -117,17 +139,21 @@ public class CookerPallet : BasePallet
 
     public override void Interact(Player player)
     {
+        Debug.Log("CookerPallet Interact)");
         if (!HasDuckObject())
         {//no duck already on pallet
+
             if (player.HasDuckObject())
-                
-            {//if player is carrying a duck
+            {//no duck already but player is carrying a duck
                 Debug.Log("carrying a " + player.GetDuckObject().GetDucksSO());
+
                 if (HasMatchwithSOCookingInput(player.GetDuckObject().GetDucksSO()))
-                {//if duck dropped matches CookingSO.input duck object within pallet's array
+                {//duck dropped matches CookingSO.input duck object within pallet's array
 
                     //when E is pressed the duck is parented to this pallet
+
                     player.GetDuckObject().SetDuckObjectParent(this);
+                    Debug.Log("This pallet now has a " + GetDuckObject().name);
                     cookingSO = GetCookingSOWithInput(GetDuckObject().GetDucksSO());
                     state = State.Green;
                     cookingTimer = 0f;
@@ -137,28 +163,44 @@ public class CookerPallet : BasePallet
                     {
                         state = state
                     });
+
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = cookingTimer / cookingSO.cookingTimerMax
+                    });
                 }
                 else
                 {
-                    Debug.Log("No matching. this is a "+ player.GetDuckObject().GetDucksSO());
+                    Debug.Log("No matching. this is a " + player.GetDuckObject().GetDucksSO());
                 }
             }
+
             else
-            {//duck already on pallet
-                if (player.HasDuckObject())
-                {//player already has a duck so can't pick up another
+            {//no duck on pallet and player not carrying a duck
+                Debug.Log("Can't do anything, no ducks!");
+            }
+        }
+        else
+        {//duck already on pallet
+            if (player.HasDuckObject())
+            {//player already has a duck so can't pick up another
+                Debug.Log("Interact:player is already carrying a" + player.GetDuckObject().GetDucksSO());
+            }
+            else
+            { //if player empty handed give duck to player
+                Debug.Log("Interact:player should be able to pick up corrupt duck but can't??");
+                GetDuckObject().SetDuckObjectParent(player);
+                state = State.Idle;
 
-                }
-                else
-                { //if player empty handed give duck to player
-                    GetDuckObject().SetDuckObjectParent(player);
-                    state = State.Idle;
+                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                {
+                    state = state
+                });
 
-                    OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
-                    {
-                        state = state
-                    });
-                }
+                OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                {
+                    progressNormalized = 0f
+                });
             }
         }
     }

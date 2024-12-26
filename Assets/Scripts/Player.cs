@@ -147,17 +147,13 @@ public class Player : MonoBehaviour, IDuckObjectParent
         //isInteractPressed = true;
         if (selectedPallet != null)
         {
+            Debug.Log("Inside Player controller: selected" + selectedPallet.name);
             selectedPallet.Interact(this);
         }
 
     }
 
-    //private void GameInput_OnInteractCancelAction(object sender, System.EventArgs e)
-    //{
-    //    //Debug.Log("Inside Player controller: E released");
-    //    //isInteractPressed = false;
-        
-    //}
+   
 
     private void GameInput_OnInteractAlternateAction(object sender, System.EventArgs e)
     {
@@ -349,6 +345,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
                         //Debug.Log("I hit a " + raycastHit.transform.name);
                         
                         SetSelectedPallet(basePallet);
+                        
                         //selectedPallet.Interact();
                     }
                 }
@@ -369,11 +366,13 @@ public class Player : MonoBehaviour, IDuckObjectParent
     private void SetSelectedPallet(BasePallet selectedPallet)
     {
         this.selectedPallet = selectedPallet;
+        Debug.Log("I have selected a " +selectedPallet);
 
         OnSelectedPalletChanged?.Invoke(this, new OnSelectedPalletChangedEventArgs
         {
             selectedPallet = selectedPallet
-        });
+            
+    });
     }
 
     public Transform GetDuckObjectFollowTransform()

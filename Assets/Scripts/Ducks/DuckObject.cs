@@ -19,26 +19,28 @@ public class DuckObject : MonoBehaviour
     //the argument passed into this function is the new pallet parent that the duckObject is moving to
     public void SetDuckObjectParent(IDuckObjectParent duckObjectParent)
     {
-        //this.pallet refers to the current/orginal parent
+        //clear the duck so it is no longer parented to the previous parent
+        //this refers to the pallet, not the duck
         if (this.duckObjectParent != null)
         {
             this.duckObjectParent.ClearDuckObject();
         }
 
-        //here we reset to the new parent
-        this.duckObjectParent = duckObjectParent;
-
-        if(duckObjectParent.HasDuckObject())
+        if (!duckObjectParent.HasDuckObject())
         {
-            Debug.LogError("duckObjcetParent already has child duckObject");
+            //here we reset to the new parent
+            this.duckObjectParent = duckObjectParent;
+            Debug.Log("duckObjectParent does not already have child");
+            duckObjectParent.SetDuckObject(this);
+            //this is the position on the new parent object that the duck will move to
+            transform.parent = duckObjectParent.GetDuckObjectFollowTransform();
+            transform.localPosition = Vector3.zero;
         }
-
-
-        duckObjectParent.SetDuckObject(this);
-
-        //this is the position on the new parent object that the duck will move to
-        transform.parent = duckObjectParent.GetDuckObjectFollowTransform();
-        transform.localPosition = Vector3.zero;
+        else
+        {
+            Debug.LogError("duckObjectParent already has child duckObject");
+        }
+        
     }
 
     public IDuckObjectParent GetDuckObjectParent()
