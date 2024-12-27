@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearPallet : BasePallet
+public class TestPallet : BasePallet
 {
     [SerializeField]
     private DucksSO ducksSO;
 
-   
+    //[SerializeField]
+    //private Transform palletTopPoint;
+
+    //private DuckObject duckObject;
 
 
     public override void Interact(Player player)

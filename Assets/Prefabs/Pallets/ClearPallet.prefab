@@ -61,10 +61,40 @@ PrefabInstance:
     - target: {fileID: 8620610005513173807, guid: 04ac8fb6dba9049188fe78a1a91a30c1,
         type: 3}
       propertyPath: m_Name
-      value: _BasePallet
+      value: ClearPallet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8620610005513173807, guid: 04ac8fb6dba9049188fe78a1a91a30c1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6789057774330814232}
   m_SourcePrefab: {fileID: 100100000, guid: 04ac8fb6dba9049188fe78a1a91a30c1, type: 3}
+--- !u!1 &1429525662382732682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8620610005513173807, guid: 04ac8fb6dba9049188fe78a1a91a30c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7238477727302078117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6789057774330814232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429525662382732682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5342bb69729b54174a163eb3b99bd287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  palletTopPoint: {fileID: 8791012891470540024}
+  ducksSO: {fileID: 0}
+--- !u!4 &8791012891470540024 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2129022305287922269, guid: 04ac8fb6dba9049188fe78a1a91a30c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7238477727302078117}
+  m_PrefabAsset: {fileID: 0}
