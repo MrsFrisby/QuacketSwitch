@@ -7,42 +7,63 @@ public class DuckHoles : BasePallet
 {
     public event EventHandler OnDuckSpawned;
 
+    public event EventHandler OnDestroyLast;
+
 
     private float duckHoleTimer;
-    private float duckHoleTimerMax = 1f;
+    private float duckHoleTimerMax = 15f;
     private int ducksSpawned;
     private int ducksSpawnedMax = 24;
 
     [SerializeField] private DucksSO ducksSO;
 
+    private DucksSO playerDuckSO;
+
     private void Update()
     {
-        //duckHoleTimer += Time.deltaTime;
-        //if (duckHoleTimer > duckHoleTimerMax)
-        //{
-            
-        //    duckHoleTimer = 0f;
+        //not working yet
+        duckHoleTimer += Time.deltaTime;
+        //Debug.Log(duckHoleTimer);
+        if (duckHoleTimer > duckHoleTimerMax)
+        {
 
-        //    if (ducksSpawned < ducksSpawnedMax)
-        //    {
-        //        ducksSpawned++;
-        //        OnDuckSpawned?.Invoke(this, EventArgs.Empty);
-                
-        //    }   
-        //}
+            duckHoleTimer = 0f;
+            ducksSpawned--;
+            OnDestroyLast?.Invoke(this, EventArgs.Empty);
+            Debug.Log("Reset Timer");
+        }
     }
 
     public override void Interact(Player player)
     {
         if (player.HasDuckObject())
         {
-            player.GetDuckObject().DestroySelf();
-            if (ducksSpawned < ducksSpawnedMax)
+            playerDuckSO = player.GetDuckObject().GetDucksSO();
+            if (HasMatchWithDuckSO(playerDuckSO))
             {
-                ducksSpawned++;
-                OnDuckSpawned?.Invoke(this, EventArgs.Empty);
+                player.GetDuckObject().DestroySelf();
+                if (ducksSpawned < ducksSpawnedMax)
+                {
+                    ducksSpawned++;
+                    OnDuckSpawned?.Invoke(this, EventArgs.Empty);
+                }
             }
+        }
+        else
+        {
+            Debug.Log("Wrong Duck SO");
         }
     }
 
+    private bool HasMatchWithDuckSO(DucksSO playerDuckSO)
+    {
+        if (playerDuckSO == ducksSO)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

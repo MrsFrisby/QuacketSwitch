@@ -20,7 +20,23 @@ public class DuckHolesVisual : MonoBehaviour
     private void Start()
     {
         duckHoles.OnDuckSpawned += DuckHoles_OnDuckSpawned;
+        duckHoles.OnDestroyLast += DuckHoles_OnDestroyLast;
     }
+
+    private void DuckHoles_OnDestroyLast(object sender, EventArgs e)
+    {
+        //duckVisualGameObjectList.Clear();
+        Debug.Log("destroy last!");
+        if (duckVisualGameObjectList.Count > 1)
+        {
+            GameObject duckToDestroy = duckVisualGameObjectList[duckVisualGameObjectList.Count - 1];
+            duckVisualGameObjectList.Remove(duckToDestroy);
+            Destroy(duckToDestroy);
+        }
+        
+        
+    }
+
 
     private void DuckHoles_OnDuckSpawned(object sender, EventArgs e)
     {
