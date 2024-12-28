@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ducksSO: {fileID: 11400000, guid: 360da39eb4594459e993d7a5d2233a9b, type: 2}
   sprite: {fileID: 21300000, guid: 33bb839041b9345d48abf420e4643d1b, type: 3}
-  objectName: IMAP Protocol
+  protocolName: 'IMAP: Internet Message Access Protocol'

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ducksSO: {fileID: 11400000, guid: cdfbd15823e5543fd9f18909f37110ac, type: 2}
   sprite: {fileID: 21300000, guid: e0e51a7887c5d4c0c8ff8666c716a597, type: 3}
-  objectName: HTTPS Protocol
+  protocolName: 'HTTPS: Hyper Text Transfer Protocol Secure'

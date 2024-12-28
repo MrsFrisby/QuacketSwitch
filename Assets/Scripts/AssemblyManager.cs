@@ -1,9 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AssemblyManager : MonoBehaviour
 {
+    public event EventHandler OnProtocolSpawned;
+    public event EventHandler OnProtocolCompleted;
+
+
+
     public static AssemblyManager Instance { get; private set; }
 
     [SerializeField] private ProtocolListSO protocolListSO; 
@@ -12,7 +18,7 @@ public class AssemblyManager : MonoBehaviour
 
     private float spawnProtocolTimer;
     private float spawnProtocolTimerMax = 5f;
-    private int waitingProtocolsMax = 10;
+    private int waitingProtocolsMax = 5;
 
     private void Awake()
     {
@@ -31,9 +37,11 @@ public class AssemblyManager : MonoBehaviour
 
             if (waitingProtocolSOList.Count < waitingProtocolsMax)
             {
-                ProtocolSO waitingProtocolSO = protocolListSO.protocolSOList[Random.Range(0, protocolListSO.protocolSOList.Count)];
-                Debug.Log(waitingProtocolSO.name);
+                ProtocolSO waitingProtocolSO = protocolListSO.protocolSOList[UnityEngine.Random.Range(0, protocolListSO.protocolSOList.Count)];
+                //Debug.Log(waitingProtocolSO.name);
                 waitingProtocolSOList.Add(waitingProtocolSO);
+
+                OnProtocolSpawned?.Invoke(this, EventArgs.Empty);
             }
             
         }
@@ -61,12 +69,17 @@ public class AssemblyManager : MonoBehaviour
             {
                 Debug.Log("Correct Assembly Duck Delivered");
                 waitingProtocolSOList.RemoveAt(i);
+                OnProtocolCompleted?.Invoke(this, EventArgs.Empty);
                 return;
 
             }
         }
         //No matches
         Debug.Log("Correct assembly not delivered");
-        
+    }
+
+    public List<ProtocolSO> GetWaitingProtocolSOList()
+    {
+        return waitingProtocolSOList;
     }
 }

@@ -7,5 +7,5 @@ public class ProtocolSO : ScriptableObject
 {
     public DucksSO ducksSO;
     public Sprite sprite;
-    public string objectName;
+    public string protocolName;
 }
