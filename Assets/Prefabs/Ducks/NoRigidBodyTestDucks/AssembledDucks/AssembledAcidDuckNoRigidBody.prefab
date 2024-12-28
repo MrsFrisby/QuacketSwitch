@@ -14,6 +14,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ad8accb2f6a1b4fb9b0a6d2005709b76,
         type: 2}
+    - target: {fileID: 1056961158349041613, guid: ae79fa960056f40368fcda0a7a851d31,
+        type: 3}
+      propertyPath: m_Name
+      value: DuckMesh
+      objectReference: {fileID: 0}
     - target: {fileID: 1323194523230113156, guid: ae79fa960056f40368fcda0a7a851d31,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -69,13 +74,44 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e17576603a1d6425da68c326e4c8ded6, type: 2}
+    - target: {fileID: 6089962252624172142, guid: ae79fa960056f40368fcda0a7a851d31,
+        type: 3}
+      propertyPath: m_Name
+      value: Visual
+      objectReference: {fileID: 0}
     - target: {fileID: 7655559962629512782, guid: ae79fa960056f40368fcda0a7a851d31,
         type: 3}
       propertyPath: m_Name
       value: AssembledAcidDuckNoRigidBody
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 61267701572951757, guid: ae79fa960056f40368fcda0a7a851d31, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7655559962629512782, guid: ae79fa960056f40368fcda0a7a851d31,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3826833793967200611}
   m_SourcePrefab: {fileID: 100100000, guid: ae79fa960056f40368fcda0a7a851d31, type: 3}
+--- !u!1 &3046821623053039595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7655559962629512782, guid: ae79fa960056f40368fcda0a7a851d31,
+    type: 3}
+  m_PrefabInstance: {fileID: 4645039867824318885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3826833793967200611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046821623053039595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d8db30b04074a4fb2edfbf86820f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duckObjectSO: {fileID: 11400000, guid: ad8accb2f6a1b4fb9b0a6d2005709b76, type: 2}
+  displayIconUI: 0
+  duckIconsUI: {fileID: 0}

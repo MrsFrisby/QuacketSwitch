@@ -8,7 +8,13 @@ public class DeliveryPallet : BasePallet
     {
         if (player.HasDuckObject())
         {
-            player.GetDuckObject().DestroySelf();
+            if (player.GetDuckObject().TryGetAssembled(out AssembledDuckObject assembledDuckObject))
+            {//only accepts assembled ducks
+
+                AssemblyManager.Instance.DeliverAssembledProtocol(assembledDuckObject);
+                player.GetDuckObject().DestroySelf();
+            }
+            
         }
 
 

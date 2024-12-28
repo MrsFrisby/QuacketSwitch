@@ -83,6 +83,20 @@ public class DuckObject : MonoBehaviour
         return duckObject;
     }
 
+
+    public bool TryGetAssembled(out AssembledDuckObject assembledDuckObject)
+    {
+        if (this is AssembledDuckObject)
+        {
+            assembledDuckObject = this as AssembledDuckObject;
+            return true;
+        }
+        else
+        {
+            assembledDuckObject = null;
+            return false;
+        }
+    }
     //public void Inspect(Player player)
     //{
     //    Debug.Log("Inspect!");
