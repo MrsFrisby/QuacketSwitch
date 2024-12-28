@@ -14,6 +14,8 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnGrabAction;
     public event EventHandler OnGrabCancelAction;
     public event EventHandler OnJumpAction;
+    //public event EventHandler OnInspectAction;
+    //public event EventHandler OnInspectCancelAction;
 
 
     private PlayerInputActions playerInputActions;
@@ -39,7 +41,24 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Jump.performed += Jump_performed;
 
         playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
+
+        //playerInputActions.Player.Inspect.started += Inspect_started;
+
+        //playerInputActions.Player.Inspect.canceled += Inspect_canceled;
     }
+
+    ////Inspect
+    //private void Inspect_started(InputAction.CallbackContext obj)
+    //{
+    //    Debug.Log("GameInputScript: C key pressed");
+    //    OnInspectAction?.Invoke(this, EventArgs.Empty);
+    //}
+
+    //private void Inspect_canceled(InputAction.CallbackContext obj)
+    //{
+    //    Debug.Log("GameInputScript: C key released");
+    //    OnInspectCancelAction?.Invoke(this, EventArgs.Empty);
+    //}
 
     //AlternateInteract
     private void InteractAlternate_performed(InputAction.CallbackContext context)

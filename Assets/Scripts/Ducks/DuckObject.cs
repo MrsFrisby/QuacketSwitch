@@ -8,12 +8,31 @@ public class DuckObject : MonoBehaviour
 
     private IDuckObjectParent duckObjectParent;
 
+    public bool displayIconUI;
+
+    //[SerializeField] private Player player;
+
+    [SerializeField] private DuckIconsUI duckIconsUI;
 
     //how is the SO set? - via Serialized field for object
     public DucksSO GetDucksSO()
     {
         return duckObjectSO;
     }
+
+    //public void SetIconVisibilityActive()
+    //{
+    //    Debug.Log("Duck Object: Toggle UI On");
+    //    //duckIconsUI.iconTemplate.SetActive(true);
+    //    displayIconUI = true;
+    //}
+
+    //public void SetIconVisibilityInActive()
+    //{
+    //    Debug.Log("Duck Object: Toggle UI Off");
+    //    //duckIconsUI.iconTemplate.SetActive(false);
+    //    displayIconUI = false;
+    //}
 
 
     //the argument passed into this function is the new pallet parent that the duckObject is moving to
@@ -30,7 +49,7 @@ public class DuckObject : MonoBehaviour
         {
             //here we reset to the new parent
             this.duckObjectParent = duckObjectParent;
-            Debug.Log("duckObjectParent does not already have child");
+            //Debug.Log("duckObjectParent does not already have child");
             duckObjectParent.SetDuckObject(this);
             //this is the position on the new parent object that the duck will move to
             transform.parent = duckObjectParent.GetDuckObjectFollowTransform();
@@ -60,7 +79,14 @@ public class DuckObject : MonoBehaviour
         Transform duckTransform = Instantiate(duckSO.prefab);
         DuckObject duckObject = duckTransform.GetComponent<DuckObject>();
         duckObject.SetDuckObjectParent(duckObjectParent);
+        //duckObject.displayIconUI = true;
         return duckObject;
     }
+
+    //public void Inspect(Player player)
+    //{
+    //    Debug.Log("Inspect!");
+    //    displayIconUI = true;
+    //}
 
 }

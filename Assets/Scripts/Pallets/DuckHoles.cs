@@ -11,7 +11,7 @@ public class DuckHoles : BasePallet
 
 
     private float duckHoleTimer;
-    private float duckHoleTimerMax = 15f;
+    private float duckHoleTimerMax = 30f;
     private int ducksSpawned;
     private int ducksSpawnedMax = 24;
 
@@ -21,12 +21,10 @@ public class DuckHoles : BasePallet
 
     private void Update()
     {
-        //not working yet
         duckHoleTimer += Time.deltaTime;
         //Debug.Log(duckHoleTimer);
         if (duckHoleTimer > duckHoleTimerMax)
         {
-
             duckHoleTimer = 0f;
             ducksSpawned--;
             OnDestroyLast?.Invoke(this, EventArgs.Empty);

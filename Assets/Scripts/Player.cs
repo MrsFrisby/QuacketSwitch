@@ -28,7 +28,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     Animator animator;
 
     [SerializeField]
-    private GameInput gameInput;
+    public GameInput gameInput;
 
     //Input
     Vector2 moveInputVector = Vector2.zero;
@@ -101,8 +101,44 @@ public class Player : MonoBehaviour, IDuckObjectParent
         gameInput.OnJumpAction += GameInput_OnJumpAction;
         gameInput.OnGrabCancelAction += GameInput_OnGrabCancelAction;
         gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
+        //gameInput.OnInspectAction += GameInput_OnInspectAction;
+        //gameInput.OnInspectAction += GameInput_OnInspectCancelAction;
     }
 
+
+    
+
+    ////inspect icon - pressing C
+    //private void GameInput_OnInspectAction(object sender, EventArgs e)
+    //{
+        
+    //    if (duckObject != null)
+    //    {
+    //        //Debug.Log("Player: GameInput_OnInspectAction: Has duck Object");
+    //        //duckObject.displayIconUI = true;
+            
+    //        duckObject.SetIconVisibilityActive();
+    //        Debug.Log("Player: GameInput_OnInspectAction: SetIconVisibilityActive");
+    //        Debug.Log(duckObject.name + ":DisplayIcon" + duckObject.displayIconUI);
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Player: GameInput_OnInspectAction:No duck");
+
+    //    }
+    //}
+
+    //private void GameInput_OnInspectCancelAction(object sender, EventArgs e)
+    //{
+    //    if (duckObject != null)
+    //    {
+    //        duckObject.SetIconVisibilityInActive();
+    //        Debug.Log("Player: GameInput_OnInspectCancelAction: SetIconVisibilityInActive");
+    //        Debug.Log(duckObject.name + ":DisplayIcon" + duckObject.displayIconUI);
+    //    }
+    //        //duckObject.displayIconUI = false;
+            
+    //}
 
     //grabbing
     private void GameInput_OnGrabAction(object sender, System.EventArgs e)

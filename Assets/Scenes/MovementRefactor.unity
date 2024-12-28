@@ -4813,6 +4813,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1490569562838065248, guid: 2ab207bc59c524db08396345e2b999c5,
+        type: 3}
+      propertyPath: ducksSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 2351c804d63b64049aa18c62ff2fb870,
+        type: 2}
     - target: {fileID: 1811412522123657054, guid: 2ab207bc59c524db08396345e2b999c5,
         type: 3}
       propertyPath: duckHoles
@@ -4822,7 +4828,7 @@ PrefabInstance:
         type: 3}
       propertyPath: duckVisualPrefab
       value: 
-      objectReference: {fileID: 3154097905292069563, guid: a12ee44a496d141b68c855df3b95d546,
+      objectReference: {fileID: 4042047718973031510, guid: db8161a4283504810ad7894eb660aac0,
         type: 3}
     - target: {fileID: 1811412522123657054, guid: 2ab207bc59c524db08396345e2b999c5,
         type: 3}
@@ -8225,7 +8231,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 41234092}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2676132092706012935, guid: ab7536a6865e3459f9f21a181de4db7b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7641869783160114146, guid: ab7536a6865e3459f9f21a181de4db7b,
         type: 3}
