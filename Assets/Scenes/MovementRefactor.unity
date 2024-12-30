@@ -2479,12 +2479,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!4 &261659231 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8789288348831122757, guid: af202b1847a5947dd83b6df38295bd87,
-    type: 3}
-  m_PrefabInstance: {fileID: 1879472863}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &261659232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6001085786609800485, guid: af202b1847a5947dd83b6df38295bd87,
@@ -8382,7 +8376,6 @@ Transform:
   - {fileID: 1792151620}
   - {fileID: 271316036}
   - {fileID: 1158378118}
-  - {fileID: 261659231}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1500563525 stripped
@@ -10357,7 +10350,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1487195381}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 541357807485497757, guid: af202b1847a5947dd83b6df38295bd87,
         type: 3}
@@ -10399,6 +10392,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DuckHoles2x2
       objectReference: {fileID: 0}
+    - target: {fileID: 2248447516169242553, guid: af202b1847a5947dd83b6df38295bd87,
+        type: 3}
+      propertyPath: basePallet
+      value: 
+      objectReference: {fileID: 261659232}
     - target: {fileID: 3010271210068211655, guid: af202b1847a5947dd83b6df38295bd87,
         type: 3}
       propertyPath: duckHoles
@@ -12957,3 +12955,4 @@ SceneRoots:
   - {fileID: 1085459617}
   - {fileID: 1896230156}
   - {fileID: 1487195381}
+  - {fileID: 1879472863}

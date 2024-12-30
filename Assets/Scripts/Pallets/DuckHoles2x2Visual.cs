@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class DuckHoles2x2Visual : MonoBehaviour
 {
@@ -9,17 +10,21 @@ public class DuckHoles2x2Visual : MonoBehaviour
     [SerializeField] private Transform topLeftSpawnPoint;
     [SerializeField] private Transform duckVisualPrefab;
 
-    [Serializable]
-    public struct duckSO_GameObject
-    { //struct used instead of class to store data without logic
-        public DucksSO ducksSO;
-        public GameObject duckGameObject;
-    }
+    //[Serializable]
+    //public struct duckSO_GameObject
+    //{ //struct used instead of class to store data without logic
+    //    public DucksSO ducksSO;
+    //    public GameObject duckGameObject;
+    //}
 
-    [SerializeField]
-    private List<duckSO_GameObject> duckSO_GameObjectList;
+    //[SerializeField]
+    //private List<duckSO_GameObject> duckSO_GameObjectList;
 
     private List<GameObject> duckVisualGameObjectList;
+
+    //private DuckObject duckToSpawnDuckObject;
+    private Transform duckToSpawnVisualPrefabTransform;
+    private DucksSO duckToSpawn;
 
 
     private void Awake()
@@ -47,8 +52,17 @@ public class DuckHoles2x2Visual : MonoBehaviour
     //position spawned ducks correctly starting at top left spawn point
     private void DuckHoles_OnDuckSpawned(object sender, EventArgs e)
     {
-        Debug.Log("DuckHoleVisual:trying to spawn");
-        Transform duckVisualTransform = Instantiate(duckVisualPrefab, topLeftSpawnPoint);
+
+        duckToSpawn = duckHoles.duckObjectSOList.Last();
+        duckToSpawnVisualPrefabTransform = duckToSpawn.visualPrefab;
+        //duckToSpawnDuckObject = duckToSpawn.duckObject;
+
+        //duckToSpawnDuckObject.SetIconVisibilityInActive();
+        Debug.Log("DuckHoleVisual:trying to spawn: "+ duckToSpawnVisualPrefabTransform);
+        //Transform duckVisualTransform = Instantiate(duckVisualPrefab, topLeftSpawnPoint);
+        Transform duckVisualTransform = Instantiate(duckToSpawnVisualPrefabTransform, topLeftSpawnPoint);
+        //duckToSpawnGameObject = duckVisualTransform.gameObject;
+        //duckToSpawnGameObject.SetIconVisibilityInActive();
         float duckOffsetZ = 0.9f;
         float duckOffsetY = 0.9f;
         int colOffset = duckVisualGameObjectList.Count % 2 ;

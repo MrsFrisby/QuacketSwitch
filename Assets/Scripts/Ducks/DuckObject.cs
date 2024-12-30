@@ -20,19 +20,19 @@ public class DuckObject : MonoBehaviour
         return duckObjectSO;
     }
 
-    //public void SetIconVisibilityActive()
-    //{
-    //    Debug.Log("Duck Object: Toggle UI On");
-    //    //duckIconsUI.iconTemplate.SetActive(true);
-    //    displayIconUI = true;
-    //}
+    public void SetIconVisibilityActive()
+    {
+        Debug.Log("Duck Object: Toggle UI On");
+        duckIconsUI.iconTemplate.SetActive(true);
+        displayIconUI = true;
+    }
 
-    //public void SetIconVisibilityInActive()
-    //{
-    //    Debug.Log("Duck Object: Toggle UI Off");
-    //    //duckIconsUI.iconTemplate.SetActive(false);
-    //    displayIconUI = false;
-    //}
+    public void SetIconVisibilityInActive()
+    {
+        Debug.Log("Duck Object: Toggle UI Off");
+        duckIconsUI.iconTemplate.SetActive(false);
+        displayIconUI = false;
+    }
 
 
     //the argument passed into this function is the new pallet parent that the duckObject is moving to

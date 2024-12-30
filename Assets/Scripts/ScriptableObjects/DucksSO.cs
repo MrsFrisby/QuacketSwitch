@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class DucksSO : ScriptableObject
 {
+    public Transform visualPrefab;
     public Transform prefab;
     public Sprite sprite;
     public string objectName;
-
-
 }

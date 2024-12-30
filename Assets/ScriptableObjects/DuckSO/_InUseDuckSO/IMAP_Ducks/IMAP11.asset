@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf257d85bf3e4b3f985cc6653cda4d4, type: 3}
   m_Name: IMAP11
   m_EditorClassIdentifier: 
+  duckObject: {fileID: -61732384186212010, guid: dc8698795c6fe4155932522d59a27a23,
+    type: 3}
   prefab: {fileID: 5186383002779545882, guid: dc8698795c6fe4155932522d59a27a23, type: 3}
   sprite: {fileID: 21300000, guid: 9384d588ecd0245fcb49d377179ebaa4, type: 3}
   objectName: IMAP 11
