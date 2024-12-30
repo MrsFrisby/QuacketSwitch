@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DuckHoles4x4 : BasePallet
+public class DuckHoles2x2 : BasePallet
 {
     public event EventHandler OnDuckSpawned;
 
@@ -15,9 +15,19 @@ public class DuckHoles4x4 : BasePallet
     private int ducksSpawned;
     private int ducksSpawnedMax = 4;
 
+    public List<DucksSO> duckObjectSOList;
+
     [SerializeField] private DucksSO ducksSO;
 
+    [SerializeField] private List<DucksSO> validDucksSOList;
+
     private DucksSO playerDuckSO;
+
+    private void Awake()
+    {
+        duckObjectSOList = new List<DucksSO>();
+    }
+
 
     private void Update()
     {
@@ -37,14 +47,17 @@ public class DuckHoles4x4 : BasePallet
         if (player.HasDuckObject())
         {
             playerDuckSO = player.GetDuckObject().GetDucksSO();
-            if (HasMatchWithDuckSO(playerDuckSO))
+            if (HasMatchWithValidDuckSOList(playerDuckSO))
             {
-                player.GetDuckObject().DestroySelf();
-                if (ducksSpawned < ducksSpawnedMax)
+                 if(TryAddDucktoList(playerDuckSO))
                 {
-                    ducksSpawned++;
-                    OnDuckSpawned?.Invoke(this, EventArgs.Empty);
-                }
+                    player.GetDuckObject().DestroySelf();
+                    if (ducksSpawned < ducksSpawnedMax)
+                    {
+                        ducksSpawned++;
+                        OnDuckSpawned?.Invoke(this, EventArgs.Empty);
+                    }
+                }  
             }
         }
         else
@@ -53,9 +66,9 @@ public class DuckHoles4x4 : BasePallet
         }
     }
 
-    private bool HasMatchWithDuckSO(DucksSO playerDuckSO)
+    private bool HasMatchWithValidDuckSOList(DucksSO playerDuckSO)
     {
-        if (playerDuckSO == ducksSO)
+        if (validDucksSOList.Contains(playerDuckSO))
         {
             return true;
         }
@@ -64,4 +77,23 @@ public class DuckHoles4x4 : BasePallet
             return false;
         }
     }
+
+    private bool TryAddDucktoList(DucksSO ducksSO)
+    {
+        if (duckObjectSOList.Contains(ducksSO))
+        {//this duck has already been added
+            return false;
+        }
+        else
+        {
+            duckObjectSOList.Add(ducksSO);
+            return true;
+        }
+    }
+
+    public List<DucksSO> GetDucksSOList()
+    {
+        return duckObjectSOList;
+    }
+
 }

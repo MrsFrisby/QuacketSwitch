@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5b611e2e5db447389aa2a2d8bf3911, type: 3}
   m_Name: HTTPS_ProtocolSO
   m_EditorClassIdentifier: 
+  duckObjectSOList:
+  - {fileID: 11400000, guid: 3ffb5ca176cb54620b9fef36fcb4e1ce, type: 2}
+  - {fileID: 11400000, guid: d943e8a2bf23f412bbe819ab277fbc9c, type: 2}
   ducksSO: {fileID: 11400000, guid: cdfbd15823e5543fd9f18909f37110ac, type: 2}
   sprite: {fileID: 21300000, guid: e0e51a7887c5d4c0c8ff8666c716a597, type: 3}
   protocolName: 'HTTPS: Hyper Text Transfer Protocol Secure'

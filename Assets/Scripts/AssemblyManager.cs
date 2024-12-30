@@ -14,6 +14,8 @@ public class AssemblyManager : MonoBehaviour
 
     [SerializeField] private ProtocolListSO protocolListSO; 
 
+
+
     private List<ProtocolSO> waitingProtocolSOList;
 
     private float spawnProtocolTimer;
@@ -49,30 +51,38 @@ public class AssemblyManager : MonoBehaviour
 
     public void DeliverAssembledProtocol(AssembledDuckObject assembledDuckObject)
     {
-        bool assembledDuckMatchesProtocol = false;
-
-
         for (int i=0; i<waitingProtocolSOList.Count; i++)
         {
             ProtocolSO waitingProtocolSO = waitingProtocolSOList[i];
 
-            if (waitingProtocolSO == assembledDuckObject)
-            {
-                assembledDuckMatchesProtocol = true;
-            }
-            //else
-            //{
-            //    assembledDuckMatchesProtocol = false;
-            //}
+            if(waitingProtocolSO.duckObjectSOList.Count == assembledDuckObject.GetDucksSOList().Count)
+            {//delivered assembled duck has same number of duck components as waiting protocol
+                bool assembledDuckMatchesProtocol = false;
+                foreach (DucksSO protocolDucksSO in waitingProtocolSO.duckObjectSOList)
+                {
+                    bool duckFound = false;
+                    foreach(DucksSO assembledDucksSO in assembledDuckObject.GetDucksSOList())
+                    {
+                        if (waitingProtocolSO == assembledDuckObject)
+                        {
+                            duckFound = true;
+                            break;//stop looping
+                        }
+                    }
+                    if(!duckFound)
+                    {
+                        assembledDuckMatchesProtocol = false;
+                    }
+                }
+                if (assembledDuckMatchesProtocol)
+                {
+                    Debug.Log("Correct Assembly Duck Delivered");
+                    waitingProtocolSOList.RemoveAt(i);
+                    OnProtocolCompleted?.Invoke(this, EventArgs.Empty);
+                    return;
 
-            if (assembledDuckMatchesProtocol)
-            {
-                Debug.Log("Correct Assembly Duck Delivered");
-                waitingProtocolSOList.RemoveAt(i);
-                OnProtocolCompleted?.Invoke(this, EventArgs.Empty);
-                return;
-
-            }
+                }
+            }    
         }
         //No matches
         Debug.Log("Correct assembly not delivered");

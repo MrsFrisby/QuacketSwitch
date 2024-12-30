@@ -3,11 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DuckHoles4x4Visual : MonoBehaviour
+public class DuckHoles2x2Visual : MonoBehaviour
 {
-    [SerializeField] private DuckHoles duckHoles;
+    [SerializeField] private DuckHoles2x2 duckHoles;
     [SerializeField] private Transform topLeftSpawnPoint;
     [SerializeField] private Transform duckVisualPrefab;
+
+    [Serializable]
+    public struct duckSO_GameObject
+    { //struct used instead of class to store data without logic
+        public DucksSO ducksSO;
+        public GameObject duckGameObject;
+    }
+
+    [SerializeField]
+    private List<duckSO_GameObject> duckSO_GameObjectList;
 
     private List<GameObject> duckVisualGameObjectList;
 
@@ -34,7 +44,7 @@ public class DuckHoles4x4Visual : MonoBehaviour
         }
     }
 
-
+    //position spawned ducks correctly starting at top left spawn point
     private void DuckHoles_OnDuckSpawned(object sender, EventArgs e)
     {
         Debug.Log("DuckHoleVisual:trying to spawn");
@@ -47,12 +57,10 @@ public class DuckHoles4x4Visual : MonoBehaviour
         {
             duckVisualTransform.localPosition = new Vector3(0, 0, -duckOffsetZ * duckVisualGameObjectList.Count);
         }
-        
         else
         {
             duckVisualTransform.localPosition = new Vector3(0, -duckOffsetY, -duckOffsetZ * colOffset);
         }
-
         duckVisualGameObjectList.Add(duckVisualTransform.gameObject);
     }
 }
