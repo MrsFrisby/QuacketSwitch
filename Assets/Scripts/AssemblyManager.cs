@@ -80,7 +80,6 @@ public class AssemblyManager : MonoBehaviour
                     waitingProtocolSOList.RemoveAt(i);
                     OnProtocolCompleted?.Invoke(this, EventArgs.Empty);
                     return;
-
                 }
             }    
         }

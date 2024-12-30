@@ -49,6 +49,7 @@ MonoBehaviour:
   duckHoles: {fileID: 0}
   topLeftSpawnPoint: {fileID: 541357807485497757}
   duckVisualPrefab: {fileID: 0}
+  duckSO_GameObjectList: []
 --- !u!1 &1536588202934696092
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +137,7 @@ GameObject:
   - component: {fileID: 8789288348831122757}
   - component: {fileID: 6503825987878211802}
   - component: {fileID: 6001085786609800485}
+  - component: {fileID: 423530151675281893}
   m_Layer: 7
   m_Name: DuckHoles2x2
   m_TagString: Untagged
@@ -204,6 +206,27 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1fe8d2d198da449b5ad3928bb9c357d6, type: 2}
   - {fileID: 11400000, guid: 9df575b91588c4f50aeebaff5a344682, type: 2}
   - {fileID: 11400000, guid: 43fc229fef4cc4044974c9bb9dce60b9, type: 2}
+--- !u!65 &423530151675281893
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842703050362241725}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 0.5, z: 4}
+  m_Center: {x: 0, y: -1.25, z: 1.35}
 --- !u!1 &3917881824736046250
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +569,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5486507683963913801}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -641,9 +664,9 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 0.6, y: 0.6}
+  m_CellSize: {x: 0.9, y: 0.9}
   m_Spacing: {x: 0.1, y: 0.1}
-  m_Constraint: 0
+  m_Constraint: 1
   m_ConstraintCount: 2
 --- !u!114 &3777168203054415872
 MonoBehaviour:
@@ -671,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e353ee5f5b1574e50b6b47da9c0a7d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 2
 --- !u!1 &5656759608527109478
 GameObject:
   m_ObjectHideFlags: 0

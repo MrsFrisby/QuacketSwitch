@@ -10,7 +10,7 @@ public class AssemblyManagerSingleUI : MonoBehaviour
     [SerializeField]
     private Transform iconContainer;
     [SerializeField]
-    private Transform iconTemplate;
+    private Transform protocolTemplate;
 
 
     public void SetProtocolSO(ProtocolSO protocolSO)
@@ -19,7 +19,7 @@ public class AssemblyManagerSingleUI : MonoBehaviour
 
         foreach (Transform child in iconContainer)
         {
-            if (child == iconTemplate) continue;
+            if (child == protocolTemplate) continue;
             Destroy(child.gameObject);
         }
     }
