@@ -3,9 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CookerPallet : BasePallet, IHasProgress
+public class CookerPalletHoles : BasePallet, IHasProgress
 
 {
+    public event EventHandler OnDuckSpawned;
+
+    public event EventHandler OnDestroyLast;
+
+
+    private float duckHoleTimer;
+    private float duckHoleTimerMax = 320f;
+    private int ducksSpawned;
+    private int ducksSpawnedMax = 4;
+
+    public List<DucksSO> duckObjectSOList;
+
+    [SerializeField] private DucksSO ducksSO;
+
+    [SerializeField] private List<DucksSO> validDucksSOList;
+
+    private DucksSO playerDuckSO;
+
 
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
     public event EventHandler <OnStateChangedEventArgs> OnStateChanged;
@@ -15,14 +33,12 @@ public class CookerPallet : BasePallet, IHasProgress
         public State state;
     }
 
-
     /*states
-     * empty duck holes/idle - frst three ducks delivered and spawned into duck holes
-     * final duck (11) delivered triggers state change -> assemblySO IMAP11->IMAPAssembled
-     * Assembly timer before assembled duck is spawned on pallet -> could add some FX to duckholes
+     * Idle: empty duck holes/idle - frst three ducks delivered and spawned into duck holes
+     * final duck (11) delivered triggers state change, use assemblySO IMAP11->IMAPAssembled
+     * Assembling: timer before assembled duck is spawned on pallet -> could add some FX to duckholes
      * Corrupting: As soon as Assembled duck is spawned it starts Corrupting -> corruption timer starts
-     * corrupt state
-     * 
+     * Corrupt state
 
     */
 
@@ -30,59 +46,86 @@ public class CookerPallet : BasePallet, IHasProgress
     {
         Idle,
         Assembling,
-        Assembled,
         Corrupting,
         Corrupt
     }
 
-
-    [SerializeField]
-    private CookingSO[] CookingSOArray;
-
+    //list to hold corruption SO eg assembledIMAP -> corrupt
     [SerializeField]
     private CorruptionSO[] CorruptionSOArray;
 
+    //List to hold assembly SO eg IMAP11 -> AssembledIMAP
+    [SerializeField]
+    private AssemblySO[] AssemblySOArray;
+
 
     private State state;
-    private float cookingTimer;
+
+    //Timers
+    private float assemblyTimer;
     private float corruptionTimer;
-    private CookingSO cookingSO;
+
+    //scriptable objects
+    private AssemblySO assemblySO;
     private CorruptionSO corruptionSO;
+
+
+    private void Awake()
+    {
+        duckObjectSOList = new List<DucksSO>();
+    }
+
 
     private void Start()
     {
-
+        //initialise state machine
         state = State.Idle;
     }
 
+    
+
+
+
+
     private void Update()
     {
+        //from duckholes
+        duckHoleTimer += Time.deltaTime;
+        //Debug.Log(duckHoleTimer);
+        if (duckHoleTimer > duckHoleTimerMax)
+        {
+            duckHoleTimer = 0f;
+            ducksSpawned--;
+            OnDestroyLast?.Invoke(this, EventArgs.Empty);
+            Debug.Log("Reset Timer");
+        }
+
+        //assembly state machine
         if (HasDuckObject())
         {
             switch (state)
             {
                 case State.Idle:
+                    //empty pallet
                     OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                     {
                         state = state
                     });
                     break;
+
                 case State.Assembling:
-                    cookingTimer += Time.deltaTime;
-                    //Debug.Log("Timer: " + cookingTimer);
+                    assemblyTimer += Time.deltaTime;
+                    
 
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
-                        progressNormalized = cookingTimer / cookingSO.cookingTimerMax
+                        progressNormalized = assemblyTimer / assemblySO.assemblyProgressMax
                     });
 
-
-
-                    if (cookingTimer > cookingSO.cookingTimerMax)
-                    {
-                        //cooked
+                    if (assemblyTimer > assemblySO.assemblyProgressMax)
+                    {//assembling
                         GetDuckObject().DestroySelf();
-                        DuckObject.spawnDuckObject(cookingSO.output, this);
+                        DuckObject.spawnDuckObject(assemblySO.output, this);
                         state = State.Corrupting;
                         corruptionTimer = 0f;
                         corruptionSO = GetCorruptionSOWithInput(GetDuckObject().GetDucksSO());
@@ -93,7 +136,7 @@ public class CookerPallet : BasePallet, IHasProgress
                         });
                     }
                     break;
-                
+
                 case State.Corrupting:
                     corruptionTimer += Time.deltaTime;
 
@@ -139,16 +182,16 @@ public class CookerPallet : BasePallet, IHasProgress
             {//no duck already but player is carrying a duck
                 Debug.Log("carrying a " + player.GetDuckObject().GetDucksSO());
 
-                if (HasMatchwithSOCookingInput(player.GetDuckObject().GetDucksSO()))
-                {//duck dropped matches CookingSO.input duck object within pallet's array
+                if (HasMatchwithAssemblySOInput(player.GetDuckObject().GetDucksSO()))
+                {//duck dropped matches assemblySO.input duck object within pallet's array
 
                     //when E is pressed the duck is parented to this pallet
 
                     player.GetDuckObject().SetDuckObjectParent(this);
-                    Debug.Log("This pallet now has a " + GetDuckObject().name);
-                    cookingSO = GetCookingSOWithInput(GetDuckObject().GetDucksSO());
+                    //Debug.Log("This pallet now has a " + GetDuckObject().name);
+                    assemblySO = GetAssemblySOWithInput(GetDuckObject().GetDucksSO());
                     state = State.Assembling;
-                    cookingTimer = 0f;
+                    assemblyTimer = 0f;
 
 
                     OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
@@ -158,7 +201,7 @@ public class CookerPallet : BasePallet, IHasProgress
 
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
-                        progressNormalized = cookingTimer / cookingSO.cookingTimerMax
+                        progressNormalized = assemblyTimer / assemblySO.assemblyProgressMax
                     });
                 }
                 else
@@ -197,10 +240,10 @@ public class CookerPallet : BasePallet, IHasProgress
         }
     }
 
-    private bool HasMatchwithSOCookingInput(DucksSO inputDuckSO)
+    private bool HasMatchwithAssemblySOInput(DucksSO inputDuckSO)
     {
-        CookingSO cookingSO = GetCookingSOWithInput(inputDuckSO);
-        if(cookingSO != null)
+        AssemblySO assemblySO = GetAssemblySOWithInput(inputDuckSO);
+        if (assemblySO != null)
         {
             return true;
         }
@@ -214,10 +257,10 @@ public class CookerPallet : BasePallet, IHasProgress
     // and returns the output, a ducksSO
     private DucksSO GetOutputForInput(DucksSO inputDuckSO)
     {
-        CookingSO cookingSO = GetCookingSOWithInput(inputDuckSO);
-        if (cookingSO != null)
+        AssemblySO assemblySO = GetAssemblySOWithInput(inputDuckSO);
+        if (assemblySO != null)
         {
-            return cookingSO.output;
+            return assemblySO.output;
         }
         else
         {
@@ -225,13 +268,13 @@ public class CookerPallet : BasePallet, IHasProgress
         }
     }
 
-    private CookingSO GetCookingSOWithInput(DucksSO inputDucksSO)
+    private AssemblySO GetAssemblySOWithInput(DucksSO inputDucksSO)
     {
-        foreach (CookingSO cookingSO in CookingSOArray)
+        foreach (AssemblySO assemblySO in AssemblySOArray)
         {
-            if (cookingSO.input == inputDucksSO)
+            if (assemblySO.input == inputDucksSO)
             {
-                return cookingSO;
+                return assemblySO;
             }
         }
         return null;

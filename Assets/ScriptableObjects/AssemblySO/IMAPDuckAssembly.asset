@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72710c147af8c47c0939616daeec68de, type: 3}
   m_Name: IMAPDuckAssembly
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 5c19819b9cbc448b390ed1482f75ba22, type: 2}
+  input: {fileID: 11400000, guid: 43fc229fef4cc4044974c9bb9dce60b9, type: 2}
   output: {fileID: 11400000, guid: 360da39eb4594459e993d7a5d2233a9b, type: 2}
   assemblyProgressMax: 3
