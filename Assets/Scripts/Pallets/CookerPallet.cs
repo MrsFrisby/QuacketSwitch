@@ -18,11 +18,9 @@ public class CookerPallet : BasePallet, IHasProgress
     public enum State
     {
         Idle,
-        Green,
-        Acid,
-        Yellow,
-        Orange,
-        Red,
+        Assembling,
+        Assembled,
+        Corrupting,
         Corrupt
     }
 
@@ -69,7 +67,7 @@ public class CookerPallet : BasePallet, IHasProgress
                         state = state
                     });
                     break;
-                case State.Green:
+                case State.Assembling:
                     cookingTimer += Time.deltaTime;
                     //Debug.Log("Timer: " + cookingTimer);
 
@@ -85,7 +83,7 @@ public class CookerPallet : BasePallet, IHasProgress
                         //cooked
                         GetDuckObject().DestroySelf();
                         DuckObject.spawnDuckObject(cookingSO.output, this);
-                        state = State.Red;
+                        state = State.Corrupting;
                         corruptionTimer = 0f;
                         corruptionSO = GetCorruptionSOWithInput(GetDuckObject().GetDucksSO());
 
@@ -95,14 +93,9 @@ public class CookerPallet : BasePallet, IHasProgress
                         });
                     }
                     break;
-                case State.Acid:
+                case State.Assembled:
                     break;
-                case State.Yellow:
-                    
-                    break;
-                case State.Orange:
-                    break;
-                case State.Red:
+                case State.Corrupting:
                     corruptionTimer += Time.deltaTime;
 
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
@@ -155,7 +148,7 @@ public class CookerPallet : BasePallet, IHasProgress
                     player.GetDuckObject().SetDuckObjectParent(this);
                     Debug.Log("This pallet now has a " + GetDuckObject().name);
                     cookingSO = GetCookingSOWithInput(GetDuckObject().GetDucksSO());
-                    state = State.Green;
+                    state = State.Assembling;
                     cookingTimer = 0f;
 
 

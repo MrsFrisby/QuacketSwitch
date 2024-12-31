@@ -21,8 +21,6 @@ public class DuckHoles2x2Visual : MonoBehaviour
     //private List<duckSO_GameObject> duckSO_GameObjectList;
 
     private List<GameObject> duckVisualGameObjectList;
-
-    //private DuckObject duckToSpawnDuckObject;
     private Transform duckToSpawnVisualPrefabTransform;
     private DucksSO duckToSpawn;
 
@@ -52,17 +50,10 @@ public class DuckHoles2x2Visual : MonoBehaviour
     //position spawned ducks correctly starting at top left spawn point
     private void DuckHoles_OnDuckSpawned(object sender, EventArgs e)
     {
-
         duckToSpawn = duckHoles.duckObjectSOList.Last();
         duckToSpawnVisualPrefabTransform = duckToSpawn.visualPrefab;
-        //duckToSpawnDuckObject = duckToSpawn.duckObject;
-
-        //duckToSpawnDuckObject.SetIconVisibilityInActive();
-        Debug.Log("DuckHoleVisual:trying to spawn: "+ duckToSpawnVisualPrefabTransform);
-        //Transform duckVisualTransform = Instantiate(duckVisualPrefab, topLeftSpawnPoint);
+        //Debug.Log("DuckHoleVisual:trying to spawn: "+ duckToSpawnVisualPrefabTransform)
         Transform duckVisualTransform = Instantiate(duckToSpawnVisualPrefabTransform, topLeftSpawnPoint);
-        //duckToSpawnGameObject = duckVisualTransform.gameObject;
-        //duckToSpawnGameObject.SetIconVisibilityInActive();
         float duckOffsetZ = 0.9f;
         float duckOffsetY = 0.9f;
         int colOffset = duckVisualGameObjectList.Count % 2 ;

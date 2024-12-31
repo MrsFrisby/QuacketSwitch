@@ -12,7 +12,10 @@ public class CookerPalletVisual : MonoBehaviour
     private GameObject smoke;
 
     [SerializeField]
-    private GameObject particles;
+    private GameObject electricity;
+
+    [SerializeField]
+    private GameObject sparks;
 
 
     private void Start()
@@ -22,9 +25,30 @@ public class CookerPalletVisual : MonoBehaviour
 
     private void CookerPallet_OnStateChanged(object sender, CookerPallet.OnStateChangedEventArgs e)
     {
-        bool showVisual = e.state == CookerPallet.State.Green || e.state == CookerPallet.State.Red;
-        Debug.Log(showVisual);
-        smoke.SetActive(showVisual);
-        particles.SetActive(showVisual);
+        //bool showSmokeVisual = e.state == CookerPallet.State.Assembling || e.state == CookerPallet.State.Corrupting;
+        bool showSmokeVisual = e.state == CookerPallet.State.Assembling;
+        bool showSparksVisual = e.state == CookerPallet.State.Corrupting;
+        bool showElectricVisual = e.state == CookerPallet.State.Corrupt;
+        //Debug.Log(showVisual);
+
+        if(showSmokeVisual)
+        {
+            smoke.SetActive(true);
+            sparks.SetActive(false);
+            electricity.SetActive(false);
+        }
+        else if(showSparksVisual)
+        {
+            smoke.SetActive(true);
+            sparks.SetActive(true);
+            electricity.SetActive(false);
+        }
+        else if(showElectricVisual)
+        {
+            smoke.SetActive(false);
+            sparks.SetActive(true);
+            electricity.SetActive(true);
+        }
+        
     }
 }
