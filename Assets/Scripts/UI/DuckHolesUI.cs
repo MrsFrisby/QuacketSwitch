@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DuckHolesUI : MonoBehaviour
 {
-    [SerializeField] private DuckHoles2x2 duckHoles;
+    [SerializeField] private AssemblyPalletDuckHoles assemblyPalletDuckHoles;
     [SerializeField] private Transform iconTemplate;
 
     private void Awake()
@@ -15,14 +15,17 @@ public class DuckHolesUI : MonoBehaviour
 
     private void Start()
     {
-        duckHoles.OnDuckSpawned += DuckHoles4x4_OnDuckSpawned;
+        assemblyPalletDuckHoles.OnDuckSpawned += AssemblyPalletDuckHoles_OnDuckSpawned;
+
     }
 
-    private void DuckHoles4x4_OnDuckSpawned(object sender, EventArgs e)
+
+    private void AssemblyPalletDuckHoles_OnDuckSpawned(object sender, EventArgs e)
     {
-        //when duck is added to duck holes, update icons in UI display
         UpdateVisual();
     }
+
+
 
     private void UpdateVisual()
     {
@@ -35,7 +38,7 @@ public class DuckHolesUI : MonoBehaviour
         }
 
         //recreate UI icon display from updated list
-        foreach (DucksSO ducksSO in duckHoles.GetDucksSOList())
+        foreach (DucksSO ducksSO in assemblyPalletDuckHoles.GetDucksSOList())
         {
             Transform iconTransform = Instantiate(iconTemplate, transform);
             iconTransform.gameObject.SetActive(true);
@@ -43,3 +46,4 @@ public class DuckHolesUI : MonoBehaviour
         }
     }
 }
+
