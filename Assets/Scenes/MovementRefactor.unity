@@ -9857,6 +9857,101 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.atime1
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.atime2
+      value: 63608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.atime3
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.ctime1
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key0.b
+      value: 0.08512339
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key0.g
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key0.r
+      value: 0.049928807
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key1.b
+      value: 0.0141509175
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key1.g
+      value: 0.91784585
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key2.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key2.b
+      value: 0.023362402
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key2.g
+      value: 0.023362402
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key2.r
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.key3.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.m_NumAlphaKeys
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022283912866702880, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: progressBarGradient.m_NumColorKeys
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552457633256637970, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c50d77affeb31e14c9c062c282f13fc8, type: 2}
     - target: {fileID: 3699769496104436671, guid: e7923f653cb9540c9a27f9232f5af58c,
         type: 3}
       propertyPath: mode
@@ -9922,6 +10017,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AssemblyPalletDuckHolesIMAP
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515976020360413812, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.9579477
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515976020360413812, guid: e7923f653cb9540c9a27f9232f5af58c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9702329
       objectReference: {fileID: 0}
     - target: {fileID: 8930157343941329523, guid: e7923f653cb9540c9a27f9232f5af58c,
         type: 3}
@@ -12272,6 +12377,86 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ba862d4e456724935b55f47adb6401a5,
         type: 2}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.atime1
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.ctime1
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key0.b
+      value: 0.13992676
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key0.g
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key0.r
+      value: 0.023139905
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key1.g
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key1.r
+      value: 0.9633026
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key2.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key2.b
+      value: 0.013883919
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key2.g
+      value: 0.013883919
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.key2.r
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972497491796811854, guid: d20223b69cb10485f9933b752eab53ef,
+        type: 3}
+      propertyPath: progressBarGradient.m_NumColorKeys
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8152268600833666654, guid: d20223b69cb10485f9933b752eab53ef,
         type: 3}
       propertyPath: m_Name

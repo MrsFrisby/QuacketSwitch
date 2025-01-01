@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3088565847092131091}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0, z: 0}
+  m_LocalPosition: {x: 0.07, y: -0.09, z: 0}
   m_LocalScale: {x: 1.01, y: 1.01, z: 1.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 3851029452548175628}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 4009616895012392549}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.18, z: 0}
+  m_LocalPosition: {x: 0.07, y: 0.09, z: 0}
   m_LocalScale: {x: 1.01, y: 1.01, z: 1.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -228,7 +228,7 @@ Transform:
   m_GameObject: {fileID: 5065616279968594936}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.07, y: -0.09, z: 0}
   m_LocalScale: {x: 1.01, y: 1.01, z: 1.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -311,7 +311,7 @@ Transform:
   m_GameObject: {fileID: 5208511865919358543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.18, z: 0}
+  m_LocalPosition: {x: -0.07, y: 0.09, z: 0}
   m_LocalScale: {x: 1.01, y: 1.01, z: 1.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 3870444006801600973}
   - component: {fileID: 3252580588982385391}
   m_Layer: 7
-  m_Name: GhostDuck
+  m_Name: GhostDucks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

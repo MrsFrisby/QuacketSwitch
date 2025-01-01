@@ -11,8 +11,11 @@ public class ProgressBarUI : MonoBehaviour
     [SerializeField]
     private Image progressBarImage;
 
+    [SerializeField]
+    private Gradient progressBarGradient;
 
     private IHasProgress hasProgress;
+    //private Color currentColour;
 
 
     private void Start()
@@ -20,6 +23,7 @@ public class ProgressBarUI : MonoBehaviour
         hasProgress = hasProgressGameObject.GetComponent<IHasProgress>();
         hasProgress.OnProgressChanged += HasProgress_OnProgressChanged;
         progressBarImage.fillAmount = 0f;
+        progressBarImage.color = GetprogressBarColour();
 
         Hide();
     }
@@ -27,6 +31,8 @@ public class ProgressBarUI : MonoBehaviour
     private void HasProgress_OnProgressChanged(object sender, IHasProgress.OnProgressChangedEventArgs e)
     {
         progressBarImage.fillAmount = e.progressNormalized;
+        //currentColour = progressBarGradient.Evaluate(e.progressNormalized);
+        progressBarImage.color = GetprogressBarColour();
 
         if (e.progressNormalized ==0f || e.progressNormalized ==1f)
         {
@@ -46,5 +52,11 @@ public class ProgressBarUI : MonoBehaviour
     private void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private Color GetprogressBarColour()
+    {
+        Color currentColour = progressBarGradient.Evaluate(progressBarImage.fillAmount);
+        return currentColour;
     }
 }

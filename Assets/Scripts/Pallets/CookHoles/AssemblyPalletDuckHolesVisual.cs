@@ -44,7 +44,7 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
 
     private void AssemblyPalletDuckHoles_OnStateChanged(object sender, AssemblyPalletDuckHoles.OnStateChangedEventArgs e)
     {
-        
+        bool showNoVisuals = e.state == AssemblyPalletDuckHoles.State.Idle;
         bool showSmokeVisual = e.state == AssemblyPalletDuckHoles.State.Assembling;
         bool showSparksVisual = e.state == AssemblyPalletDuckHoles.State.Corrupting;
         bool showElectricVisual = e.state == AssemblyPalletDuckHoles.State.Corrupt;
@@ -67,6 +67,12 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
             smoke.SetActive(false);
             sparks.SetActive(true);
             electricity.SetActive(true);
+        }
+        else if (showNoVisuals)
+        {
+            smoke.SetActive(false);
+            sparks.SetActive(false);
+            electricity.SetActive(false);
         }
     }
 
