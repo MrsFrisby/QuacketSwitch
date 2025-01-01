@@ -621,6 +621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   palletTopPoint: {fileID: 3888505933932757683}
   duckObjectSOList: []
+  ghostDuck: {fileID: 0}
   validDucksSOList:
   - {fileID: 11400000, guid: d1d83123f7a4d4d088e118eb310277ba, type: 2}
   - {fileID: 11400000, guid: 1fe8d2d198da449b5ad3928bb9c357d6, type: 2}
@@ -1085,7 +1086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1166,37 +1167,37 @@ PrefabInstance:
     - target: {fileID: 3939764759394070279, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.020000013
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3939764759394070279, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.02
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3939764759394070279, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.35000005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3939764759394070279, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999619
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3939764759394070279, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0065857214
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3939764759394070279, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000059604638
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3939764759394070279, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0057273293
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3939764759394070279, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
@@ -1226,7 +1227,7 @@ PrefabInstance:
     - target: {fileID: 7373644630128741146, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7373644630128741146, guid: 68101499d07aced4aa0ded4acb624942,
         type: 3}
@@ -1591,17 +1592,17 @@ PrefabInstance:
     - target: {fileID: 7672740289027829617, guid: 0105d357ccc9d4a9d80cb75ba6412193,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.009999991
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7672740289027829617, guid: 0105d357ccc9d4a9d80cb75ba6412193,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.35
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7672740289027829617, guid: 0105d357ccc9d4a9d80cb75ba6412193,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5200001
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7672740289027829617, guid: 0105d357ccc9d4a9d80cb75ba6412193,
         type: 3}

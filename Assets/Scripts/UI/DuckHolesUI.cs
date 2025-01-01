@@ -16,18 +16,21 @@ public class DuckHolesUI : MonoBehaviour
     private void Start()
     {
         assemblyPalletDuckHoles.OnDuckSpawned += AssemblyPalletDuckHoles_OnDuckSpawned;
+        assemblyPalletDuckHoles.OnClearIcons += AssemblyPalletDuckHoles_OnClearIcons;
 
     }
 
+    private void AssemblyPalletDuckHoles_OnClearIcons(object sender, EventArgs e)
+    {
+        ClearVisual();
+    }
 
     private void AssemblyPalletDuckHoles_OnDuckSpawned(object sender, EventArgs e)
     {
         UpdateVisual();
     }
 
-
-
-    private void UpdateVisual()
+    private void ClearVisual()
     {
         //delete all existing icons
         foreach (Transform child in transform)
@@ -36,6 +39,18 @@ public class DuckHolesUI : MonoBehaviour
             if (child == iconTemplate) continue;
             Destroy(child.gameObject);
         }
+    }
+
+    private void UpdateVisual()
+    {
+        //delete all existing icons
+        ClearVisual();
+        //foreach (Transform child in transform)
+        //{
+        //    //don't delete the icon template, just the icons/backgrounds
+        //    if (child == iconTemplate) continue;
+        //    Destroy(child.gameObject);
+        //}
 
         //recreate UI icon display from updated list
         foreach (DucksSO ducksSO in assemblyPalletDuckHoles.GetDucksSOList())

@@ -6,6 +6,8 @@ using UnityEngine;
 public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
 {
+    public event EventHandler OnClearIcons;
+    public event EventHandler OnDestroyAll;
     public event EventHandler OnDuckSpawned;
     public event EventHandler OnDestroyLast;
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
@@ -119,17 +121,21 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                 case State.Assembling:
 
                     assemblyTimer += Time.deltaTime;
-                    Debug.Log("Timer: " + assemblyTimer);
+                    //Debug.Log("Timer: " + assemblyTimer);
+
+                    //remove duck prefabs from duckholes
+                    OnDestroyAll?.Invoke(this, EventArgs.Empty);
 
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
                         progressNormalized = assemblyTimer / assemblySO.assemblyProgressMax
                     });
 
+                    
                     if (assemblyTimer > assemblySO.assemblyProgressMax)
                     {//assembling
 
-                        //ther is no duck on the pallet
+                        //there is no duck on the pallet
                         GetDuckObject().DestroySelf();
                         DuckObject.spawnDuckObject(assemblySO.output, this);
                         currentState = State.Corrupting;
@@ -140,6 +146,8 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                         {
                             state = currentState
                         });
+
+                        
                     }
                     break;
 
@@ -150,7 +158,8 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                     {
                         progressNormalized = corruptionTimer / corruptionSO.corruptionTimerMax
                     });
-
+                    //remove UI icons
+                    OnClearIcons?.Invoke(this, EventArgs.Empty);
 
                     if (corruptionTimer > corruptionSO.corruptionTimerMax)
                     {//corrupt
@@ -176,13 +185,6 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         }
     }
 
-
-
-
-
-
-
-
     public override void Interact(Player player)
     {
         //Debug.Log("CookerPallet Interact)");
@@ -193,22 +195,9 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
             {
                 if (TryAddDucktoList(playerDuckSO))
                 {// returns true if the duck is not already on the list
-
-
-                        
-                    //if (ducksSpawned != ducksSpawnedMax)
-                    //{
-
-                    //}
-                    //else
-                    //{
-
-                    //}
-
-                    //if we do this here, then we can't transfer the final duck to the pallet
                     player.GetDuckObject().DestroySelf();
 
-
+                    //check there is space for more ducks
                     if (ducksSpawned < ducksSpawnedMax)
                     {
                         ducksSpawned++;
@@ -219,28 +208,12 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                         {
                             //check that we have an assemblySO for final duck delivered
                             if (HasMatchwithAssemblySOInput(playerDuckSO))
-
-                            //if (HasMatchwithAssemblySOInput(player.GetDuckObject().GetDucksSO()))
                             {//duck dropped matches assemblySO.input duck object within pallet's array
 
-                                //when E is pressed the duck is parented to this pallet
-
-                                //we don't need to do this - as the player's duck has already been destroyed -what do we need to do instead??
-
-                                //bug! If the pallet doesn't have a duck object the state machine doesn't work!
-
+                                //spawn ghost ducks as child duckSO of this pallet
                                 DuckObject.spawnDuckObject(ghostDuck,this);
-                                //player.GetDuckObject().SetDuckObjectParent(this);
-
-
-                                //Debug.Log("This pallet now has a " + GetDuckObject().name);
-
                                 assemblySO = GetAssemblySOWithInput(playerDuckSO);
-                                //assemblySO = GetAssemblySOWithInput(GetDuckObject().GetDucksSO());
-
-                                //we only need to spawn an duck on the pallet when state == assembled
                                 currentState = State.Assembling;
-
 
                                 OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                                 {

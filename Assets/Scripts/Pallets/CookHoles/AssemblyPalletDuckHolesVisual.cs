@@ -29,6 +29,9 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
     [SerializeField]
     private GameObject sparks;
 
+    [SerializeField]
+    private GameObject electricDucks;
+
 
     private void Awake()
     {
@@ -40,39 +43,61 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
         assemblyPalletDuckHoles.OnStateChanged += AssemblyPalletDuckHoles_OnStateChanged;
         assemblyPalletDuckHoles.OnDuckSpawned += AssemblyPalletDuckHoles_OnDuckSpawned;
         assemblyPalletDuckHoles.OnDestroyLast += AssemblyPalletDuckHoles_OnDestroyLast;
+        assemblyPalletDuckHoles.OnDestroyAll += AssemblyPalletDuckHoles_OnDestroyAll;
+        assemblyPalletDuckHoles.OnClearIcons += AssemblyPalletDuckHoles_OnClearIcons;
+    }
+
+    private void AssemblyPalletDuckHoles_OnClearIcons(object sender, EventArgs e)
+    {
+        ClearDuckObjectLists();
     }
 
     private void AssemblyPalletDuckHoles_OnStateChanged(object sender, AssemblyPalletDuckHoles.OnStateChangedEventArgs e)
     {
-        bool showNoVisuals = e.state == AssemblyPalletDuckHoles.State.Idle;
-        bool showSmokeVisual = e.state == AssemblyPalletDuckHoles.State.Assembling;
-        bool showSparksVisual = e.state == AssemblyPalletDuckHoles.State.Corrupting;
-        bool showElectricVisual = e.state == AssemblyPalletDuckHoles.State.Corrupt;
+        bool idleVisuals = e.state == AssemblyPalletDuckHoles.State.Idle;
+        bool assemblingVisuals = e.state == AssemblyPalletDuckHoles.State.Assembling;
+        bool corruptingVisuals = e.state == AssemblyPalletDuckHoles.State.Corrupting;
+        bool corruptVisuals = e.state == AssemblyPalletDuckHoles.State.Corrupt;
         
 
-        if (showSmokeVisual)
+        if (assemblingVisuals)
         {
             smoke.SetActive(true);
             sparks.SetActive(false);
             electricity.SetActive(false);
+            electricDucks.SetActive(true);
         }
-        else if (showSparksVisual)
+        else if (corruptingVisuals)
         {
             smoke.SetActive(true);
             sparks.SetActive(true);
             electricity.SetActive(false);
+            electricDucks.SetActive(false);
         }
-        else if (showElectricVisual)
+        else if (corruptVisuals)
         {
             smoke.SetActive(false);
             sparks.SetActive(true);
             electricity.SetActive(true);
+            electricDucks.SetActive(false);
         }
-        else if (showNoVisuals)
+        else if (idleVisuals)
         {
             smoke.SetActive(false);
             sparks.SetActive(false);
             electricity.SetActive(false);
+            electricDucks.SetActive(false);
+        }
+    }
+
+
+    private void AssemblyPalletDuckHoles_OnDestroyAll(object sender, EventArgs e)
+    {
+        foreach (GameObject duckToDestroy in duckVisualGameObjectList)
+        {
+            //duckVisualGameObjectList.Remove(duckToDestroy);
+            //Destroy(duckToDestroy);
+            duckToDestroy.SetActive(false);
         }
     }
 
@@ -106,5 +131,11 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
             duckVisualTransform.localPosition = new Vector3(0, -duckOffsetY, -duckOffsetZ * colOffset);
         }
         duckVisualGameObjectList.Add(duckVisualTransform.gameObject);
+    }
+
+    private void ClearDuckObjectLists()
+    {
+        duckVisualGameObjectList.Clear();
+        assemblyPalletDuckHoles.duckObjectSOList.Clear();
     }
 }
