@@ -6,6 +6,10 @@ using UnityEngine;
 public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
 {
+    public static event EventHandler OnAnyIdle;
+    public static event EventHandler OnAnyAssembling;
+    public static event EventHandler OnAnyCorrupting;
+    public static event EventHandler OnAnyCorrupt;
     public event EventHandler OnClearIcons;
     public event EventHandler OnDestroyAll;
     public event EventHandler OnDuckSpawned;
@@ -111,6 +115,10 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
             switch (currentState)
             {
                 case State.Idle:
+
+                    //play idle audioFX - electrical hum/buzz
+                    OnAnyIdle?.Invoke(this, EventArgs.Empty);
+
                     //empty pallet
                     OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                     {
@@ -125,6 +133,8 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
                     //remove duck prefabs from duckholes
                     OnDestroyAll?.Invoke(this, EventArgs.Empty);
+
+                    OnAnyAssembling?.Invoke(this, EventArgs.Empty);
 
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
@@ -161,6 +171,9 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                     //remove UI icons
                     OnClearIcons?.Invoke(this, EventArgs.Empty);
 
+                    //play corrupting audioFX
+                    OnAnyCorrupting?.Invoke(this, EventArgs.Empty);
+
                     if (corruptionTimer > corruptionSO.corruptionTimerMax)
                     {//corrupt
                         GetDuckObject().DestroySelf();
@@ -178,7 +191,10 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                         });
                     }
                     break;
-                case State.Corrupt:    
+                case State.Corrupt:
+
+                    //play corrupt audioFX
+                    OnAnyCorrupt?.Invoke(this, EventArgs.Empty);
                     break;
 
             }

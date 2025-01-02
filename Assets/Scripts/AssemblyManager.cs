@@ -7,6 +7,8 @@ public class AssemblyManager : MonoBehaviour
 {
     public event EventHandler OnProtocolSpawned;
     public event EventHandler OnProtocolCompleted;
+    public event EventHandler OnProtocolSuccess;
+    public event EventHandler OnProtocolFailed;
 
 
 
@@ -85,6 +87,7 @@ public class AssemblyManager : MonoBehaviour
                     //remove the completed protocol from the list
                     waitingProtocolSOList.RemoveAt(i);
                     OnProtocolCompleted?.Invoke(this, EventArgs.Empty);
+                    OnProtocolSuccess?.Invoke(this, EventArgs.Empty);
                     return;
                 }
             }
@@ -95,6 +98,7 @@ public class AssemblyManager : MonoBehaviour
         }
         // End of for loop - if we reach here there were No matches
         Debug.Log("Reached End of for loop: Correct assembly not delivered");
+        OnProtocolFailed?.Invoke(this, EventArgs.Empty);
     }
 
     public List<ProtocolSO> GetWaitingProtocolSOList()

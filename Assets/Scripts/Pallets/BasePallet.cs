@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BasePallet : MonoBehaviour, IDuckObjectParent
 {
+
+    public static event EventHandler OnDuckDropHere;
+
     [SerializeField]
     private Transform palletTopPoint;
     private DuckObject duckObject;
@@ -28,6 +32,11 @@ public class BasePallet : MonoBehaviour, IDuckObjectParent
     public void SetDuckObject(DuckObject duckObject)
     {
         this.duckObject = duckObject;
+
+        if (duckObject != null)
+        {
+            OnDuckDropHere?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public DuckObject GetDuckObject()

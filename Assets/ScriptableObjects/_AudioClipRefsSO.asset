@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f531dc4beeedc4317aaaef5921f9726a, type: 3}
+  m_Name: _AudioClipRefsSO
+  m_EditorClassIdentifier: 
+  spawn:
+  - {fileID: 8300000, guid: 20fcedba5ed974649980a4291c4aac31, type: 3}
+  - {fileID: 8300000, guid: 0e8c853d94c274d1c86f8fbba86ccbf8, type: 3}
+  - {fileID: 8300000, guid: 4867b55acca8d44579b12ed2d300f60b, type: 3}
+  - {fileID: 8300000, guid: 239bb989e15654f268f4a6c1d891eed4, type: 3}
+  assemblyDeliveryFail:
+  - {fileID: 8300000, guid: 3e41ee4566c364114956276ce8e79b5c, type: 3}
+  - {fileID: 8300000, guid: f7a3ba963fa6d458583bd88a95232ae2, type: 3}
+  - {fileID: 8300000, guid: 383b23b0b7d3045e3ab9a8d6c035ffd5, type: 3}
+  - {fileID: 8300000, guid: 3e41ee4566c364114956276ce8e79b5c, type: 3}
+  - {fileID: 8300000, guid: 5bbb132b83a96475398cd0d0c0557cbe, type: 3}
+  - {fileID: 8300000, guid: 4a345e9787af8440497c9a1f37f99968, type: 3}
+  - {fileID: 8300000, guid: 445b9b7efee5341838dca93abcdb21d9, type: 3}
+  - {fileID: 8300000, guid: 64e0cf314c1314c29a175f0ec4d4ea49, type: 3}
+  - {fileID: 8300000, guid: b202a7bb6cff442259690fbcd2286d89, type: 3}
+  - {fileID: 8300000, guid: 7cd7282cc778c41408e41d2b9546b8c1, type: 3}
+  - {fileID: 8300000, guid: 2173a82ec497c4269a06c2d738f2508b, type: 3}
+  - {fileID: 8300000, guid: c9b0482180d2942d6bd355de03ce5ce6, type: 3}
+  assemblyDeliverySuccess:
+  - {fileID: 8300000, guid: 70eb5359ea20241f6aba38a1a8369a6f, type: 3}
+  - {fileID: 8300000, guid: 372dd3d2607ca4897aa6aa02fafad74e, type: 3}
+  - {fileID: 8300000, guid: d8e89aae8a85d4a0b9031d9f9c9eb3ef, type: 3}
+  - {fileID: 8300000, guid: a0c55b9d2c82647ccbf3ee46c6f8c79d, type: 3}
+  - {fileID: 8300000, guid: 2a96c03ae29ca4a0a96c9ce20a00e93b, type: 3}
+  footstep:
+  - {fileID: 8300000, guid: 078e15982fce2e147bf06c8a7682f28b, type: 3}
+  - {fileID: 8300000, guid: b2d2893ac04fbdb44a226f4b6ea0d271, type: 3}
+  - {fileID: 8300000, guid: cc97c340134faa948bcaf20fea6429c6, type: 3}
+  - {fileID: 8300000, guid: 64a04bb4fa4ed5d4eac6b0a31f91843a, type: 3}
+  duckDrop:
+  - {fileID: 8300000, guid: 53a5755d3609d40799b703c81c6ec38f, type: 3}
+  - {fileID: 8300000, guid: 7a876cc32b16046b9bd608ef28b41f4f, type: 3}
+  - {fileID: 8300000, guid: bbbe38b271b494d70a3189e467b41bee, type: 3}
+  - {fileID: 8300000, guid: 9dbf61adb026b4e5aae4ea9da29a2b1c, type: 3}
+  duckPickUp:
+  - {fileID: 8300000, guid: 1810d480c307743ed91898c7b40dc335, type: 3}
+  - {fileID: 8300000, guid: 986193a67f2ab4346ac57ac971b98ff4, type: 3}
+  - {fileID: 8300000, guid: 20fcedba5ed974649980a4291c4aac31, type: 3}
+  - {fileID: 8300000, guid: f46ca94269c4e4ee580472bd783bb191, type: 3}
+  - {fileID: 8300000, guid: 07dcc931fcaa04463a691a673cbe818d, type: 3}
+  - {fileID: 8300000, guid: 7d2ab792b48504292a7820a4f1ca24e6, type: 3}
+  - {fileID: 8300000, guid: 4c156553477114b749d52d20b5f3e0ad, type: 3}
+  trash:
+  - {fileID: 8300000, guid: 4170a0a091efe450db591ad9ce3b36aa, type: 3}
+  - {fileID: 8300000, guid: 1d0ed56b3ef7647ac84b0e104fbbd78b, type: 3}
+  assembling:
+  - {fileID: 8300000, guid: 97fa4f966856744b6a6ffa3e47fb9536, type: 3}
+  - {fileID: 8300000, guid: cdc29110f7eb64393a96e4b13f362e6c, type: 3}
+  - {fileID: 8300000, guid: e312271c8f2014f0395e14baf8dffc81, type: 3}
+  - {fileID: 8300000, guid: e11cc2255186d4119a876803d716b9df, type: 3}
+  - {fileID: 8300000, guid: 5a57e8ffe43ad45098075cac9c8ae3f6, type: 3}
+  - {fileID: 8300000, guid: 033dd41e52bae473cb5e8060dca3afc5, type: 3}
+  - {fileID: 8300000, guid: 4b97e006e54524631a8e5805ed968234, type: 3}
+  - {fileID: 8300000, guid: 172dd36e861ce4093803c245647dfec2, type: 3}
+  - {fileID: 8300000, guid: d3ef80b263d8541b58b50dc7090bcb2d, type: 3}
+  - {fileID: 8300000, guid: 92d727fab964648089b584f278116087, type: 3}
+  - {fileID: 8300000, guid: b2caecd71f2e74d7285f676a4d4b817d, type: 3}
+  corrupting:
+  - {fileID: 8300000, guid: 3f6b4e1f9f8e749059348f6f926a37de, type: 3}
+  corrupt:
+  - {fileID: 8300000, guid: f436d31687afc4fab9eb39683c2a7710, type: 3}
+  warning:
+  - {fileID: 8300000, guid: 841d7a04187df4648b178a1015333447, type: 3}
+  - {fileID: 8300000, guid: e5d3f00fffbe34c8d9e2a965be32f9cf, type: 3}
+  idleBuzz:
+  - {fileID: 8300000, guid: ea74e2ce2e74a46ee868eb45fa57e6df, type: 3}

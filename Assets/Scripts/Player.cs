@@ -12,6 +12,8 @@ public class Player : MonoBehaviour, IDuckObjectParent
     //singleton pattern
     public static Player Instance { get; private set; }
 
+
+    public event EventHandler OnPickUp;
     public event EventHandler <OnSelectedPalletChangedEventArgs> OnSelectedPalletChanged;
     public class OnSelectedPalletChangedEventArgs : EventArgs
     {
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     bool isGrabPressed = false;
     //bool isInteractPressed = false;
 
+
     //Controller
     float maxSpeed = 3;
 
@@ -46,6 +49,8 @@ public class Player : MonoBehaviour, IDuckObjectParent
     public bool IsActiveRagdoll => isActiveRagdoll;
     bool isGrabbingActive = false;
     public bool IsGrabbingActive => isGrabbingActive;
+    bool isMoving = false;
+    public bool IsMoving => isMoving;
 
     //Raycasts
     RaycastHit[] raycastHits = new RaycastHit[10];
@@ -265,6 +270,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
         {
             if (inputMagnitude != 0)
             {
+                isMoving = true;
                 //look in direction of movement
                 Quaternion desiredDirection = Quaternion.LookRotation(new Vector3(moveInputVector.x, 0, moveInputVector.y * -1), transform.up);
 
@@ -278,6 +284,10 @@ public class Player : MonoBehaviour, IDuckObjectParent
                     //move forward
                     rigidBody3D.AddForce(transform.forward * inputMagnitude * 30);
                 }
+            }
+            else
+            {
+                isMoving = false;
             }
 
             if (isGrounded && isJumpButtonPressed)
@@ -420,6 +430,9 @@ public class Player : MonoBehaviour, IDuckObjectParent
     public void SetDuckObject(DuckObject duckObject)
     {
         this.duckObject = duckObject;
+
+        if (duckObject != null)
+            OnPickUp?.Invoke(this, EventArgs.Empty);
     }
 
     public DuckObject GetDuckObject()

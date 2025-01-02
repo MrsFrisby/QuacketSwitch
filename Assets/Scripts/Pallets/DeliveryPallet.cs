@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class DeliveryPallet : BasePallet
 {
+    public static DeliveryPallet Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     public override void Interact(Player player)
     {
         if (player.HasDuckObject())
