@@ -184,6 +184,10 @@ public class Player : MonoBehaviour, IDuckObjectParent
     //interact
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
+        if(!GameManager.Instance.IsGamePlaying())
+        {//Player can't interact unless in playing gameState
+            return;
+        };
         //Debug.Log("Inside Player controller: E pressed");
         //isInteractPressed = true;
         if (selectedPallet != null)
@@ -198,6 +202,10 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
     private void GameInput_OnInteractAlternateAction(object sender, System.EventArgs e)
     {
+        if (!GameManager.Instance.IsGamePlaying())
+        {//Player can't alternate interact unless in playing gameState
+            return;
+        };
         if (selectedPallet != null)
         {
 
@@ -271,6 +279,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
             if (inputMagnitude != 0)
             {
                 isMoving = true;
+
                 //look in direction of movement
                 Quaternion desiredDirection = Quaternion.LookRotation(new Vector3(moveInputVector.x, 0, moveInputVector.y * -1), transform.up);
 

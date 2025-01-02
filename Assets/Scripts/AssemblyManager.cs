@@ -23,6 +23,7 @@ public class AssemblyManager : MonoBehaviour
     private float spawnProtocolTimer;
     private float spawnProtocolTimerMax = 5f;
     private int waitingProtocolsMax = 4;
+    private int successfulQuacketsDelivered;
 
     private void Awake()
     {
@@ -88,6 +89,7 @@ public class AssemblyManager : MonoBehaviour
                     waitingProtocolSOList.RemoveAt(i);
                     OnProtocolCompleted?.Invoke(this, EventArgs.Empty);
                     OnProtocolSuccess?.Invoke(this, EventArgs.Empty);
+                    successfulQuacketsDelivered++;
                     return;
                 }
             }
@@ -104,5 +106,10 @@ public class AssemblyManager : MonoBehaviour
     public List<ProtocolSO> GetWaitingProtocolSOList()
     {
         return waitingProtocolSOList;
+    }
+
+    public int GetSuccessfulQuackets()
+    {
+        return successfulQuacketsDelivered;
     }
 }
