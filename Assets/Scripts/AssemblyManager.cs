@@ -20,7 +20,7 @@ public class AssemblyManager : MonoBehaviour
 
     private float spawnProtocolTimer;
     private float spawnProtocolTimerMax = 5f;
-    private int waitingProtocolsMax = 3;
+    private int waitingProtocolsMax = 4;
 
     private void Awake()
     {
