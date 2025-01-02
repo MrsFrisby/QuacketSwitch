@@ -11,6 +11,7 @@ public class DeliveryPallet : BasePallet
             if (player.GetDuckObject().TryGetAssembled(out AssembledDuckObject assembledDuckObject))
             {//only accepts assembled ducks
 
+                //pass delivered duck into assembly manager for checking
                 AssemblyManager.Instance.DeliverAssembledProtocol(assembledDuckObject);
                 player.GetDuckObject().DestroySelf();
             }

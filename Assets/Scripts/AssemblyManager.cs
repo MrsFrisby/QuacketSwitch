@@ -20,7 +20,7 @@ public class AssemblyManager : MonoBehaviour
 
     private float spawnProtocolTimer;
     private float spawnProtocolTimerMax = 5f;
-    private int waitingProtocolsMax = 5;
+    private int waitingProtocolsMax = 3;
 
     private void Awake()
     {
@@ -54,37 +54,47 @@ public class AssemblyManager : MonoBehaviour
         for (int i=0; i<waitingProtocolSOList.Count; i++)
         {
             ProtocolSO waitingProtocolSO = waitingProtocolSOList[i];
+            Debug.Log("assemblyManager:waitingprotocolSO:" + waitingProtocolSO);
 
             if(waitingProtocolSO.duckObjectSOList.Count == assembledDuckObject.GetDucksSOList().Count)
             {//delivered assembled duck has same number of duck components as waiting protocol
-                bool assembledDuckMatchesProtocol = false;
-                foreach (DucksSO protocolDucksSO in waitingProtocolSO.duckObjectSOList)
-                {
+                Debug.Log("Match between number of ducks in waiting protocol and delivered assembled duck");
+                bool assembledDuckMatchesProtocol = true;
+                //this bool is set to false if a match can't be found 
+                foreach (DucksSO waitingProtocol_DucksSO in waitingProtocolSO.duckObjectSOList)
+                {//loop through each duck in the waiting protocol
                     bool duckFound = false;
-                    foreach(DucksSO assembledDucksSO in assembledDuckObject.GetDucksSOList())
-                    {
-                        if (waitingProtocolSO == assembledDuckObject)
+                    foreach(DucksSO assembledDuck_DucksSO in assembledDuckObject.GetDucksSOList())
+                    {//nested loop through each duck so in the delivered assembled duck
+                        if (waitingProtocol_DucksSO == assembledDuck_DucksSO)
                         {
+                            Debug.Log(waitingProtocol_DucksSO + " matches " + assembledDuck_DucksSO);
                             duckFound = true;
-                            break;//stop looping
+                            break;//stop inner loop, move to next duck in waiting protocol outer loop
                         }
-                    }
+                    }//break exits inner foreach loop
                     if(!duckFound)
-                    {
+                    {//a matching couldn't be made with at least one duck in the waiting protocol
                         assembledDuckMatchesProtocol = false;
+                        Debug.Log("Reached End of duck matching loop: no match found");
                     }
                 }
                 if (assembledDuckMatchesProtocol)
-                {
+                {//everything matches!
                     Debug.Log("Correct Assembly Duck Delivered");
+                    //remove the completed protocol from the list
                     waitingProtocolSOList.RemoveAt(i);
                     OnProtocolCompleted?.Invoke(this, EventArgs.Empty);
                     return;
                 }
-            }    
+            }
+            else
+            {//else no match between count 
+                Debug.Log("Count match failed");
+            }  
         }
-        //No matches
-        Debug.Log("Correct assembly not delivered");
+        // End of for loop - if we reach here there were No matches
+        Debug.Log("Reached End of for loop: Correct assembly not delivered");
     }
 
     public List<ProtocolSO> GetWaitingProtocolSOList()

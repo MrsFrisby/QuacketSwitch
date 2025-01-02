@@ -93,12 +93,11 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
 
     private void AssemblyPalletDuckHoles_OnDestroyAll(object sender, EventArgs e)
     {
-        foreach (GameObject duckToDestroy in duckVisualGameObjectList)
-        {
-            //duckVisualGameObjectList.Remove(duckToDestroy);
-            //Destroy(duckToDestroy);
-            duckToDestroy.SetActive(false);
-        }
+        //foreach (GameObject duckToDestroy in duckVisualGameObjectList)
+        //{
+        //    duckToDestroy.SetActive(false);
+        //}
+        ResetDuckHoleVisuals();
     }
 
     private void AssemblyPalletDuckHoles_OnDestroyLast(object sender, EventArgs e)
@@ -137,5 +136,18 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
     {
         duckVisualGameObjectList.Clear();
         assemblyPalletDuckHoles.duckObjectSOList.Clear();
+    }
+
+    private void ResetDuckHoleVisuals()
+    {
+        foreach (Transform child in topLeftSpawnPoint.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        //{
+        //    //don't delete the icon template, just the icons/backgrounds
+        //    if (child == iconTemplate) continue;
+        //    Destroy(child.gameObject);
+        //}
     }
 }

@@ -153,7 +153,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
                 case State.Corrupting:
                     corruptionTimer += Time.deltaTime;
-                    Debug.Log("Corrupting state)");
+                    //Debug.Log("Corrupting state)");
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
                         progressNormalized = corruptionTimer / corruptionSO.corruptionTimerMax
