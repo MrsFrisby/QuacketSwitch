@@ -10,6 +10,16 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     public static event EventHandler OnAnyAssembling;
     public static event EventHandler OnAnyCorrupting;
     public static event EventHandler OnAnyCorrupt;
+
+    new public static void ResetStaticData()
+    {
+        OnAnyIdle = null;
+        OnAnyAssembling = null;
+        OnAnyCorrupting = null;
+        OnAnyCorrupt = null;
+    }
+
+
     public event EventHandler OnClearIcons;
     public event EventHandler OnDestroyAll;
     public event EventHandler OnDuckSpawned;

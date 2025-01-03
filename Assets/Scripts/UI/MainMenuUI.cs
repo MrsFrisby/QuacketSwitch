@@ -24,6 +24,9 @@ public class MainMenuUI : MonoBehaviour
         {
             Application.Quit();
         });
+
+        //reset deltaTime when restarting after pause
+        Time.timeScale = 1f;
     }
 
 }

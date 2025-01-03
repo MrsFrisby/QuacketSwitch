@@ -6,7 +6,12 @@ using UnityEngine;
 public class BasePallet : MonoBehaviour, IDuckObjectParent
 {
 
-    public static event EventHandler OnDuckDropHere;
+    public static event EventHandler OnAnyDuckDropHere;
+
+    public static void ResetStaticData()
+    {
+        OnAnyDuckDropHere = null; 
+    }
 
     [SerializeField]
     private Transform palletTopPoint;
@@ -35,7 +40,7 @@ public class BasePallet : MonoBehaviour, IDuckObjectParent
 
         if (duckObject != null)
         {
-            OnDuckDropHere?.Invoke(this, EventArgs.Empty);
+            OnAnyDuckDropHere?.Invoke(this, EventArgs.Empty);
         }
     }
 

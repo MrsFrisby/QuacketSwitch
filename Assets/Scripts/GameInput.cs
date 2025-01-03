@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
+    public static GameInput Instance { get; private set; }
+
+
     public event EventHandler OnInteractAction;
     public event EventHandler OnInteractCancelAction;
     public event EventHandler OnInteractAlternateAction;
@@ -14,6 +17,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnGrabAction;
     public event EventHandler OnGrabCancelAction;
     public event EventHandler OnJumpAction;
+    public event EventHandler OnPauseAction;
     //public event EventHandler OnInspectAction;
     //public event EventHandler OnInspectCancelAction;
 
@@ -23,6 +27,7 @@ public class GameInput : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
 
@@ -42,9 +47,39 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
 
+        playerInputActions.Player.Pause.performed += Pause_performed;
+
         //playerInputActions.Player.Inspect.started += Inspect_started;
 
         //playerInputActions.Player.Inspect.canceled += Inspect_canceled;
+    }
+
+    private void OnDestroy()
+    {//this unsubscribes from existing Input Actions on pause, preventing logic from the previous game preventing future use of player input actions
+        playerInputActions.Player.Interact.started -= Interact_started;
+
+        playerInputActions.Player.Interact.canceled -= Interact_canceled;
+
+        playerInputActions.Player.Revive.performed -= Revive_performed;
+
+        playerInputActions.Player.Revive.canceled -= Revive_canceled;
+
+        playerInputActions.Player.Grab.started -= Grab_started;
+
+        playerInputActions.Player.Grab.canceled -= Grab_canceled;
+
+        playerInputActions.Player.Jump.performed -= Jump_performed;
+
+        playerInputActions.Player.InteractAlternate.performed -= InteractAlternate_performed;
+
+        playerInputActions.Player.Pause.performed -= Pause_performed;
+
+        playerInputActions.Dispose();
+    }
+
+    private void Pause_performed(InputAction.CallbackContext obj)
+    {
+        OnPauseAction?.Invoke(this, EventArgs.Empty);
     }
 
     ////Inspect

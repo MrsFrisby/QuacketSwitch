@@ -7,6 +7,13 @@ public class TrashPallet : BasePallet
 {
 
     public static event EventHandler OnAnyDuckTrashed;
+
+
+    new public static void ResetStaticData()
+    {
+        OnAnyDuckTrashed = null;
+    }
+
     public override void Interact(Player player)
     {
         if(player.HasDuckObject())
