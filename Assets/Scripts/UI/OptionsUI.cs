@@ -18,11 +18,84 @@ public class OptionsUI : MonoBehaviour
     [SerializeField]
     private Button closeButton;
 
+    //rebind buttons
+
+    [SerializeField]
+    private Button moveUpButton;
+
+    [SerializeField]
+    private Button moveDownButton;
+
+    [SerializeField]
+    private Button moveLeftButton;
+
+    [SerializeField]
+    private Button moveRightButton;
+
+    [SerializeField]
+    private Button jumpButton;
+
+    [SerializeField]
+    private Button interactButton;
+
+    [SerializeField]
+    private Button altInteractButton;
+
+    [SerializeField]
+    private Button reviveButton;
+
+    [SerializeField]
+    private Button grabButton;
+
+    [SerializeField]
+    private Button fireButton;
+
+    [SerializeField]
+    private Button pauseButton;
+
+    //Audio Controls
+
     [SerializeField]
     private TextMeshProUGUI soundEffectsText;
 
     [SerializeField]
     private TextMeshProUGUI musicText;
+
+    //Rebind button Text
+
+    [SerializeField]
+    private TextMeshProUGUI upButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI downButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI leftButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI rightButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI jumpButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI interactButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI altInteractButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI reviveButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI grabButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI fireButtonText;
+
+    [SerializeField]
+    private TextMeshProUGUI pauseButtonText;
+
 
     private void Awake()
     {
@@ -59,6 +132,19 @@ public class OptionsUI : MonoBehaviour
         soundEffectsText.text = "Sound Effects: "+ Mathf.Round(AudioManager.Instance.GetVolume() * 10f);
 
         musicText.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
+
+        upButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveUp);
+        downButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveDown);
+        leftButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveLeft);
+        rightButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveRight);
+
+        jumpButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Jump);
+        interactButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
+        altInteractButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.AltInteract);
+        reviveButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Revive);
+        grabButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Grab);
+        fireButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Fire);
+        pauseButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
     }
 
     public void Show()

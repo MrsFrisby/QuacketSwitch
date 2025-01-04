@@ -18,9 +18,21 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnGrabCancelAction;
     public event EventHandler OnJumpAction;
     public event EventHandler OnPauseAction;
-    //public event EventHandler OnInspectAction;
-    //public event EventHandler OnInspectCancelAction;
-
+    
+    public enum Binding
+    {
+        MoveUp,
+        MoveDown,
+        MoveRight,
+        MoveLeft,
+        Jump,
+        Interact,
+        AltInteract,
+        Grab,
+        Revive,
+        Fire,
+        Pause
+    }
 
     private PlayerInputActions playerInputActions;
     
@@ -49,9 +61,7 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Pause.performed += Pause_performed;
 
-        //playerInputActions.Player.Inspect.started += Inspect_started;
-
-        //playerInputActions.Player.Inspect.canceled += Inspect_canceled;
+        
     }
 
     private void OnDestroy()
@@ -82,18 +92,6 @@ public class GameInput : MonoBehaviour
         OnPauseAction?.Invoke(this, EventArgs.Empty);
     }
 
-    ////Inspect
-    //private void Inspect_started(InputAction.CallbackContext obj)
-    //{
-    //    Debug.Log("GameInputScript: C key pressed");
-    //    OnInspectAction?.Invoke(this, EventArgs.Empty);
-    //}
-
-    //private void Inspect_canceled(InputAction.CallbackContext obj)
-    //{
-    //    Debug.Log("GameInputScript: C key released");
-    //    OnInspectCancelAction?.Invoke(this, EventArgs.Empty);
-    //}
 
     //AlternateInteract
     private void InteractAlternate_performed(InputAction.CallbackContext context)
@@ -153,13 +151,39 @@ public class GameInput : MonoBehaviour
     {
         Vector2 moveInputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
 
-        //moveInputVector.x = Input.GetAxis("Horizontal");
-        //moveInputVector.y = Input.GetAxis("Vertical");
-
         moveInputVector = moveInputVector.normalized;
 
         return moveInputVector;
+    }
 
-
+    public string GetBindingText(Binding binding)
+    {
+        switch (binding)
+        {
+            default:
+            case Binding.MoveUp:
+                return playerInputActions.Player.Move.bindings[1].ToDisplayString();
+                //returns key binding nested within Move binding
+            case Binding.MoveDown:
+                return playerInputActions.Player.Move.bindings[2].ToDisplayString();
+            case Binding.MoveLeft:
+                return playerInputActions.Player.Move.bindings[3].ToDisplayString();
+            case Binding.MoveRight:
+                return playerInputActions.Player.Move.bindings[4].ToDisplayString();
+            case Binding.Interact:
+                return playerInputActions.Player.Interact.bindings[0].ToDisplayString();
+            case Binding.AltInteract:
+                return playerInputActions.Player.InteractAlternate.bindings[0].ToDisplayString();
+            case Binding.Grab:
+                return playerInputActions.Player.Grab.bindings[0].ToDisplayString();
+            case Binding.Revive:
+                return playerInputActions.Player.Revive.bindings[0].ToDisplayString();
+            case Binding.Jump:
+                return playerInputActions.Player.Jump.bindings[0].ToDisplayString().ToUpper();
+            case Binding.Pause:
+                return playerInputActions.Player.Pause.bindings[0].ToDisplayString().ToUpper();
+            case Binding.Fire:
+                return playerInputActions.Player.Fire.bindings[0].ToDisplayString();
+        }
     }
 }

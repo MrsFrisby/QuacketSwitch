@@ -82,18 +82,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Inspect"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
-                    ""id"": ""a2f27300-e23a-4c55-962b-dd3bbfa38872"",
+                    ""id"": ""0d317be1-fe04-458f-9078-bf2378d9896a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""Fire"",
                     ""type"": ""Button"",
-                    ""id"": ""0d317be1-fe04-458f-9078-bf2378d9896a"",
+                    ""id"": ""439366d7-fe6b-48fe-883d-7754cb95bbff"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -268,23 +268,23 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b8fbbbf0-d948-47ee-b386-830233947f92"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inspect"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1602ef71-31d5-4df4-85b5-c01998e54e8f"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ec20910-115d-4bbd-97b1-d380c7b19f22"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -301,8 +301,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Grab = m_Player.FindAction("Grab", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_InteractAlternate = m_Player.FindAction("InteractAlternate", throwIfNotFound: true);
-        m_Player_Inspect = m_Player.FindAction("Inspect", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -370,8 +370,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Grab;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_InteractAlternate;
-    private readonly InputAction m_Player_Inspect;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Fire;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -382,8 +382,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Grab => m_Wrapper.m_Player_Grab;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @InteractAlternate => m_Wrapper.m_Player_InteractAlternate;
-        public InputAction @Inspect => m_Wrapper.m_Player_Inspect;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -411,12 +411,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @InteractAlternate.started += instance.OnInteractAlternate;
             @InteractAlternate.performed += instance.OnInteractAlternate;
             @InteractAlternate.canceled += instance.OnInteractAlternate;
-            @Inspect.started += instance.OnInspect;
-            @Inspect.performed += instance.OnInspect;
-            @Inspect.canceled += instance.OnInspect;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Fire.started += instance.OnFire;
+            @Fire.performed += instance.OnFire;
+            @Fire.canceled += instance.OnFire;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -439,12 +439,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @InteractAlternate.started -= instance.OnInteractAlternate;
             @InteractAlternate.performed -= instance.OnInteractAlternate;
             @InteractAlternate.canceled -= instance.OnInteractAlternate;
-            @Inspect.started -= instance.OnInspect;
-            @Inspect.performed -= instance.OnInspect;
-            @Inspect.canceled -= instance.OnInspect;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Fire.started -= instance.OnFire;
+            @Fire.performed -= instance.OnFire;
+            @Fire.canceled -= instance.OnFire;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -470,7 +470,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnGrab(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteractAlternate(InputAction.CallbackContext context);
-        void OnInspect(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
 }
