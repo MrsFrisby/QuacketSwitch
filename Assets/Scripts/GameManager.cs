@@ -13,13 +13,12 @@ public class GameManager : MonoBehaviour
     private enum GameState
     {
         WaitingToStart,
-        Starting,
+        CountdownToStart,
         GamePlaying,
         GameOver,
     }
 
     private GameState gameState;
-    private float waitingToStartTimer = 1f;
     private float startCountdownTimer = 5f;
     private float gamePlayTimer;
     private float gamePlayTimerMax = 15f;
@@ -35,6 +34,16 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
+        GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
+    }
+
+    private void GameInput_OnInteractAction(object sender, EventArgs e)
+    {
+        if (gameState == GameState.WaitingToStart)
+        {
+            gameState = GameState.CountdownToStart;
+            OnStateChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void GameInput_OnPauseAction(object sender, EventArgs e)
@@ -47,15 +56,9 @@ public class GameManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.WaitingToStart:
-                waitingToStartTimer -= Time.deltaTime;
-                if(waitingToStartTimer < 0f)
-                {
-                    gameState = GameState.Starting;
-                    OnStateChanged?.Invoke(this, EventArgs.Empty);
-                }
                 break;
 
-            case GameState.Starting:
+            case GameState.CountdownToStart:
                 startCountdownTimer -= Time.deltaTime;
                 if (startCountdownTimer < 0f)
                 {
@@ -87,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     public bool IsCountdownActive()
     {
-        return gameState == GameState.Starting;
+        return gameState == GameState.CountdownToStart;
     }
 
     public bool IsGameOver()

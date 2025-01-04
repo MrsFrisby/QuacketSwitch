@@ -40,7 +40,7 @@ public class AssemblyManager : MonoBehaviour
             spawnProtocolTimer = spawnProtocolTimerMax;
 
 
-            if (waitingProtocolSOList.Count < waitingProtocolsMax)
+            if (GameManager.Instance.IsGamePlaying() && waitingProtocolSOList.Count < waitingProtocolsMax)
             {
                 ProtocolSO waitingProtocolSO = protocolListSO.protocolSOList[UnityEngine.Random.Range(0, protocolListSO.protocolSOList.Count)];
                 //Debug.Log(waitingProtocolSO.name);

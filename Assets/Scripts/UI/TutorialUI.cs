@@ -41,12 +41,23 @@ public class TutorialUI : MonoBehaviour
     private void Start()
     {
         GameInput.Instance.OnBindingRebind += GameInput_OnBindingRebind;
+        GameManager.Instance.OnStateChanged += GameManger_OnStateChanged;
+
         UpdateVisual();
+        Show();
+    }
+
+    private void GameManger_OnStateChanged(object sender, System.EventArgs e)
+    {
+        if(GameManager.Instance.IsCountdownActive())
+        {
+            Hide();
+        }
     }
 
     private void GameInput_OnBindingRebind(object sender, System.EventArgs e)
     {
-        throw new System.NotImplementedException();
+        UpdateVisual();
     }
 
     private void UpdateVisual()
@@ -63,5 +74,15 @@ public class TutorialUI : MonoBehaviour
         grabButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Grab);
         fireButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Fire);
         pauseButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
+    }
+
+    private void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    private void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

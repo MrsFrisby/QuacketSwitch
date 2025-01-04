@@ -74,7 +74,7 @@ MonoBehaviour:
   corrupt:
   - {fileID: 8300000, guid: f436d31687afc4fab9eb39683c2a7710, type: 3}
   warning:
-  - {fileID: 8300000, guid: 841d7a04187df4648b178a1015333447, type: 3}
-  - {fileID: 8300000, guid: e5d3f00fffbe34c8d9e2a965be32f9cf, type: 3}
+  - {fileID: 8300000, guid: b90d8099bdbf09a40ab1163556d5b5f4, type: 3}
+  - {fileID: 8300000, guid: b59c98e0066c41f42b8100f5cb180f5b, type: 3}
   idleBuzz:
   - {fileID: 8300000, guid: ea74e2ce2e74a46ee868eb45fa57e6df, type: 3}

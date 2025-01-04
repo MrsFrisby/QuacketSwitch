@@ -195,7 +195,7 @@ public class GameInput : MonoBehaviour
             case Binding.Jump:
                 return playerInputActions.Player.Jump.bindings[0].ToDisplayString().ToUpper();
             case Binding.Pause:
-                return playerInputActions.Player.Pause.bindings[0].ToDisplayString().ToUpper();
+                return playerInputActions.Player.Pause.bindings[0].ToDisplayString().ToUpper().Substring(0,3);
             case Binding.Fire:
                 return playerInputActions.Player.Fire.bindings[0].ToDisplayString();
         }
