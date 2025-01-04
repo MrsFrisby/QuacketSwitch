@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,8 @@ public class OptionsUI : MonoBehaviour
 {
     public static OptionsUI Instance { get; private set; }
 
+    [SerializeField]
+    private Transform pressToRebindScreen;
 
     [SerializeField]
     private Button soundEffectsButton;
@@ -97,6 +100,8 @@ public class OptionsUI : MonoBehaviour
     private TextMeshProUGUI pauseButtonText;
 
 
+    private Action onCloseButtonAction;
+
     private void Awake()
     {
         Instance = this;
@@ -112,7 +117,22 @@ public class OptionsUI : MonoBehaviour
 
         closeButton.onClick.AddListener(() => {
             Hide();
+            onCloseButtonAction();
         });
+
+        moveUpButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveUp); });
+        moveDownButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveDown); });
+        moveRightButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveRight); });
+        moveLeftButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveLeft); });
+        jumpButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Jump); });
+        interactButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Interact); });
+        altInteractButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.AltInteract); });
+        grabButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Grab); });
+        reviveButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Revive); });
+        fireButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Fire); });
+        pauseButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Pause); });
+
+
     }
 
     private void Start()
@@ -120,6 +140,7 @@ public class OptionsUI : MonoBehaviour
         GameManager.Instance.OnGameUnPaused += GameManager_OnGameUnPaused;
         UpdateVisual();
         Hide();
+        HidePressToRebindScreen();
     }
 
     private void GameManager_OnGameUnPaused(object sender, System.EventArgs e)
@@ -147,8 +168,9 @@ public class OptionsUI : MonoBehaviour
         pauseButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
     }
 
-    public void Show()
+    public void Show(Action onCloseButtonAction)
     {
+        this.onCloseButtonAction = onCloseButtonAction;
         gameObject.SetActive(true);
     }
 
@@ -156,4 +178,26 @@ public class OptionsUI : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public void ShowPressToRebindScreen()
+    {
+        pressToRebindScreen.gameObject.SetActive(true);
+    }
+
+    public void HidePressToRebindScreen()
+    {
+        pressToRebindScreen.gameObject.SetActive(false);
+    }
+
+    private void RebindBinding(GameInput.Binding binding)
+    {
+        ShowPressToRebindScreen();
+
+        //using delegate to close press to rebind screen after rebinding is completed
+        GameInput.Instance.RebindBinding(binding, () => {
+            HidePressToRebindScreen();
+            UpdateVisual();
+            });
+    }
+
 }
