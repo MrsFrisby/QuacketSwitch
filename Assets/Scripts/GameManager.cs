@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
     }
 
     private GameState gameState;
-    private float startCountdownTimer = 5f;
+    private float startCountdownTimer = 3f;
     private float gamePlayTimer;
-    private float gamePlayTimerMax = 15f;
+    private float gamePlayTimerMax = 180f;
     private bool IsGamePaused = false;
 
 
