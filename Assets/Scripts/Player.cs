@@ -192,7 +192,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
         //isInteractPressed = true;
         if (selectedPallet != null)
         {
-            Debug.Log("Inside Player controller: selected" + selectedPallet.name);
+            //Debug.Log("Inside Player controller: selected" + selectedPallet.name);
             selectedPallet.Interact(this);
         }
 

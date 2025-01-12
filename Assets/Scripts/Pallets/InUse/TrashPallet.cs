@@ -21,7 +21,10 @@ public class TrashPallet : BasePallet
             player.GetDuckObject().DestroySelf();
 
             OnAnyDuckTrashed?.Invoke(this, EventArgs.Empty);
-
+        }
+        else
+        {
+            Debug.Log("Trash: Player not carrying a duck");
         }
     }
 }

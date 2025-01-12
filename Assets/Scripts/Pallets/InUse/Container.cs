@@ -28,6 +28,7 @@ public class Container : BasePallet
         }
         else
         {
+            Debug.Log("The player already has a duck");
            // duckObject.SetDuckObjectParent(player);
         }
     }

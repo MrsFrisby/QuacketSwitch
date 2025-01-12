@@ -6,17 +6,13 @@ using UnityEngine;
 
 public class AssemblyPalletDuckHolesVisual : MonoBehaviour
 {
-    //from duck holes visual
-    //[SerializeField] private DuckHoles2x2 duckHoles;
-    [SerializeField] private Transform topLeftSpawnPoint;
-    //[SerializeField] private Transform duckVisualPrefab;
-
     private List<GameObject> duckVisualGameObjectList;
     private Transform duckToSpawnVisualPrefabTransform;
     private DucksSO duckToSpawn;
 
+    [SerializeField]
+    private Transform topLeftSpawnPoint;
 
-    //from cooker pallet
     [SerializeField]
     private AssemblyPalletDuckHoles assemblyPalletDuckHoles;
 
@@ -53,7 +49,7 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
     }
 
     private void AssemblyPalletDuckHoles_OnStateChanged(object sender, AssemblyPalletDuckHoles.OnStateChangedEventArgs e)
-    {
+    {//update visual fx for relevant state
         bool idleVisuals = e.state == AssemblyPalletDuckHoles.State.Idle;
         bool assemblingVisuals = e.state == AssemblyPalletDuckHoles.State.Assembling;
         bool corruptingVisuals = e.state == AssemblyPalletDuckHoles.State.Corrupting;
@@ -65,7 +61,7 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
             smoke.SetActive(true);
             sparks.SetActive(false);
             electricity.SetActive(false);
-            electricDucks.SetActive(true);
+            electricDucks.SetActive(true);//ghost duck sparks
         }
         else if (corruptingVisuals)
         {
@@ -93,11 +89,15 @@ public class AssemblyPalletDuckHolesVisual : MonoBehaviour
 
     private void AssemblyPalletDuckHoles_OnDestroyAll(object sender, EventArgs e)
     {
-        //foreach (GameObject duckToDestroy in duckVisualGameObjectList)
-        //{
-        //    duckToDestroy.SetActive(false);
-        //}
-        ResetDuckHoleVisuals();
+        foreach (GameObject duckToDestroy in duckVisualGameObjectList)
+        {
+            Destroy(duckToDestroy);
+            assemblyPalletDuckHoles.duckObjectSOList.Clear();
+
+            //duckToDestroy.SetActive(false);
+
+        }
+        //ResetDuckHoleVisuals();
     }
 
     private void AssemblyPalletDuckHoles_OnDestroyLast(object sender, EventArgs e)

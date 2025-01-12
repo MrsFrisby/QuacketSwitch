@@ -14,6 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   protocolSOList:
   - {fileID: 11400000, guid: e43c43a19e0364389951b4bc686c9f7f, type: 2}
-  - {fileID: 11400000, guid: a4deb443c32764d6f83e1993b40810e7, type: 2}
-  - {fileID: 11400000, guid: 30c7213712d4947edbd42dcd6f27a266, type: 2}
-  - {fileID: 11400000, guid: 291f5de65e6ef4046b3b811dace14f9b, type: 2}

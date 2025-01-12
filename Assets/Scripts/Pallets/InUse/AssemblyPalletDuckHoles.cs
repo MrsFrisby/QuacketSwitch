@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//inherits from basePallet class and HasProgress interface
 public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
 {
+    //static events that can be called from any instance of an AssemblyPalletDuckHoles
     public static event EventHandler OnAnyIdle;
     public static event EventHandler OnAnyAssembling;
     public static event EventHandler OnAnyCorrupting;
     public static event EventHandler OnAnyCorrupt;
 
+    //reset static data to prevent errors on restart
     new public static void ResetStaticData()
     {
         OnAnyIdle = null;
@@ -27,15 +30,16 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
     public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
 
+    
     public class OnStateChangedEventArgs : EventArgs
     {
         public State state;
     }
 
-
+    //collected ducks disappear if left too long
     private float duckHoleTimer;
-    private float duckHoleTimerMax = 320f;
-    private int ducksSpawned;
+    private float duckHoleTimerMax = 320f;//time after which last duck is deleted
+    private int ducksSpawned;//counter
     private int ducksSpawnedMax = 4;
 
     public List<DucksSO> duckObjectSOList;
@@ -46,19 +50,13 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
     private DucksSO playerDuckSO;
 
-    //private DucksSO playerFinalDuckSO;
-
     
-
-    
-
     /*states
      * Idle: empty duck holes/idle - frst three ducks delivered and spawned into duck holes
-     * final duck (11) delivered triggers state change, use assemblySO IMAP11->IMAPAssembled
+     * final duck delivered triggers state change, use assemblySO eg IMAP11->IMAPAssembled
      * Assembling: timer before assembled duck is spawned on pallet -> could add some FX to duckholes
      * Corrupting: As soon as Assembled duck is spawned it starts Corrupting -> corruption timer starts
      * Corrupt state
-
     */
 
     public enum State
@@ -74,6 +72,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     private CorruptionSO[] CorruptionSOArray;
 
     //List to hold assembly SO eg IMAP11 -> AssembledIMAP
+    //as ducks can be added in any order
     [SerializeField]
     private AssemblySO[] AssemblySOArray;
 
@@ -91,6 +90,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
     private void Awake()
     {
+        //create a new list to keep track of ducks as the player adds them to the duck holes
         duckObjectSOList = new List<DucksSO>();
     }
 
@@ -101,79 +101,76 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         currentState = State.Idle;
     }
 
-    
-
-
-
-
     private void Update()
     {
-        //from duckholes
+
+        //destroy last added duck if timer reaches max
         duckHoleTimer += Time.deltaTime;
-        //Debug.Log(duckHoleTimer);
         if (duckHoleTimer > duckHoleTimerMax)
         {
-            duckHoleTimer = 0f;
-            ducksSpawned--;
-            OnDestroyLast?.Invoke(this, EventArgs.Empty);
-            Debug.Log("Reset Timer");
+            duckHoleTimer = 0f;//reset timer
+            ducksSpawned--;//decrement duck counter
+            OnDestroyLast?.Invoke(this, EventArgs.Empty);//destroy last duck added
         }
 
         //assembly state machine
         if (HasDuckObject())
-        {
+        {//if the last duck has been delivered
             switch (currentState)
             {
                 case State.Idle:
-
+                    assemblyTimer = 0f;
                     //play idle audioFX - electrical hum/buzz
                     OnAnyIdle?.Invoke(this, EventArgs.Empty);
 
-                    //empty pallet
+                    //update state
                     OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                     {
                         state = currentState
                     });
                     break;
 
-                case State.Assembling:
+                case State.Assembling://ghost ducks visible
 
-                    assemblyTimer += Time.deltaTime;
-                    //Debug.Log("Timer: " + assemblyTimer);
+                    assemblyTimer += Time.deltaTime;//start assembly timer
 
-                    //remove duck prefabs from duckholes
+                    //remove duck prefabs from duckholes and duckSOs from list
                     OnDestroyAll?.Invoke(this, EventArgs.Empty);
+                    ducksSpawned = 0;
 
+                    //start assembling audio
                     OnAnyAssembling?.Invoke(this, EventArgs.Empty);
 
+                    //update assembly progress bar
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
                         progressNormalized = assemblyTimer / assemblySO.assemblyProgressMax
                     });
-
-                    
+ 
                     if (assemblyTimer > assemblySO.assemblyProgressMax)
-                    {//assembling
+                    {//change from ghost ducks to assembled duck
 
-                        //there is no duck on the pallet
+                        //destroy the ghost ducks
                         GetDuckObject().DestroySelf();
+                        //spawn the correct assembled duck for the input protocol
                         DuckObject.spawnDuckObject(assemblySO.output, this);
                         currentState = State.Corrupting;
-                        corruptionTimer = 0f;
+                        corruptionTimer = 0f;//initialise corruption timer
                         corruptionSO = GetCorruptionSOWithInput(GetDuckObject().GetDucksSO());
+                        //all assembled duckSO list corrupt duck
 
+                        //update state to corrupting
                         OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                         {
                             state = currentState
                         });
-
-                        
                     }
                     break;
 
                 case State.Corrupting:
-                    corruptionTimer += Time.deltaTime;
-                    //Debug.Log("Corrupting state)");
+                    corruptionTimer += Time.deltaTime;//start corruption timer
+
+                    //update progress bar
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
                         progressNormalized = corruptionTimer / corruptionSO.corruptionTimerMax
@@ -185,16 +182,20 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                     OnAnyCorrupting?.Invoke(this, EventArgs.Empty);
 
                     if (corruptionTimer > corruptionSO.corruptionTimerMax)
-                    {//corrupt
+                    {
+                        //destroy the assembly duck
                         GetDuckObject().DestroySelf();
+                        //spawn the corrupt duck
                         DuckObject.spawnDuckObject(corruptionSO.output, this);
                         currentState = State.Corrupt;
 
+                        //update state
                         OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                         {
                             state = currentState
                         });
 
+                        //reset corruption timer progress bar
                         OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                         {
                             progressNormalized = 0f
@@ -212,80 +213,83 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     }
 
     public override void Interact(Player player)
-    {
-        //Debug.Log("CookerPallet Interact)");
-        if (player.HasDuckObject())//when E is pressed
-        {
+    {//when E is pressed
+        Debug.Log("DuckHoles1: E pressed");
+        if (player.HasDuckObject())
+        {//find out which duck the player is carrying
+            Debug.Log("DuckHoles2: player has duck");
             playerDuckSO = player.GetDuckObject().GetDucksSO();
-            if (HasMatchWithValidDuckSOList(playerDuckSO))
-            {
+            if (HasMatchWithValidDuckSOList(playerDuckSO))//if the duck can be accepted
+            {// returns true if the duck is not already on the list
+                Debug.Log("DuckHoles3: duck match true");
                 if (TryAddDucktoList(playerDuckSO))
-                {// returns true if the duck is not already on the list
+                {//destroy the duck the player is holding
+                    Debug.Log("DuckHoles4: duck added to pallet SO list");
                     player.GetDuckObject().DestroySelf();
-
-                    //check there is space for more ducks
                     if (ducksSpawned < ducksSpawnedMax)
-                    {
-                        ducksSpawned++;
-                        OnDuckSpawned?.Invoke(this, EventArgs.Empty);
-
-                        //check if player is delivering final duck
+                    {//there is room for more ducks
+                        Debug.Log("DuckHoles5: room for more ducks");
+                        ducksSpawned++;//increment counter
+                        OnDuckSpawned?.Invoke(this, EventArgs.Empty);//broadcast to visual script
                         if (ducksSpawned == ducksSpawnedMax)
-                        {
-                            //check that we have an assemblySO for final duck delivered
+                        {//if player is delivering final duck
+                            Debug.Log("DuckHoles6: player has last duck");
                             if (HasMatchwithAssemblySOInput(playerDuckSO))
                             {//duck dropped matches assemblySO.input duck object within pallet's array
-
                                 //spawn ghost ducks as child duckSO of this pallet
+                                Debug.Log("DuckHoles7: match found with Assembly SO input");
                                 DuckObject.spawnDuckObject(ghostDuck,this);
+                                //get the correct output assembled duck based on the last duck successfully delivered
                                 assemblySO = GetAssemblySOWithInput(playerDuckSO);
                                 currentState = State.Assembling;
-
+                                assemblyTimer = 0f;
                                 OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
-                                {
+                                {//update state from idle to assembling
                                     state = currentState
                                 });
-
                                 OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
-                                {
+                                {//initialize progress bar for assembly timer
                                     progressNormalized = assemblyTimer / assemblySO.assemblyProgressMax
                                 });
                             }
                             else
-                            {
-                                Debug.Log("No match with AssemblySOInput: this is a " + playerDuckSO);
+                            {//this shouldn't ever happen
+                                Debug.Log("Duckholes7: No match with AssemblySOInput: this is a " + playerDuckSO);
                             }
                         }
+                        else { Debug.Log("DuckHoles6: not the last duck"); }
                     }
+                    else { Debug.Log("DuckHoles5: no room for more ducks"); }
                 }
+                else { Debug.Log("DuckHoles4: duck not added to SO list"); }
             }
             else
-            {//No match with Vald duckSO list assigned in inspector
-                Debug.Log("Wrong Duck SO for this pallet");
+            {//No match with Valid duckSO list assigned in inspector
+                Debug.Log("Duckholes3: Wrong Duck SO for this pallet");
             }
         }
 
         else
         { //if player is empty handed give duck to player
-            Debug.Log("Interact:player should be able to pick up corrupt duck");
-            GetDuckObject().SetDuckObjectParent(player);
+            Debug.Log("DuckHoles2: Player not carrying a duck");
+            GetDuckObject().SetDuckObjectParent(player);//reparent duck on pallet to player
             currentState = State.Idle;
 
             OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
-            {
+            {//reset state back to idle
                 state = currentState
             });
 
             OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
-            {
+            {//reset progress bar (bar hidden when set to 0)
                 progressNormalized = 0f
             });
-        }
-        
+        } 
     }
 
+    //Helper Functions
 
-
+    //returns a bool - check for a match- proceed only when true
     private bool HasMatchwithAssemblySOInput(DucksSO inputDuckSO)
     {
         AssemblySO assemblySO = GetAssemblySOWithInput(inputDuckSO);

@@ -57,7 +57,8 @@ public class DuckObject : MonoBehaviour
         }
         else
         {
-            Debug.LogError("duckObjectParent already has child duckObject");
+            DuckObject duckToReport = duckObjectParent.GetDuckObject();
+            Debug.LogError("attempting to set duckObjectParent: "+duckObjectParent+" failed already has child duckObject: "+duckToReport);
         }
         
     }
