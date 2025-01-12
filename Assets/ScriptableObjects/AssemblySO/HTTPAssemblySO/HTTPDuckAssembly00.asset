@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae548c41fc8c14d75842423b6c35f892, type: 3}
-  m_Name: RedCorruptSO
+  m_Script: {fileID: 11500000, guid: 72710c147af8c47c0939616daeec68de, type: 3}
+  m_Name: HTTPDuckAssembly00
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 3ffb5ca176cb54620b9fef36fcb4e1ce, type: 2}
-  output: {fileID: 11400000, guid: 2351c804d63b64049aa18c62ff2fb870, type: 2}
-  corruptionTimerMax: 3
+  input: {fileID: 11400000, guid: bc2efff36b5cd4693bec7e975781ffa8, type: 2}
+  output: {fileID: 11400000, guid: 03731354f4f9a4e4397496b46d8b8f54, type: 2}
+  assemblyProgressMax: 4
