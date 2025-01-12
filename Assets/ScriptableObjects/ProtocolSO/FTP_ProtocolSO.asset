@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: FTP_ProtocolSO
   m_EditorClassIdentifier: 
   duckObjectSOList:
-  - {fileID: 11400000, guid: 1633cd28c10854c5494d78cdb1fce994, type: 2}
-  - {fileID: 11400000, guid: 969d5cff3dfa54363a52c09e43bd0466, type: 2}
-  - {fileID: 11400000, guid: d943e8a2bf23f412bbe819ab277fbc9c, type: 2}
-  ducksSO: {fileID: 11400000, guid: ad8accb2f6a1b4fb9b0a6d2005709b76, type: 2}
+  - {fileID: 11400000, guid: ce0e2a9eb44fe4c4b8eadead7963df6d, type: 2}
+  - {fileID: 11400000, guid: 904afd3dea4984d818df21d9cf7828ed, type: 2}
+  - {fileID: 11400000, guid: 1fd22b8fc83114baaa730ebe6b1551b2, type: 2}
+  - {fileID: 11400000, guid: 7073aadb290524140bc2fe60c6f66e90, type: 2}
+  ducksSO: {fileID: 11400000, guid: 16e1a2738732e4dd3ba0d604329fe440, type: 2}
   sprite: {fileID: 21300000, guid: 08e3b57c63567498ab61bf4585c1f03b, type: 3}
   protocolName: 'FTP: File Transfer Protocol'
