@@ -265,7 +265,8 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
             }
             else
             {//No match with Valid duckSO list assigned in inspector
-                Debug.Log("Duckholes3: Wrong Duck SO for this pallet");
+                DucksSO deliveredDuck = player.GetDuckObject().GetDucksSO();
+                Debug.Log("Duckholes3: Wrong Duck SO for this pallet:"+ deliveredDuck);
             }
         }
 
@@ -349,7 +350,11 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
             return true;
         }
         else
-        {
+        {   foreach (DucksSO ducksSO in validDucksSOList)
+            {
+                Debug.Log(ducksSO.name);
+            }
+            
             return false;
         }
     }

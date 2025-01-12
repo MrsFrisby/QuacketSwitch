@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb8368d3d38847209d1d2e5239d0a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duckObjectSO: {fileID: 11400000, guid: 43fc229fef4cc4044974c9bb9dce60b9, type: 2}
+  duckObjectSO: {fileID: 11400000, guid: 7073aadb290524140bc2fe60c6f66e90, type: 2}
   displayIconUI: 0
   duckIconsUI: {fileID: 4192268970262274801}
 --- !u!1 &4446137231056227666
