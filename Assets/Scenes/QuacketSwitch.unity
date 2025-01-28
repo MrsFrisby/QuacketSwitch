@@ -25351,6 +25351,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenRubberDuck
       objectReference: {fileID: 0}
+    - target: {fileID: 2297408298249857395, guid: 4b04e9475880b4ff0b09512010752b93,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4311344576717944386, guid: 4b04e9475880b4ff0b09512010752b93,
         type: 3}
       propertyPath: m_LocalPosition.x

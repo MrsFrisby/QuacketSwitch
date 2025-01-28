@@ -87,7 +87,6 @@ public class Player : MonoBehaviour, IDuckObjectParent
     private void Awake()
     {
         syncPhysicsObjects = GetComponentsInChildren<SyncPhysics>();
-
         handGrabHandlers = GetComponentsInChildren<HandGrabHandler>();
 
         Instance = this;
@@ -105,7 +104,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
         gameInput.OnGrabAction += GameInput_OnGrabAction;
         gameInput.OnJumpAction += GameInput_OnJumpAction;
         gameInput.OnGrabCancelAction += GameInput_OnGrabCancelAction;
-        gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
+        //gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
         //gameInput.OnInspectAction += GameInput_OnInspectAction;
         //gameInput.OnInspectAction += GameInput_OnInspectCancelAction;
     }
@@ -188,11 +187,8 @@ public class Player : MonoBehaviour, IDuckObjectParent
         {//Player can't interact unless in playing gameState
             return;
         };
-        //Debug.Log("Inside Player controller: E pressed");
-        //isInteractPressed = true;
         if (selectedPallet != null)
         {
-            //Debug.Log("Inside Player controller: selected" + selectedPallet.name);
             selectedPallet.Interact(this);
         }
 
@@ -200,18 +196,18 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
    
 
-    private void GameInput_OnInteractAlternateAction(object sender, System.EventArgs e)
-    {
-        if (!GameManager.Instance.IsGamePlaying())
-        {//Player can't alternate interact unless in playing gameState
-            return;
-        };
-        if (selectedPallet != null)
-        {
+    //private void GameInput_OnInteractAlternateAction(object sender, System.EventArgs e)
+    //{
+    //    if (!GameManager.Instance.IsGamePlaying())
+    //    {//Player can't alternate interact unless in playing gameState
+    //        return;
+    //    };
+    //    if (selectedPallet != null)
+    //    {
 
-            selectedPallet.InteractAlternate(this);
-        }
-    }
+    //        selectedPallet.InteractAlternate(this);
+    //    }
+    //}
 
     // Update is called once per frame
     void Update()
@@ -370,7 +366,6 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
     private void HandleInteractions()
     {
-
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
 
         Vector3 moveDir = new Vector3(-inputVector.x, 0, -inputVector.y);
@@ -394,14 +389,10 @@ public class Player : MonoBehaviour, IDuckObjectParent
                 Debug.DrawRay(rayOrigin, 10f * lastInderactDir, Color.green);
                 if (raycastHit.transform.TryGetComponent(out BasePallet basePallet))
                 {
-                    //
                     if (basePallet != selectedPallet)
                     {
-                        //Debug.Log("I hit a " + raycastHit.transform.name);
-                        
                         SetSelectedPallet(basePallet);
-                        
-                        //selectedPallet.Interact();
+                        //Debug.Log("I hit a " + raycastHit.transform.name);
                     }
                 }
                 else
@@ -425,16 +416,16 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
         OnSelectedPalletChanged?.Invoke(this, new OnSelectedPalletChangedEventArgs
         {
-            selectedPallet = selectedPallet
-            
-    });
+            selectedPallet = selectedPallet           
+        });
     }
+
+    //Player script: implement IDuckObjectParent interface functions
 
     public Transform GetDuckObjectFollowTransform()
     {
         return duckHoldPoint;
     }
-
 
     public void SetDuckObject(DuckObject duckObject)
     {

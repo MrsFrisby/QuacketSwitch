@@ -35,11 +35,11 @@ public class DuckObject : MonoBehaviour
     }
 
 
-    //the argument passed into this function is the new pallet parent that the duckObject is moving to
+    //the argument passed into this function is the new parent that the duckObject is moving to
     public void SetDuckObjectParent(IDuckObjectParent duckObjectParent)
     {
         //clear the duck so it is no longer parented to the previous parent
-        //this refers to the pallet, not the duck
+        //this refers to the parent, not the duck
         if (this.duckObjectParent != null)
         {
             this.duckObjectParent.ClearDuckObject();
@@ -60,7 +60,6 @@ public class DuckObject : MonoBehaviour
             DuckObject duckToReport = duckObjectParent.GetDuckObject();
             Debug.LogError("attempting to set duckObjectParent: "+duckObjectParent+" failed already has child duckObject: "+duckToReport);
         }
-        
     }
 
     public IDuckObjectParent GetDuckObjectParent()

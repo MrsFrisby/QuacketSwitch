@@ -71,37 +71,37 @@ public class AssemblyPallet : BasePallet, IHasProgress
 
 
 
-    public override void InteractAlternate(Player player)
-    {
-        Debug.Log("F pressed");
+    //public override void InteractAlternate(Player player)
+    //{
+    //    Debug.Log("F pressed");
        
-        //duck already on pallet
-        if (HasDuckObject() && HasMatchwithSOAssemblyInput(GetDuckObject().GetDucksSO()))
-        {//duck already on pallet and has match with available assemblySO
+    //    //duck already on pallet
+    //    if (HasDuckObject() && HasMatchwithSOAssemblyInput(GetDuckObject().GetDucksSO()))
+    //    {//duck already on pallet and has match with available assemblySO
 
-            assemblyProgress++;
+    //        assemblyProgress++;
 
-            AssemblySO assemblySO = GetAssemblySOWithInput(GetDuckObject().GetDucksSO());
+    //        AssemblySO assemblySO = GetAssemblySOWithInput(GetDuckObject().GetDucksSO());
 
-            OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
-            {
-                progressNormalized = (float)assemblyProgress / assemblySO.assemblyProgressMax
-            });
-            //Debug.Log("has duck");
-            if (assemblyProgress >= assemblySO.assemblyProgressMax)
-            {//if local pallet count of number of times F key pressed >= max assembly count for assemblySO
+    //        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+    //        {
+    //            progressNormalized = (float)assemblyProgress / assemblySO.assemblyProgressMax
+    //        });
+    //        //Debug.Log("has duck");
+    //        if (assemblyProgress >= assemblySO.assemblyProgressMax)
+    //        {//if local pallet count of number of times F key pressed >= max assembly count for assemblySO
 
-                DucksSO outputDuckSO = GetOutputForInput(GetDuckObject().GetDucksSO());
-                GetDuckObject().DestroySelf();
-                //spawn function takes in duckSO but returns duckObject
-                DuckObject.spawnDuckObject(outputDuckSO, this);
-            }          
-        }
-        else
-        {
-            Debug.Log("no duck");
-        }
-    }
+    //            DucksSO outputDuckSO = GetOutputForInput(GetDuckObject().GetDucksSO());
+    //            GetDuckObject().DestroySelf();
+    //            //spawn function takes in duckSO but returns duckObject
+    //            DuckObject.spawnDuckObject(outputDuckSO, this);
+    //        }          
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("no duck");
+    //    }
+    //}
 
 
     private bool HasMatchwithSOAssemblyInput(DucksSO inputDuckSO)

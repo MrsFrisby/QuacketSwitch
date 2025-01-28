@@ -7,6 +7,26 @@ public class SpawnPallet : BasePallet
     [SerializeField]
     private DucksSO ducksSO;
 
+    public override void Interact(Player player)
+    {
+        //if there isn't already a duck
+        if (!HasDuckObject()) {
+
+            //spawn a new duck
+            Transform spawnPoint = GetDuckObjectFollowTransform();
+
+            Transform duckTransform = Instantiate(ducksSO.prefab, spawnPoint);
+
+            duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
+
+            Debug.Log("I am spawning a " +duckTransform.GetComponent<DuckObject>().GetDucksSO().name);
+        }
+        else
+        {
+            Debug.Log("Duck already on pallet");
+        }
+    }
+
     //[SerializeField]
     //private Transform palletTopPoint;
 
@@ -28,29 +48,4 @@ public class SpawnPallet : BasePallet
     //        }
     //    }
     //}
-
-    public override void Interact(Player player)
-    {
-        //Debug.Log("I am interacting with a "+gameObject.transform.name);
-
-        //if there isn't already a duck
-        if (!HasDuckObject()) {
-
-            //spawn a new duck
-            Transform spawnPoint = GetDuckObjectFollowTransform();
-
-            Transform duckTransform = Instantiate(ducksSO.prefab, spawnPoint);
-
-           
-            duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
-
-            Debug.Log("I am spawning a " +duckTransform.GetComponent<DuckObject>().GetDucksSO().name);
-        }
-        else
-        {
-           
-        }
-    }
-
-   
 }

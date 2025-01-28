@@ -103,28 +103,7 @@ public class HandGrabHandler : MonoBehaviour
         //if we get this far, player can pick item up
         fixedJoint = transform.gameObject.AddComponent<FixedJoint>();
         fixedJoint.connectedBody = otherObjectRigidbody;
-
         fixedJoint.autoConfigureConnectedAnchor = false;
-
-
-        //this is where we need to update duck parent to player
-
-        //if(!collision.collider.TryGetComponent(out DuckObject collisionDuckObject))
-        //{
-        //    Debug.Log("couldn't get duckObject, hit a "+ collision.gameObject.name);
-
-        //}
-        //else
-        //{
-        //    collisionDuckObject.SetDuckObjectParent(player);
-        //    player.grabbedDuck = collisionDuckObject;
-        //    Debug.Log("Grabbed duck parent: " + collisionDuckObject.GetDuckObjectParent());
-        //}
-        
-        
-
-
-
 
         //transform the collision point from world to local space
         fixedJoint.connectedAnchor = collision.transform.InverseTransformPoint(collision.GetContact(0).point);
@@ -136,7 +115,26 @@ public class HandGrabHandler : MonoBehaviour
     }
 
 
-    
 
-    
+    //this is where we need to update duck parent to player
+
+    //if(!collision.collider.TryGetComponent(out DuckObject collisionDuckObject))
+    //{
+    //    Debug.Log("couldn't get duckObject, hit a "+ collision.gameObject.name);
+
+    //}
+    //else
+    //{
+    //    collisionDuckObject.SetDuckObjectParent(player);
+    //    player.grabbedDuck = collisionDuckObject;
+    //    Debug.Log("Grabbed duck parent: " + collisionDuckObject.GetDuckObjectParent());
+    //}
+
+
+
+
+
+
+
+
 }

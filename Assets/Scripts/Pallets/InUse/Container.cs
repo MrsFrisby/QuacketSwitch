@@ -11,12 +11,6 @@ public class Container : BasePallet
     [SerializeField]
     private DucksSO ducksSO;
 
-    //[SerializeField]
-    //private Transform palletTopPoint;
-
-    //private DuckObject duckObject;
-
-
     public override void Interact(Player player)
     {
         //if the player is not already carrying something
@@ -29,9 +23,6 @@ public class Container : BasePallet
         else
         {
             Debug.Log("The player already has a duck");
-           // duckObject.SetDuckObjectParent(player);
         }
     }
-
-   
 }
