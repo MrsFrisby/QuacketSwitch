@@ -1,51 +1,53 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnPallet : BasePallet
-{
-    [SerializeField]
-    private DucksSO ducksSO;
+{ 
+
+    [SerializeField] private SpawnPalletDuckListSO spawnPalletDuckListSO;
 
     public override void Interact(Player player)
     {
-        //if there isn't already a duck
-        if (!HasDuckObject()) {
+        ////if there isn't already a duck
+        //if (!HasDuckObject()) {
 
-            //spawn a new duck
-            Transform spawnPoint = GetDuckObjectFollowTransform();
+        //    //spawn a new random quacket duck parented to the pallet
 
-            Transform duckTransform = Instantiate(ducksSO.prefab, spawnPoint);
+        //    DucksSO ducksSO = spawnPalletDuckListSO.spawnPalletDuckSOList[UnityEngine.Random.Range(0, spawnPalletDuckListSO.spawnPalletDuckSOList.Count)];
 
-            duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
+        //    //DucksSO ducksSO = protocolListSO.protocolSOList[UnityEngine.Random.Range(0, protocolListSO.protocolSOList.Count)];
 
-            Debug.Log("I am spawning a " +duckTransform.GetComponent<DuckObject>().GetDucksSO().name);
+        //    Transform spawnPoint = GetDuckObjectFollowTransform();
+
+        //    Transform duckTransform = Instantiate(ducksSO.prefab, spawnPoint);
+
+        //    duckTransform.GetComponent<DuckObject>().SetDuckObjectParent(this);
+
+        //    Debug.Log("I am spawning a " +duckTransform.GetComponent<DuckObject>().GetDucksSO().name);
+        //}
+        //else
+        //{
+        //    Debug.Log("Duck already on pallet");
+        //}
+
+        
+    
+        //if the player is not already carrying something
+        if (!HasDuckObject())
+        {
+
+            DucksSO ducksSO = spawnPalletDuckListSO.spawnPalletDuckSOList[UnityEngine.Random.Range(0, spawnPalletDuckListSO.spawnPalletDuckSOList.Count)];
+
+            DuckObject.spawnDuckObject(ducksSO, player);
+
+            
         }
         else
         {
-            Debug.Log("Duck already on pallet");
+            Debug.Log("The player already has a duck");
         }
-    }
-
-    //[SerializeField]
-    //private Transform palletTopPoint;
-
-    //[SerializeField] private Pallet secondPallet;
-    //[SerializeField] private bool testing;
-
-    //private DuckObject duckObject;
-
-
-    //private void Update()
-    //{
-    //    if (testing && Input.GetKeyDown(KeyCode.T))
-    //    {
-    //        Debug.Log("PalletScript: T key pressed");
-    //        if (duckObject != null)
-    //        {
-    //            duckObject.SetDuckObjectParent(secondPallet);
-    //            //Debug.Log("Update:The parent of this " +duckObject.GetDucksSO().name + " is " + duckObject.GetPallet());
-    //        }
-    //    }
-    //}
+    
+}
 }

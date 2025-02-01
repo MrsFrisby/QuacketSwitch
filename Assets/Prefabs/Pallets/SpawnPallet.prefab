@@ -96,7 +96,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2ae653843c684443fb34664bc07177e6, type: 2}
+      objectReference: {fileID: 2100000, guid: 52d3c0777bc6145be8d3a2a0a598cae3, type: 2}
     - target: {fileID: 4985047401608732346, guid: 04ac8fb6dba9049188fe78a1a91a30c1,
         type: 3}
       propertyPath: basePallet
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   palletTopPoint: {fileID: 3999098677480107394}
-  ducksSO: {fileID: 0}
+  spawnPalletDuckListSO: {fileID: 0}
 --- !u!1 &8359500868671032365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6842797633082917874, guid: 04ac8fb6dba9049188fe78a1a91a30c1,

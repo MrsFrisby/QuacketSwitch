@@ -10,16 +10,6 @@ public class DuckHoles2x2Visual : MonoBehaviour
     [SerializeField] private Transform topLeftSpawnPoint;
     [SerializeField] private Transform duckVisualPrefab;
 
-    //[Serializable]
-    //public struct duckSO_GameObject
-    //{ //struct used instead of class to store data without logic
-    //    public DucksSO ducksSO;
-    //    public GameObject duckGameObject;
-    //}
-
-    //[SerializeField]
-    //private List<duckSO_GameObject> duckSO_GameObjectList;
-
     private List<GameObject> duckVisualGameObjectList;
     private Transform duckToSpawnVisualPrefabTransform;
     private DucksSO duckToSpawn;

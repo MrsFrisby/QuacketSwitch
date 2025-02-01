@@ -10,12 +10,9 @@ public class AssemblyManager : MonoBehaviour
     public event EventHandler OnProtocolSuccess;
     public event EventHandler OnProtocolFailed;
 
-
-
     public static AssemblyManager Instance { get; private set; }
 
     [SerializeField] private ProtocolListSO protocolListSO; 
-
 
 
     private List<ProtocolSO> waitingProtocolSOList;
@@ -30,7 +27,6 @@ public class AssemblyManager : MonoBehaviour
         Instance = this;
         waitingProtocolSOList = new List<ProtocolSO>();
     }
-
 
     private void Update()
     {

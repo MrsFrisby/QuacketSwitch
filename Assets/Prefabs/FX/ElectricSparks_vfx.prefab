@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4169555690301410721}
   - component: {fileID: 934192089134227314}
   m_Layer: 0
-  m_Name: Electricity_vfx
+  m_Name: ElectricSparks_vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

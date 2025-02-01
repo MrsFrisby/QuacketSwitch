@@ -17,7 +17,6 @@ public class ProgressBarUI : MonoBehaviour
     private IHasProgress hasProgress;
     //private Color currentColour;
 
-
     private void Start()
     {
         hasProgress = hasProgressGameObject.GetComponent<IHasProgress>();

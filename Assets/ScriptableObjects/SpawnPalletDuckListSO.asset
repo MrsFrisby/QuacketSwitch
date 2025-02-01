@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbcc0e22786654f65abe5a6a7a64da90, type: 3}
+  m_Name: SpawnPalletDuckListSO
+  m_EditorClassIdentifier: 
+  spawnPalletDuckSOList:
+  - {fileID: 11400000, guid: bc2efff36b5cd4693bec7e975781ffa8, type: 2}
+  - {fileID: 11400000, guid: 1865f8d23e3344352be4a3a96072f00a, type: 2}
+  - {fileID: 11400000, guid: 567c446b4b53748f4b3905dd799bfe2b, type: 2}
+  - {fileID: 11400000, guid: ec1ef91cf6ab54118a4e5f4a9fcde154, type: 2}
+  - {fileID: 11400000, guid: ce0e2a9eb44fe4c4b8eadead7963df6d, type: 2}
+  - {fileID: 11400000, guid: 904afd3dea4984d818df21d9cf7828ed, type: 2}
+  - {fileID: 11400000, guid: 1fd22b8fc83114baaa730ebe6b1551b2, type: 2}
+  - {fileID: 11400000, guid: 7073aadb290524140bc2fe60c6f66e90, type: 2}
+  - {fileID: 11400000, guid: 9597602ac9d684f328f68882e6a53f0a, type: 2}
+  - {fileID: 11400000, guid: 74cf5729da8a54611a164502a58b6de7, type: 2}
+  - {fileID: 11400000, guid: 893538f26f55a47b5a48d32f9f480155, type: 2}
+  - {fileID: 11400000, guid: 5d6c1105ffedb493aae96c6dd1a4a5cf, type: 2}
+  - {fileID: 11400000, guid: d1d83123f7a4d4d088e118eb310277ba, type: 2}
+  - {fileID: 11400000, guid: 1fe8d2d198da449b5ad3928bb9c357d6, type: 2}
+  - {fileID: 11400000, guid: 9df575b91588c4f50aeebaff5a344682, type: 2}
+  - {fileID: 11400000, guid: 43fc229fef4cc4044974c9bb9dce60b9, type: 2}

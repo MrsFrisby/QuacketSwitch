@@ -15,6 +15,26 @@ public class CookerPallet : BasePallet, IHasProgress
         public State state;
     }
 
+    public enum State
+    {
+        Idle,
+        Assembling,
+        Assembled,
+        Corrupting,
+        Corrupt
+    }
+
+    [SerializeField]
+    private CookingSO[] CookingSOArray;
+
+    [SerializeField]
+    private CorruptionSO[] CorruptionSOArray;
+
+    private State state;
+    private float cookingTimer;
+    private float corruptionTimer;
+    private CookingSO cookingSO;
+    private CorruptionSO corruptionSO;
 
     /*states
      * empty duck holes/idle - frst three ducks delivered and spawned into duck holes
@@ -25,30 +45,6 @@ public class CookerPallet : BasePallet, IHasProgress
      * 
 
     */
-
-    public enum State
-    {
-        Idle,
-        Assembling,
-        Assembled,
-        Corrupting,
-        Corrupt
-    }
-
-
-    [SerializeField]
-    private CookingSO[] CookingSOArray;
-
-    [SerializeField]
-    private CorruptionSO[] CorruptionSOArray;
-
-
-    private State state;
-    private float cookingTimer;
-    private float corruptionTimer;
-    private CookingSO cookingSO;
-    private CorruptionSO corruptionSO;
-
     private void Start()
     {
 
@@ -75,8 +71,6 @@ public class CookerPallet : BasePallet, IHasProgress
                     {
                         progressNormalized = cookingTimer / cookingSO.cookingTimerMax
                     });
-
-
 
                     if (cookingTimer > cookingSO.cookingTimerMax)
                     {
@@ -122,7 +116,6 @@ public class CookerPallet : BasePallet, IHasProgress
                     break;
                 case State.Corrupt:    
                     break;
-
             }
         }
     }

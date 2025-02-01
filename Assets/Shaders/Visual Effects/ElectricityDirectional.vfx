@@ -19,8 +19,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 120
     y: -190
-    width: 1899
-    height: 2325
+    width: 1886
+    height: 1805
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1552, y: 423}
+  m_UIPosition: {x: 1498, y: 80}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -1397,7 +1397,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661614822}
   - {fileID: 8926484042661614864}
-  m_UIPosition: {x: 1595, y: 793}
+  m_UIPosition: {x: 1582, y: 360}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1595, y: 1155}
+  m_UIPosition: {x: 1582, y: 692}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -1865,7 +1865,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614860}
   - {fileID: 8926484042661614935}
   - {fileID: 8926484042661614941}
-  m_UIPosition: {x: 1595, y: 1380}
+  m_UIPosition: {x: 1582, y: 860}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -4574,7 +4574,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":83.46361541748047,"y":27.174846649169923,"z":11.417189598083496}'
+      m_SerializableObject: '{"x":95.87449645996094,"y":31.215700149536134,"z":11.417189598083496}'
     m_Space: 2147483647
   m_Property:
     name: Color
@@ -4857,7 +4857,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614945}
       inputSlot: {fileID: 8926484042661614936}
-    position: {x: 1739.3094, y: 1983.7528}
+    position: {x: 1235.5, y: 1320.5}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614945
@@ -6918,7 +6918,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
