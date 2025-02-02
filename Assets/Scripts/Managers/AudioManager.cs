@@ -52,6 +52,9 @@ public class AudioManager : MonoBehaviour
     {
         AssemblyPalletDuckHoles assemblyPalletDuckHoles = sender as AssemblyPalletDuckHoles;
         PlaySound(audioClipRefsSO.assembling, assemblyPalletDuckHoles.transform.position);
+
+
+
     }
 
     private void AssemblyPalletDuckHoles_OnAnyIdle(object sender, System.EventArgs e)
@@ -101,6 +104,11 @@ public class AudioManager : MonoBehaviour
     public void PlayCountdownSound()
     {
         PlaySound(audioClipRefsSO.warning, Vector3.zero);
+    }
+
+    public void PlayWarningSound(Vector3 position)
+    {
+        PlaySound(audioClipRefsSO.warning, position);
     }
 
     public void ChangeVolume()

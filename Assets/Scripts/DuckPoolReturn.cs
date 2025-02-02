@@ -34,12 +34,4 @@ public class DuckPoolReturn : MonoBehaviour
             }
         }
     }
-
-    //private void OnDisable()
-    //{
-    //    if(duckPool != null)
-    //    {
-    //        duckPool.ReturnDuckProjectile(this.gameObject);
-    //    }
-    //}
 }

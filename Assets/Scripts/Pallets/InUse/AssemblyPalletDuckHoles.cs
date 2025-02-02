@@ -12,6 +12,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     public static event EventHandler OnAnyAssembling;
     public static event EventHandler OnAnyCorrupting;
     public static event EventHandler OnAnyCorrupt;
+    
 
     //reset static data to prevent errors on restart
     new public static void ResetStaticData()
@@ -86,7 +87,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     //scriptable objects
     private AssemblySO assemblySO;
     private CorruptionSO corruptionSO;
-
+    
 
     private void Awake()
     {
@@ -375,5 +376,10 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     public List<DucksSO> GetDucksSOList()
     {
         return duckObjectSOList;
+    }
+
+    public bool IsAssembled()
+    {
+        return currentState == State.Corrupting;
     }
 }
