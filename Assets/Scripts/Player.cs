@@ -432,7 +432,11 @@ public class Player : MonoBehaviour, IDuckObjectParent
         this.duckObject = duckObject;
 
         if (duckObject != null)
+        {
             OnPickUp?.Invoke(this, EventArgs.Empty);
+            animator.SetBool("isHolding", true);
+        }
+            
     }
 
     public DuckObject GetDuckObject()
@@ -443,6 +447,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     public void ClearDuckObject()
     {
         duckObject = null;
+        animator.SetBool("isHolding", false);
     }
 
     public bool HasDuckObject()

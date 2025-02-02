@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3300463122889945666}
   - component: {fileID: 5665893184610503693}
   m_Layer: 0
-  m_Name: YellowRubberDuckProjectile
+  m_Name: CorruptRubberDuckProjectile
   m_TagString: CauseDamage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6caa673347ff453f94f10a1f0337b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duckSpeed: 10
+  duckSpeed: 5
 --- !u!114 &5665893184610503693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,11 +264,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5f17983e26be840f386a0e439fb83518, type: 2}
+      objectReference: {fileID: 2100000, guid: fae68838b866047efa4b0c408568d8ed, type: 2}
     - target: {fileID: 919132149155446097, guid: 5acdbf5d443c44307bf595533d88fa58,
         type: 3}
       propertyPath: m_Name
-      value: YellowRubberDuckVisual
+      value: CorruptRubberDuckVisual
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5acdbf5d443c44307bf595533d88fa58,
         type: 3}
