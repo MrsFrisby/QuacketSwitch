@@ -24,6 +24,7 @@ public class AssemblyManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Assembly Manager awake");
         Instance = this;
         waitingProtocolSOList = new List<ProtocolSO>();
     }
@@ -39,7 +40,7 @@ public class AssemblyManager : MonoBehaviour
             if (GameManager.Instance.IsGamePlaying() && waitingProtocolSOList.Count < waitingProtocolsMax)
             {
                 ProtocolSO waitingProtocolSO = protocolListSO.protocolSOList[UnityEngine.Random.Range(0, protocolListSO.protocolSOList.Count)];
-                //Debug.Log(waitingProtocolSO.name);
+                Debug.Log("Assembly Manager:"+waitingProtocolSO.name);
                 waitingProtocolSOList.Add(waitingProtocolSO);
 
                 OnProtocolSpawned?.Invoke(this, EventArgs.Empty);

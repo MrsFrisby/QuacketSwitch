@@ -76,12 +76,14 @@ public class AudioManager : MonoBehaviour
 
     private void AssemblyManager_OnProtocolFailed(object sender, System.EventArgs e)
     {
+        Debug.Log("AudioManager:OnProtocolFailed");
         DeliveryPallet deliveryPallet = DeliveryPallet.Instance;
         PlaySound(audioClipRefsSO.assemblyDeliveryFail, deliveryPallet.transform.position);
     }
 
     private void AssemblyManager_OnProtocolSuccess(object sender, System.EventArgs e)
     {
+        Debug.Log("AudioManager:OnProtocolSucceeded");
         DeliveryPallet deliveryPallet = DeliveryPallet.Instance;
         PlaySound(audioClipRefsSO.assemblyDeliverySuccess, deliveryPallet.transform.position);
     }

@@ -42,9 +42,6 @@ public class OptionsUI : MonoBehaviour
     private Button interactButton;
 
     [SerializeField]
-    private Button altInteractButton;
-
-    [SerializeField]
     private Button reviveButton;
 
     [SerializeField]
@@ -85,9 +82,6 @@ public class OptionsUI : MonoBehaviour
     private TextMeshProUGUI interactButtonText;
 
     [SerializeField]
-    private TextMeshProUGUI altInteractButtonText;
-
-    [SerializeField]
     private TextMeshProUGUI reviveButtonText;
 
     [SerializeField]
@@ -126,7 +120,6 @@ public class OptionsUI : MonoBehaviour
         moveLeftButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveLeft); });
         jumpButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Jump); });
         interactButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Interact); });
-        altInteractButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.AltInteract); });
         grabButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Grab); });
         reviveButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Revive); });
         fireButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Fire); });
@@ -158,10 +151,8 @@ public class OptionsUI : MonoBehaviour
         downButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveDown);
         leftButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveLeft);
         rightButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveRight);
-
         jumpButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Jump);
         interactButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
-        altInteractButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.AltInteract);
         reviveButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Revive);
         grabButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Grab);
         fireButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Fire);

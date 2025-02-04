@@ -13,6 +13,9 @@ public class CorruptionWarningUI : MonoBehaviour
         Hide();
     }
 
+    
+
+
     private void AssemblyPalletDuckHoles_OnProgressChanged(object sender, IHasProgress.OnProgressChangedEventArgs e)
     {
         float corruptShowProgressAmount = .5f;

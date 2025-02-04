@@ -88,11 +88,14 @@ public class DuckObject : MonoBehaviour
     {
         if (this is AssembledDuckObject)
         {
+            Debug.Log("DuckObject:TryGetAssembled:isAssembledDuck");
             assembledDuckObject = this as AssembledDuckObject;
             return true;
+            
         }
         else
         {
+            Debug.Log("DuckObject:TryGetAssembled:isAssembledDuck");
             assembledDuckObject = null;
             return false;
         }

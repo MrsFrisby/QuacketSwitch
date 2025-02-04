@@ -24,9 +24,6 @@ public class TutorialUI : MonoBehaviour
     private TextMeshProUGUI interactButtonText;
 
     [SerializeField]
-    private TextMeshProUGUI altInteractButtonText;
-
-    [SerializeField]
     private TextMeshProUGUI reviveButtonText;
 
     [SerializeField]
@@ -69,7 +66,6 @@ public class TutorialUI : MonoBehaviour
 
         jumpButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Jump);
         interactButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
-        altInteractButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.AltInteract);
         reviveButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Revive);
         grabButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Grab);
         fireButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Fire);

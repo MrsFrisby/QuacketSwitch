@@ -412,7 +412,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     private void SetSelectedPallet(BasePallet selectedPallet)
     {
         this.selectedPallet = selectedPallet;
-        Debug.Log("I have selected a " +selectedPallet);
+        //Debug.Log("I have selected a " +selectedPallet);
 
         OnSelectedPalletChanged?.Invoke(this, new OnSelectedPalletChangedEventArgs
         {
