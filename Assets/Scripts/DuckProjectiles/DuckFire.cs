@@ -16,8 +16,9 @@ public class DuckFire : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * duckSpeed);
+        //transform.Translate(Vector3.forward * Time.deltaTime * duckSpeed);
+        transform.Translate(transform.forward * Time.deltaTime * duckSpeed);
     }
 }

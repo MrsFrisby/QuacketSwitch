@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 7155972379274696175}
   - component: {fileID: 2334427213638570293}
   - component: {fileID: 3309240161132404008}
+  - component: {fileID: -2161928051392399524}
+  - component: {fileID: 5986396437493357727}
   m_Layer: 0
   m_Name: CorruptDuckProjectile
   m_TagString: CauseDamage
@@ -30,14 +32,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397585784084032493}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9194028777778694204}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6827976510363953603
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84,8 +86,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.04
-  m_Center: {x: 0, y: -0.03, z: 0.07}
+  m_Radius: 0.035
+  m_Center: {x: 0, y: 0.075, z: 0.03}
 --- !u!136 &8893009876665599362
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -107,8 +109,8 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 0.03
   m_Height: 0.15
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.03}
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.03, z: 0}
 --- !u!136 &7155972379274696175
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -130,8 +132,8 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 0.025
   m_Height: 0.12
-  m_Direction: 1
-  m_Center: {x: 0.025, y: 0, z: 0.025}
+  m_Direction: 2
+  m_Center: {x: 0.025, y: 0.025, z: 0}
 --- !u!136 &2334427213638570293
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -153,8 +155,8 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 0.025
   m_Height: 0.12
-  m_Direction: 1
-  m_Center: {x: -0.025, y: 0, z: 0.025}
+  m_Direction: 2
+  m_Center: {x: -0.025, y: 0.025, z: 0}
 --- !u!114 &3309240161132404008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +171,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToLiveMax: 5
   timeToLiveMin: 20
+--- !u!114 &-2161928051392399524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397585784084032493}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6caa673347ff453f94f10a1f0337b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duckSpeed: 3
+--- !u!114 &5986396437493357727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397585784084032493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ffdda3db7ba4c248e84d622ccdcc6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 15
 --- !u!1001 &8655207148714373079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,12 +238,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5acdbf5d443c44307bf595533d88fa58,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5acdbf5d443c44307bf595533d88fa58,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5acdbf5d443c44307bf595533d88fa58,
         type: 3}
@@ -230,7 +258,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5acdbf5d443c44307bf595533d88fa58,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5acdbf5d443c44307bf595533d88fa58,
         type: 3}

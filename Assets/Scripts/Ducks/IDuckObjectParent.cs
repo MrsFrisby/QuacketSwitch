@@ -6,6 +6,8 @@ public interface IDuckObjectParent
 {
     public Transform GetDuckObjectFollowTransform();
 
+    public Transform GetAssembledDuckObjectFollowTransform();
+
     public void SetDuckObject(DuckObject duckObject);
 
     public DuckObject GetDuckObject();

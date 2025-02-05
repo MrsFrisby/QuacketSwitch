@@ -50,6 +50,7 @@ public class DuckObject : MonoBehaviour
             //here we reset to the new parent
             this.duckObjectParent = duckObjectParent;
             //Debug.Log("duckObjectParent does not already have child");
+
             duckObjectParent.SetDuckObject(this);
             //this is the position on the new parent object that the duck will move to
             transform.parent = duckObjectParent.GetDuckObjectFollowTransform();

@@ -82,7 +82,8 @@ public class Player : MonoBehaviour, IDuckObjectParent
     private Transform duckHoldPoint;
     //don't want to use this as already have grab mechanics
 
-
+    [SerializeField]
+    private Transform assembledDuckHoldPoint;
 
     private void Awake()
     {
@@ -104,45 +105,8 @@ public class Player : MonoBehaviour, IDuckObjectParent
         gameInput.OnGrabAction += GameInput_OnGrabAction;
         gameInput.OnJumpAction += GameInput_OnJumpAction;
         gameInput.OnGrabCancelAction += GameInput_OnGrabCancelAction;
-        //gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
-        //gameInput.OnInspectAction += GameInput_OnInspectAction;
-        //gameInput.OnInspectAction += GameInput_OnInspectCancelAction;
+
     }
-
-
-    
-
-    ////inspect icon - pressing C
-    //private void GameInput_OnInspectAction(object sender, EventArgs e)
-    //{
-        
-    //    if (duckObject != null)
-    //    {
-    //        //Debug.Log("Player: GameInput_OnInspectAction: Has duck Object");
-    //        //duckObject.displayIconUI = true;
-            
-    //        duckObject.SetIconVisibilityActive();
-    //        Debug.Log("Player: GameInput_OnInspectAction: SetIconVisibilityActive");
-    //        Debug.Log(duckObject.name + ":DisplayIcon" + duckObject.displayIconUI);
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Player: GameInput_OnInspectAction:No duck");
-
-    //    }
-    //}
-
-    //private void GameInput_OnInspectCancelAction(object sender, EventArgs e)
-    //{
-    //    if (duckObject != null)
-    //    {
-    //        duckObject.SetIconVisibilityInActive();
-    //        Debug.Log("Player: GameInput_OnInspectCancelAction: SetIconVisibilityInActive");
-    //        Debug.Log(duckObject.name + ":DisplayIcon" + duckObject.displayIconUI);
-    //    }
-    //        //duckObject.displayIconUI = false;
-            
-    //}
 
     //grabbing
     private void GameInput_OnGrabAction(object sender, System.EventArgs e)
@@ -194,22 +158,6 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
     }
 
-   
-
-    //private void GameInput_OnInteractAlternateAction(object sender, System.EventArgs e)
-    //{
-    //    if (!GameManager.Instance.IsGamePlaying())
-    //    {//Player can't alternate interact unless in playing gameState
-    //        return;
-    //    };
-    //    if (selectedPallet != null)
-    //    {
-
-    //        selectedPallet.InteractAlternate(this);
-    //    }
-    //}
-
-    // Update is called once per frame
     void Update()
     {
         moveInputVector = gameInput.GetMovementVectorNormalized();
@@ -427,6 +375,11 @@ public class Player : MonoBehaviour, IDuckObjectParent
         return duckHoldPoint;
     }
 
+    public Transform GetAssembledDuckObjectFollowTransform()
+    {
+        return assembledDuckHoldPoint;
+    }
+
     public void SetDuckObject(DuckObject duckObject)
     {
         this.duckObject = duckObject;
@@ -455,15 +408,6 @@ public class Player : MonoBehaviour, IDuckObjectParent
         return duckObject != null;
     }
 
-    /*
-void OnCollisionEnter(Collision collision)
-{
-   if (collision.transform.CompareTag("CauseDamage"))
-   {
-       MakeRagdoll();
-   }
-
-}*/
 
 }
 

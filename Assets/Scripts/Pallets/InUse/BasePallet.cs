@@ -28,6 +28,11 @@ public class BasePallet : MonoBehaviour, IDuckObjectParent
         return palletTopPoint;
     }
 
+    public Transform GetAssembledDuckObjectFollowTransform()
+    {
+        return palletTopPoint;
+    }
+
     public void SetDuckObject(DuckObject duckObject)
     {
         this.duckObject = duckObject;
