@@ -224,7 +224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117, y: -64}
+  m_AnchoredPosition: {x: 71, y: -122}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &126114924
@@ -247,9 +247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'QUACKET
-
-    SWITCH'
+  m_text: QUACKET SWITCH
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 802cf45de56394ff6b5e17ca465436ff, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: b20e1034fd14d4ae09e5496a59a6abd0, type: 2}
@@ -276,8 +274,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 170
-  m_fontSizeBase: 170
+  m_fontSize: 240
+  m_fontSizeBase: 240
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

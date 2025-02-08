@@ -12,12 +12,13 @@ public class DuckSpawner : MonoBehaviour
     
     private float timeSinceSpawn;
 
+    [SerializeField]
     private DuckPool duckPool;
 
     
     void Start()
     {
-        duckPool = FindObjectOfType<DuckPool>();
+        //duckPool = FindObjectOfType<DuckPool>();
     }
 
     private void Update()
