@@ -741,6 +741,7 @@ GameObject:
   - component: {fileID: 3101107722079134514}
   - component: {fileID: 673671637508235562}
   - component: {fileID: 1731437148738840272}
+  - component: {fileID: 7195306602607095156}
   m_Layer: 7
   m_Name: AssemblyPalletHTTP
   m_TagString: Untagged
@@ -853,6 +854,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assemblyPalletDuckHoles: {fileID: 1922306254686698338}
+--- !u!136 &7195306602607095156
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697477761107200141}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Height: 2
+  m_Direction: 0
+  m_Center: {x: 0, y: 1, z: -1.3}
 --- !u!1 &6153563836252293648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,7 +1303,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 52d3c0777bc6145be8d3a2a0a598cae3, type: 2}
+      objectReference: {fileID: 2100000, guid: 678a360140fe649568806d5891da236c, type: 2}
     - target: {fileID: 919132149155446097, guid: 2af82d39b781e444c811d13cf87a0d79,
         type: 3}
       propertyPath: m_Name
