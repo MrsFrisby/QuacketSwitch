@@ -12,14 +12,14 @@ public class AssemblyManager : MonoBehaviour
 
     public static AssemblyManager Instance { get; private set; }
 
-    [SerializeField] private ProtocolListSO protocolListSO; 
-
+    [SerializeField] private ProtocolListSO protocolListSO;
+    [SerializeField] private int waitingProtocolsMax;
 
     private List<ProtocolSO> waitingProtocolSOList;
 
     private float spawnProtocolTimer;
     private float spawnProtocolTimerMax = 5f;
-    private int waitingProtocolsMax = 4;
+    //private int waitingProtocolsMax = 4;
     private int successfulQuacketsDelivered;
 
     private void Awake()

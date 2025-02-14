@@ -20,6 +20,8 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnGrabCancelAction;
     public event EventHandler OnJumpAction;
     public event EventHandler OnPauseAction;
+    public event EventHandler OnInteractTutorialAction;
+    public event EventHandler OnInteractTutorialCancelAction;
 
     public event EventHandler OnBindingRebind;
     
@@ -35,7 +37,8 @@ public class GameInput : MonoBehaviour
         Grab,
         Revive,
         Fire,
-        Pause
+        Pause,
+        InteractTutorial
     }
 
     private PlayerInputActions playerInputActions;
@@ -73,10 +76,15 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Pause.performed += Pause_performed;
 
-        
+        playerInputActions.Player.InteractTutorial.performed += InteractTutorial_performed;
 
-        
+        playerInputActions.Player.InteractTutorial.canceled += InteractTutorial_canceled;
+
+
+
     }
+
+    
 
     private void OnDestroy()
     {//this unsubscribes from existing Input Actions on pause, preventing logic from the previous game preventing future use of player input actions
@@ -98,9 +106,27 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Pause.performed -= Pause_performed;
 
+        playerInputActions.Player.InteractTutorial.performed -= InteractTutorial_performed;
+
+        playerInputActions.Player.InteractTutorial.canceled -= InteractTutorial_canceled; 
+
         playerInputActions.Dispose();
     }
 
+    //T key pressed in Tutorial scene
+    private void InteractTutorial_performed(InputAction.CallbackContext obj)
+    {
+        OnInteractTutorialAction?.Invoke(this, EventArgs.Empty);
+        Debug.Log("GameInput:T pressed");
+    }
+
+    //T key released
+    private void InteractTutorial_canceled(InputAction.CallbackContext obj)
+    {
+        OnInteractTutorialCancelAction?.Invoke(this, EventArgs.Empty);
+    }
+
+    //Esc key pressed
     private void Pause_performed(InputAction.CallbackContext obj)
     {
         OnPauseAction?.Invoke(this, EventArgs.Empty);

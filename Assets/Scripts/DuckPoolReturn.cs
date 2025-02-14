@@ -31,11 +31,11 @@ public class DuckPoolReturn : MonoBehaviour
             if (duckPool != null)
             {
                 duckPool.ReturnDuckProjectile(this.gameObject);
-                Debug.Log("Duck returned to pool");
+                //Debug.Log("Duck returned to pool");
             }
             else
             {
-                Debug.Log("Duckpool = null");
+                //Debug.Log("Duckpool = null");
             }
         }
     }
