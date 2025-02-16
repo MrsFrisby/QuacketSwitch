@@ -24,7 +24,7 @@ public class AssemblyManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Assembly Manager awake");
+        //Debug.Log("Assembly Manager awake");
         Instance = this;
         waitingProtocolSOList = new List<ProtocolSO>();
     }

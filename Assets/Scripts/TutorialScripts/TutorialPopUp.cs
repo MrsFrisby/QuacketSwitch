@@ -20,5 +20,6 @@ public class TutorialPopUp : MonoBehaviour
     private void Setup(string text)
     {
         instructionText.SetText(text);
+       
     }
 }

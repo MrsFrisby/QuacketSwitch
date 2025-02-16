@@ -51,7 +51,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     public bool IsGrabbingActive => isGrabbingActive;
     bool isMoving = false;
     public bool IsMoving => isMoving;
-    bool isTPressed = false;
+    public bool isTPressed = false;
 
     //Raycasts
     RaycastHit[] raycastHits = new RaycastHit[10];
@@ -185,20 +185,34 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
         HandleInteractions();
 
-        //Test for collisions
-        if (isTPressed)
+        ////Test for collisions
+        //if (isTPressed)
+        //{
+        //    float interactRange = 0.5f;
+        //    Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, LayerMask.GetMask("Interact"));
+        //    foreach (Collider collider in colliderArray)
+        //    {
+        //        if (collider.TryGetComponent(out TutorialInteractable tutorialInteractable))
+        //        {
+        //            tutorialInteractable.Interact();
+        //        }
+        //    }
+        //}
+
+    }
+
+    public TutorialInteractable GetTutorialInteractable()
+    {
+        float interactRange = 0.5f;
+        Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, LayerMask.GetMask("Interact"));
+        foreach (Collider collider in colliderArray)
         {
-            float interactRange = 0.5f;
-            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, LayerMask.GetMask("Interact"));
-            foreach (Collider collider in colliderArray)
+            if (collider.TryGetComponent(out TutorialInteractable tutorialInteractable))
             {
-                if (collider.TryGetComponent(out TutorialInteractable tutorialInteractable))
-                {
-                    tutorialInteractable.Interact();
-                }
+                return tutorialInteractable;
             }
         }
-
+        return null;
     }
 
     void FixedUpdate()
