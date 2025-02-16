@@ -13,12 +13,15 @@ public class InteractionPromptUI : MonoBehaviour
 {
     //private Camera mainCamera;
 
+    //canvas with background image
     [SerializeField]
-    private GameObject uiPanel;
+    public GameObject uiPanel;
 
+    //text
     [SerializeField]
     private TextMeshProUGUI tutorialPromptText;
 
+    //image container for icon sprite
     [SerializeField]
     private Image tutorialIconImage;
 
@@ -31,6 +34,7 @@ public class InteractionPromptUI : MonoBehaviour
         uiPanel.SetActive(false);
     }
 
+    //function called by interactor script, supplies string and sprite as arguments
     public void SetUp(string promptText, Sprite iconImage)
     {
         tutorialPromptText.text = promptText;

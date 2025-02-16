@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327063f3917ef47bcab318cb86e60af9, type: 3}
+  m_Name: FTP00DeactivatePalletSO
+  m_EditorClassIdentifier: 
+  inputDuckObject: {fileID: -61732384186212010, guid: ce7d53fdd081848588bdeb2f9e80e891,
+    type: 3}
+  outputPallet: {fileID: 6823093657613075129, guid: 6688c6a50b8694cefbbeea3104f6569d,
+    type: 3}

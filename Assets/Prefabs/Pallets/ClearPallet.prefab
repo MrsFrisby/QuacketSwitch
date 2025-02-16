@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClearPalletTutorialUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4831845211296347830, guid: 90c61a96eb26f4a0181be965206a7263,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5260298050405781666, guid: 90c61a96eb26f4a0181be965206a7263,
         type: 3}
       propertyPath: m_SizeDelta.x

@@ -52,6 +52,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     bool isMoving = false;
     public bool IsMoving => isMoving;
     public bool isTPressed = false;
+    public bool isEPressed = false;
 
     //Raycasts
     RaycastHit[] raycastHits = new RaycastHit[10];
@@ -100,7 +101,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
         startSlerpPositionSpring = mainJoint.slerpDrive.positionSpring;
 
         gameInput.OnInteractAction += GameInput_OnInteractAction;
-        //gameInput.OnInteractCancelAction += GameInput_OnInteractCancelAction;
+        gameInput.OnInteractCancelAction += GameInput_OnInteractCancelAction;
         gameInput.OnReviveAction += GameInput_OnReviveAction;
         gameInput.OnReviveCancelAction += GameInput_OnReviveCancelAction;
         gameInput.OnGrabAction += GameInput_OnGrabAction;
@@ -111,7 +112,12 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
     }
 
-    
+    private void GameInput_OnInteractCancelAction(object sender, EventArgs e)
+    {
+        isEPressed = false;
+    }
+
+
 
     //pressing T key in Tutorial scene
     private void GameInput_OnInteractTutorialAction(object sender, EventArgs e)
@@ -167,6 +173,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
         {//Player can't interact unless in playing gameState
             return;
         };
+        isEPressed = true;
         if (selectedPallet != null)
         {
             selectedPallet.Interact(this);

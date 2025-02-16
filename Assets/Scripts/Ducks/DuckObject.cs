@@ -12,6 +12,8 @@ public class DuckObject : MonoBehaviour
 
     //[SerializeField] private Player player;
 
+    [SerializeField] public Container containerPallet;
+
     [SerializeField] private DuckIconsUI duckIconsUI;
 
     //how is the SO set? - via Serialized field for object
@@ -101,10 +103,16 @@ public class DuckObject : MonoBehaviour
             return false;
         }
     }
-    //public void Inspect(Player player)
-    //{
-    //    Debug.Log("Inspect!");
-    //    displayIconUI = true;
-    //}
+    
+
+    public void DeactivatePallet()
+    {
+        containerPallet.DeactivatePallet();
+    }
+
+    public void ReactivatePallet()
+    {
+        containerPallet.ReactivatePallet();
+    }
 
 }

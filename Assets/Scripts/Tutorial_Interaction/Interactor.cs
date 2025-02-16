@@ -2,6 +2,8 @@
 //Unity Interaction Tutorial | How To Interact With Any Game Object (Open Chests & Doors etc)
 //DanPos 2022
 
+//This script goes on the Player
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +12,7 @@ using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
+    //Interaction SEtup
     [SerializeField]
     private Player player;
 
@@ -22,15 +25,18 @@ public class Interactor : MonoBehaviour
     [SerializeField]
     private LayerMask interactableMask;
 
-    [SerializeField]
-    private InteractionPromptUI interactionPromptUI;
 
+    //Canvas with interactionPromptUI script
     [SerializeField]
-    private Image interactionIcon;
+    public InteractionPromptUI interactionPromptUI;
+
+    //Canvas Image
+    //[SerializeField]
+    //private Image interactionIcon;
 
     private Collider[] colliders = new Collider[3];
 
-    [SerializeField]
+    //[SerializeField]
     private int numFound;
 
     private I_Interactable interactable;
@@ -50,9 +56,9 @@ public class Interactor : MonoBehaviour
                     interactionPromptUI.SetUp(interactable.InteractionPrompt, interactable.InteractionSprite);
                 }
 
-                if (player.isTPressed)
+                if (player.isEPressed)
                 {
-                    Debug.Log("T pressed and interactable not null");
+                    Debug.Log("E pressed and interactable not null");
                     interactable.TutorialInteract(this);
                 }
             }

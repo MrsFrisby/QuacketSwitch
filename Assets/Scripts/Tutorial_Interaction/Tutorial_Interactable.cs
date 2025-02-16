@@ -4,6 +4,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,13 +16,27 @@ public class Tutorial_Interactable : MonoBehaviour, I_Interactable
     [SerializeField]
     private Sprite iconSprite;
 
+    //text
+    [SerializeField]
+    private string promptText2;
+
+    //image container for icon sprite
+    [SerializeField]
+    private Sprite iconSprite2;
+
     public string InteractionPrompt => prompt;
 
     public Sprite InteractionSprite => iconSprite;
 
     public bool TutorialInteract(Interactor interactor)
     {
-        Debug.Log("Tutorial Interact: "+ prompt);
+        Debug.Log("Tutorial Interactable: "+ prompt);
+        var tutorialCanvas = interactor.GetComponent<Interactor>();
+        //Debug.Log(tutorialCanvas);
+        //Debug.Log(tutorialCanvas.interactionPromptUI.uiPanel);
+        //tutorialCanvas.interactionPromptUI.uiPanel.SetActive(false);
+        //tutorialCanvas.interactionPromptUI.IsDisplayed = false;
+        tutorialCanvas.interactionPromptUI.SetUp(promptText2, iconSprite2);
         return true;
     }
 }

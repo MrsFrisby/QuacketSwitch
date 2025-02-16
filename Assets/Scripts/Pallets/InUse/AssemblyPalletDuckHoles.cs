@@ -45,6 +45,8 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
     public List<DucksSO> duckObjectSOList;
 
+    public List<DuckObject> duckObjectsList;
+
     [SerializeField] private DucksSO ghostDuck;
 
     [SerializeField] private List<DucksSO> validDucksSOList;
@@ -77,6 +79,9 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     [SerializeField]
     private AssemblySO[] AssemblySOArray;
 
+    //[SerializeField]
+    //private DuckObject[] duckObjectsArray;
+
 
     private State currentState;
 
@@ -93,6 +98,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     {
         //create a new list to keep track of ducks as the player adds them to the duck holes
         duckObjectSOList = new List<DucksSO>();
+        duckObjectsList = new List<DuckObject>();
     }
 
 
@@ -134,6 +140,13 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                 case State.Assembling://ghost ducks visible
 
                     assemblyTimer += Time.deltaTime;//start assembly timer
+
+                    //reactivate pallets and remove duck objects from list
+                    foreach (DuckObject duckObject in duckObjectsList)
+                    {
+                        duckObject.ReactivatePallet();
+                        duckObjectsList.Remove(duckObject);
+                    }
 
                     //remove duck prefabs from duckholes and duckSOs from list
                     OnDestroyAll?.Invoke(this, EventArgs.Empty);
@@ -225,6 +238,11 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                 Debug.Log("DuckHoles3: duck match true");
                 if (TryAddDucktoList(playerDuckSO))
                 {//destroy the duck the player is holding
+                    DuckObject duckToAdd = player.GetDuckObject();
+                    Debug.Log("APDH:Interact:"+duckToAdd);
+                    duckObjectsList.Add(duckToAdd);
+                    Debug.Log("APDH:Interact DuckList[0]:" + duckObjectsList[0]);
+                    player.GetDuckObject().DeactivatePallet();
                     Debug.Log("DuckHoles4: duck added to pallet SO list");
                     player.GetDuckObject().DestroySelf();
                     if (ducksSpawned < ducksSpawnedMax)
@@ -381,5 +399,10 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     public bool IsAssembled()
     {
         return currentState == State.Corrupting;
+    }
+
+    private void SwitchOffPallets(DucksSO ducksSO)
+    {
+
     }
 }
