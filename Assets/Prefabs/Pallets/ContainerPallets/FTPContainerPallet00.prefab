@@ -124,6 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5660681333890813704}
+  - component: {fileID: 8551675287728807611}
   m_Layer: 0
   m_Name: PalletDeSelected
   m_TagString: Untagged
@@ -147,6 +148,24 @@ Transform:
   - {fileID: 5299989339817972814}
   m_Father: {fileID: 3438709547830619219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8551675287728807611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949152423814415238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6939f52807c92427fb036acd9e71579f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 6823093657613075129}
+  visualGameObjectArray:
+  - {fileID: 4811683428703751924}
+  - {fileID: 4720825334456472149}
+  assemblyPalletDuckHoles: {fileID: 7801306769904627580, guid: 8a5b257e951df4e4a847b62c0d47e0f6,
+    type: 3}
 --- !u!1 &5067029304616697068
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +738,12 @@ PrefabInstance:
       addedObject: {fileID: 4767012022677547209}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af82d39b781e444c811d13cf87a0d79, type: 3}
+--- !u!1 &4811683428703751924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2af82d39b781e444c811d13cf87a0d79,
+    type: 3}
+  m_PrefabInstance: {fileID: 5622710342632633253}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5299989339817972814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2af82d39b781e444c811d13cf87a0d79,

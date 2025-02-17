@@ -14,11 +14,14 @@ public class Container : BasePallet
     [SerializeField]
     private GameObject deselectedVisual;
 
+    //[SerializeField]
+    //public AssemblyPalletDuckHoles assemblyPalletDuckHoles;
+
     public bool isDeactivated = false;
 
     public void Start()
     {
-        ReactivatePallet();
+        //ReactivatePallet();
     }
 
     public override void Interact(Player player)

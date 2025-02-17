@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6535094394070299286}
-  - component: {fileID: 5551875941057338361}
+  - component: {fileID: 7534442347015873557}
   m_Layer: 0
   m_Name: PalletDeSelected
   m_TagString: Untagged
@@ -188,7 +188,7 @@ Transform:
   - {fileID: 8672261549260107074}
   m_Father: {fileID: 3843979621500058935}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5551875941057338361
+--- !u!114 &7534442347015873557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,11 +197,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4621301736776124263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8200d737c8c834a3ea30475b8cb62eb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6939f52807c92427fb036acd9e71579f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePallet: {fileID: 0}
-  visualGameObjectArray: []
+  container: {fileID: 1529357100888734203}
+  visualGameObjectArray:
+  - {fileID: 8291653867425052664}
+  - {fileID: 4982598486431597385}
+  assemblyPalletDuckHoles: {fileID: 7801306769904627580, guid: 8a5b257e951df4e4a847b62c0d47e0f6,
+    type: 3}
 --- !u!1 &4982598486431597385
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +835,12 @@ PrefabInstance:
       addedObject: {fileID: 470580063434146249}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af82d39b781e444c811d13cf87a0d79, type: 3}
+--- !u!1 &8291653867425052664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2af82d39b781e444c811d13cf87a0d79,
+    type: 3}
+  m_PrefabInstance: {fileID: 9210061980655684265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8672261549260107074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2af82d39b781e444c811d13cf87a0d79,

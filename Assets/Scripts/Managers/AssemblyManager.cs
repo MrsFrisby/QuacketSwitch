@@ -40,7 +40,7 @@ public class AssemblyManager : MonoBehaviour
             if (GameManager.Instance.IsGamePlaying() && waitingProtocolSOList.Count < waitingProtocolsMax)
             {
                 ProtocolSO waitingProtocolSO = protocolListSO.protocolSOList[UnityEngine.Random.Range(0, protocolListSO.protocolSOList.Count)];
-                Debug.Log("Assembly Manager:"+waitingProtocolSO.name);
+                //Debug.Log("Assembly Manager:"+waitingProtocolSO.name);
                 waitingProtocolSOList.Add(waitingProtocolSO);
 
                 OnProtocolSpawned?.Invoke(this, EventArgs.Empty);
@@ -54,7 +54,7 @@ public class AssemblyManager : MonoBehaviour
         for (int i=0; i<waitingProtocolSOList.Count; i++)
         {
             ProtocolSO waitingProtocolSO = waitingProtocolSOList[i];
-            Debug.Log("assemblyManager:waitingprotocolSO:" + waitingProtocolSO);
+            //Debug.Log("assemblyManager:waitingprotocolSO:" + waitingProtocolSO);
 
             if(waitingProtocolSO.duckObjectSOList.Count == assembledDuckObject.GetDucksSOList().Count)
             {//delivered assembled duck has same number of duck components as waiting protocol

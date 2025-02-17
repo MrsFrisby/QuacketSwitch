@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //inherits from basePallet class and HasProgress interface
-public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
+public class AssemblyPalletDuckHolesFTP : BasePallet, IHasProgress
 
 {
-    public static AssemblyPalletDuckHoles Instance { get; private set; }
+    public static AssemblyPalletDuckHolesFTP Instance { get; private set; }
 
 
 
@@ -261,14 +261,14 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
     public override void Interact(Player player)
     {//when E is pressed
-        //Debug.Log("DuckHoles1: E pressed");
+        Debug.Log("DuckHoles1: E pressed");
         if (player.HasDuckObject())
         {//find out which duck the player is carrying
-            //Debug.Log("DuckHoles2: player has duck");
+            Debug.Log("DuckHoles2: player has duck");
             playerDuckSO = player.GetDuckObject().GetDucksSO();
             if (HasMatchWithValidDuckSOList(playerDuckSO))//if the duck can be accepted
             {// returns true if the duck is not already on the list
-                //Debug.Log("DuckHoles3: duck match true");
+                Debug.Log("DuckHoles3: duck match true");
                 if (TryAddDucktoList(playerDuckSO))
                 {//get the duckObject that has been delivered
                     //DuckObject deliveredDuck = player.GetDuckObject();
@@ -282,7 +282,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                     //cycle through the deactivatePalletSOArray to find the matching pallet
                     Debug.Log("PlayerDuckSO:" + playerDuckSO);
                     Container container = GetContainerWithDuckInput(playerDuckSO);
-                    Debug.Log("APDH Interact:" + container);
+                    Debug.Log("APDH Interact:" + container.name);
 
 
 
@@ -297,21 +297,21 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                     //player.GetDuckObject().DeactivatePallet();
 
 
-                    //Debug.Log("DuckHoles4: duck added to pallet SO list");
+                    Debug.Log("DuckHoles4: duck added to pallet SO list");
                     //destroy the duck the player is holding
                     player.GetDuckObject().DestroySelf();
                     if (ducksSpawned < ducksSpawnedMax)
                     {//there is room for more ducks
-                        //Debug.Log("DuckHoles5: room for more ducks");
+                        Debug.Log("DuckHoles5: room for more ducks");
                         ducksSpawned++;//increment counter
                         OnDuckSpawned?.Invoke(this, EventArgs.Empty);//broadcast to visual script
                         if (ducksSpawned == ducksSpawnedMax)
                         {//if player is delivering final duck
-                            //Debug.Log("DuckHoles6: player has last duck");
+                            Debug.Log("DuckHoles6: player has last duck");
                             if (HasMatchwithAssemblySOInput(playerDuckSO))
                             {//duck dropped matches assemblySO.input duck object within pallet's array
                                 //spawn ghost ducks as child duckSO of this pallet
-                                //Debug.Log("DuckHoles7: match found with Assembly SO input");
+                                Debug.Log("DuckHoles7: match found with Assembly SO input");
                                 DuckObject.spawnDuckObject(ghostDuck,this);
                                 //get the correct output assembled duck based on the last duck successfully delivered
                                 assemblySO = GetAssemblySOWithInput(playerDuckSO);
@@ -328,20 +328,14 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                             }
                             else
                             {//this shouldn't ever happen
-                                //Debug.Log("Duckholes7: No match with AssemblySOInput: this is a " + playerDuckSO);
+                                Debug.Log("Duckholes7: No match with AssemblySOInput: this is a " + playerDuckSO);
                             }
                         }
-                        else
-                        {
-                            //Debug.Log("DuckHoles6: not the last duck");
-                        }
+                        else { Debug.Log("DuckHoles6: not the last duck"); }
                     }
-                    else
-                    { //Debug.Log("DuckHoles5: no room for more ducks");
-                    }
+                    else { Debug.Log("DuckHoles5: no room for more ducks"); }
                 }
-                else { //Debug.Log("DuckHoles4: duck not added to SO list");
-                     }
+                else { Debug.Log("DuckHoles4: duck not added to SO list"); }
             }
             else
             {//No match with Valid duckSO list assigned in inspector

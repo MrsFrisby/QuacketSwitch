@@ -41,7 +41,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
 
     //Controller
-    float maxSpeed = 3;
+    [SerializeField] float maxSpeed = 4;
 
     //States
     bool isGrounded = false;
@@ -299,6 +299,13 @@ public class Player : MonoBehaviour, IDuckObjectParent
                 rigidBody3D.AddForce(Vector3.up * 20, ForceMode.Impulse);
                 isJumpButtonPressed = false;
             }
+
+            if (isGrounded && isTPressed)
+            {
+                rigidBody3D.AddForce(Vector3.forward * -30, ForceMode.Impulse);
+                isTPressed = false;
+            }
+
         }
         else
         {
