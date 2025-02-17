@@ -58,7 +58,7 @@ public class Interactor : MonoBehaviour
 
                 if (player.isEPressed)
                 {
-                    Debug.Log("E pressed and interactable not null");
+                    //Debug.Log("E pressed and interactable not null");
                     interactable.TutorialInteract(this);
                 }
             }

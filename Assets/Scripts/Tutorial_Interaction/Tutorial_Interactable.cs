@@ -30,7 +30,7 @@ public class Tutorial_Interactable : MonoBehaviour, I_Interactable
 
     public bool TutorialInteract(Interactor interactor)
     {
-        Debug.Log("Tutorial Interactable: "+ prompt);
+        //Debug.Log("Tutorial Interactable: "+ prompt);
         var tutorialCanvas = interactor.GetComponent<Interactor>();
         //Debug.Log(tutorialCanvas);
         //Debug.Log(tutorialCanvas.interactionPromptUI.uiPanel);

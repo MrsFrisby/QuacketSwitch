@@ -27,7 +27,7 @@ public class Container : BasePallet
         if (!HasDuckObject() && !isDeactivated)
         {
             DuckObject.spawnDuckObject(ducksSO, player);
-
+            //DeactivatePallet();
             OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
         }
         else

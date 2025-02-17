@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 327063f3917ef47bcab318cb86e60af9, type: 3}
-  m_Name: FTP00DeactivatePalletSO
+  m_Name: FTP00_DeactivatePalletSO
   m_EditorClassIdentifier: 
-  inputDuckObject: {fileID: -61732384186212010, guid: ce7d53fdd081848588bdeb2f9e80e891,
-    type: 3}
+  inputDuckObjectSO: {fileID: 11400000, guid: ce0e2a9eb44fe4c4b8eadead7963df6d, type: 2}
   outputPallet: {fileID: 6823093657613075129, guid: 6688c6a50b8694cefbbeea3104f6569d,
     type: 3}

@@ -6,6 +6,6 @@ using UnityEngine;
 
 public class DeactivatePalletSO : ScriptableObject
 {
-    public DuckObject inputDuckObject;
+    public DucksSO inputDuckObjectSO;
     public Container outputPallet;
 }

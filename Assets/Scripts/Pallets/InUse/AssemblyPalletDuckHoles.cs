@@ -51,6 +51,8 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
     [SerializeField] private List<DucksSO> validDucksSOList;
 
+    
+
     private DucksSO playerDuckSO;
 
     
@@ -82,6 +84,8 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     //[SerializeField]
     //private DuckObject[] duckObjectsArray;
 
+    [SerializeField]
+    private DeactivatePalletSO[] DeactivatePalletSOArray;
 
     private State currentState;
 
@@ -237,13 +241,32 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
             {// returns true if the duck is not already on the list
                 Debug.Log("DuckHoles3: duck match true");
                 if (TryAddDucktoList(playerDuckSO))
-                {//destroy the duck the player is holding
-                    DuckObject duckToAdd = player.GetDuckObject();
-                    Debug.Log("APDH:Interact:"+duckToAdd);
-                    duckObjectsList.Add(duckToAdd);
-                    Debug.Log("APDH:Interact DuckList[0]:" + duckObjectsList[0]);
-                    player.GetDuckObject().DeactivatePallet();
+                {//get the duckObject that has been delivered
+                    //DuckObject deliveredDuck = player.GetDuckObject();
+                    //Debug.Log("APDH:Interact:" + deliveredDuck);
+
+                    //add it to the list
+                    //this may not be needed
+                    //duckObjectsList.Add(deliveredDuck);
+                    //Debug.Log("APDH:Interact DuckList[0] :" + duckObjectsList[0]);
+
+                    //cycle through the deactivatePalletSOArray to find the matching pallet
+                    Debug.Log("PlayerDuckSO:" + playerDuckSO);
+                    Container container = GetContainerWithDuckInput(playerDuckSO);
+                    //Debug.Log("APDH Interact:" + container);
+
+
+
+
+
+
+
+
+                    //player.GetDuckObject().DeactivatePallet();
+
+
                     Debug.Log("DuckHoles4: duck added to pallet SO list");
+                    //destroy the duck the player is holding
                     player.GetDuckObject().DestroySelf();
                     if (ducksSpawned < ducksSpawnedMax)
                     {//there is room for more ducks
@@ -357,6 +380,22 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
             if (corruptionSO.input == inputDucksSO)
             {
                 return corruptionSO;
+            }
+        }
+        return null;
+    }
+
+
+    private Container GetContainerWithDuckInput(DucksSO inputDuckSO)
+    {
+        foreach (DeactivatePalletSO deactivatepalletSO in DeactivatePalletSOArray)
+        {
+            Debug.Log("checking:" + inputDuckSO);
+            Debug.Log("against:"+deactivatepalletSO.inputDuckObjectSO);
+
+            if (deactivatepalletSO.inputDuckObjectSO == inputDuckSO)
+            {
+                return deactivatepalletSO.outputPallet;
             }
         }
         return null;
