@@ -8,6 +8,10 @@ TagManager:
   - CinemachineTarget
   - CauseDamage
   - ownBody
+  - HTTP
+  - HTTPS
+  - FTP
+  - IMAP
   layers:
   - Default
   - TransparentFX

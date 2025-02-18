@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 8867178961247794266}
   m_Layer: 7
   m_Name: AssemblyPalletDuckHolesFTP
-  m_TagString: Untagged
+  m_TagString: FTP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -427,6 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   palletTopPoint: {fileID: 1886462539891878863}
   duckObjectSOList: []
+  duckObjectsList: []
   ghostDuck: {fileID: 11400000, guid: 0f7ad49b9bf6d464a926706b7651d23c, type: 2}
   validDucksSOList:
   - {fileID: 11400000, guid: ce0e2a9eb44fe4c4b8eadead7963df6d, type: 2}
@@ -440,6 +441,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad7c2946d43d0486ab08e25dffc4119a, type: 2}
   - {fileID: 11400000, guid: a16b26a52d95b4ba8bb2f098d6b5bbb0, type: 2}
   - {fileID: 11400000, guid: f83c1b9060e204432961ee61776e81d9, type: 2}
+  DeactivatePalletSOArray:
+  - {fileID: 11400000, guid: a716dc48283fb41c8ad9fead8f7721ad, type: 2}
+  - {fileID: 11400000, guid: 2d3af482074b849a3bf54fbf658cfb49, type: 2}
+  - {fileID: 11400000, guid: 4c653ecbb610544e79c952315e7ac355, type: 2}
+  - {fileID: 11400000, guid: 6112c8a8d692042148d69567a519e528, type: 2}
 --- !u!65 &4363400588491622643
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
 {
-    public static AssemblyPalletDuckHoles Instance { get; private set; }
+    //public static AssemblyPalletDuckHoles Instance { get; private set; }
 
 
 
@@ -34,32 +34,14 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     public event EventHandler OnDestroyLast;
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
 
-    public event EventHandler<OnDuckDeliveredEventArgs> OnDuckDelivered;
+    public static event EventHandler<OnDuckDeliveredEventArgs> OnDuckDelivered;
 
     public class OnDuckDeliveredEventArgs : EventArgs
     {
         public Container containerToDeactivate;
     }
 
-    public event EventHandler onFTPDuckAssembled;
-
-
-
-    //public class OnDuckDeliveredEventArgs : EventArgs
-    //{
-    //    public Container FirstContainerToDeactivate { get; set; }
-    //    public Container SecondContainerToDeactivate { get; set; }
-    //    public Container ThirdContainerToDeactivate { get; set; }
-
-    //    public OnDuckDeliveredEventArgs (Container firstContainerToDeactivate,Container secondContainerToDeactivate, Container thirdContainerToDeactivete)
-    //    {
-    //        FirstContainerToDeactivate = firstContainerToDeactivate;
-    //        SecondContainerToDeactivate = secondContainerToDeactivate;
-    //        ThirdContainerToDeactivate = thirdContainerToDeactivete;
-    //    }
-    //}
-
-
+    public static event EventHandler onFTPDuckAssembled;
 
     public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
 
@@ -131,11 +113,11 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Debug.LogError("Instance is not null");
-        }
-        Instance = this;
+        //if (Instance != null)
+        //{
+        //    Debug.LogError("Instance is not null");
+        //}
+        //Instance = this;
 
         //create a new list to keep track of ducks as the player adds them to the duck holes
         duckObjectSOList = new List<DucksSO>();

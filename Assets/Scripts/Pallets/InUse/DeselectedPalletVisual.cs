@@ -11,10 +11,10 @@ public class DeselectedPalletVisual : MonoBehaviour
 
     private void Start()
     {
-        AssemblyPalletDuckHoles.Instance.OnDuckDelivered += AssemblyPalletDuckHoles_OnDuckDelivered;
+        AssemblyPalletDuckHoles.OnDuckDelivered += AssemblyPalletDuckHoles_OnDuckDelivered;
         //Debug.Log("DPV:"+container.name);
         Hide();
-        AssemblyPalletDuckHoles.Instance.onFTPDuckAssembled += AssemblyPalletDuckHoles_onFTPDuckAssembled;
+        AssemblyPalletDuckHoles.onFTPDuckAssembled += AssemblyPalletDuckHoles_onFTPDuckAssembled;
     }
 
     private void AssemblyPalletDuckHoles_onFTPDuckAssembled(object sender, EventArgs e)
