@@ -7,9 +7,7 @@ public class DeselectedPalletVisual : MonoBehaviour
 {
     [SerializeField] private Container container;
     [SerializeField] private GameObject[] visualGameObjectArray;
-    //[SerializeField] private AssemblyPalletDuckHoles assemblyPalletDuckHoles;
-
-    //private bool deActivated;
+    
 
     private void Start()
     {
@@ -31,25 +29,19 @@ public class DeselectedPalletVisual : MonoBehaviour
         if (e.containerToDeactivate.name == container.name)
         {
             Show();
-            Debug.Log("DPV:APDH-ODD: Match");
-
+            //Debug.Log("DPV:APDH-ODD: Match");
         }
-        //else
-        //{
-        //    Hide();
-        //    Debug.Log("DPV:APDH-ODD: No Match");
-        //}
+        
     }
 
     private void Show()
     {
         Debug.Log("DPV:Show()");
-        //container.DeactivatePallet();
         foreach (GameObject visualGameObject in visualGameObjectArray)
         {
             container.isDeactivated = true;
             visualGameObject.SetActive(true);
-            Debug.Log("DVP: Show: foreach " + visualGameObject.name);
+            //Debug.Log("DVP: Show: foreach " + visualGameObject.name);
         }
     }
 
@@ -60,7 +52,7 @@ public class DeselectedPalletVisual : MonoBehaviour
         {
             container.isDeactivated = false;
             visualGameObject.SetActive(false);
-            Debug.Log("DVP: Hide: foreach " + visualGameObject.name);
+            //Debug.Log("DVP: Hide: foreach " + visualGameObject.name);
         }
     }
 }

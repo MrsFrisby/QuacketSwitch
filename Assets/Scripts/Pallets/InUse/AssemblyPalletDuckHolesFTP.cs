@@ -177,7 +177,7 @@ public class AssemblyPalletDuckHolesFTP : BasePallet, IHasProgress
                     //reactivate pallets and remove duck objects from list
                     foreach (DuckObject duckObject in duckObjectsList)
                     {
-                        duckObject.ReactivatePallet();
+                        //duckObject.ReactivatePallet();
                         duckObjectsList.Remove(duckObject);
                     }
 

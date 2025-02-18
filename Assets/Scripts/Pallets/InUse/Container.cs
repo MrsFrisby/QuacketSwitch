@@ -16,18 +16,12 @@ public class Container : BasePallet
 
     public bool isDeactivated = false;
 
-    public void Start()
-    {
-        //ReactivatePallet();
-    }
-
     public override void Interact(Player player)
     {
         //if the player is not already carrying something
         if (!HasDuckObject() && !isDeactivated)
         {
             DuckObject.spawnDuckObject(ducksSO, player);
-            //DeactivatePallet();
             OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
         }
         else
@@ -36,15 +30,15 @@ public class Container : BasePallet
         }
     }
 
-    public void DeactivatePallet()
-    {
-        deselectedVisual.SetActive(true);
-        isDeactivated = true;
-    }
+    //public void DeactivatePallet()
+    //{
+    //    deselectedVisual.SetActive(true);
+    //    isDeactivated = true;
+    //}
 
-    public void ReactivatePallet()
-    {
-        deselectedVisual.SetActive(false);
-        isDeactivated = false;
-    }
+    //public void ReactivatePallet()
+    //{
+    //    deselectedVisual.SetActive(false);
+    //    isDeactivated = false;
+    //}
 }

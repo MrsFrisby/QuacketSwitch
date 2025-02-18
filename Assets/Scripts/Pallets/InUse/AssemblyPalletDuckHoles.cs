@@ -146,23 +146,11 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     private void Start()
     {
         //initialise state machine
-        currentState = State.Idle;
-        //OnPPressed += Testing_OnPPressed;
-        //duckCount = 0;
+        currentState = State.Idle;     
     }
-
-    //private void Testing_OnPPressed(object sender, EventArgs e)
-    //{
-    //    Debug.Log("APDH:P Key Pressed");
-    //}
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    OnPPressed?.Invoke(this, EventArgs.Empty);
-        //}
-
         //destroy last added duck if timer reaches max
         duckHoleTimer += Time.deltaTime;
         if (duckHoleTimer > duckHoleTimerMax)
@@ -196,7 +184,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                     //reactivate pallets and remove duck objects from list
                     foreach (DuckObject duckObject in duckObjectsList)
                     {
-                        duckObject.ReactivatePallet();
+                        //duckObject.ReactivatePallet();
                         duckObjectsList.Remove(duckObject);
                     }
 
@@ -293,46 +281,15 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                 //Debug.Log("DuckHoles3: duck match true");
                 if (TryAddDucktoList(playerDuckSO))
                 {//get the duckObject that has been delivered
-                    //DuckObject deliveredDuck = player.GetDuckObject();
-                    //Debug.Log("APDH:Interact:" + deliveredDuck);
-
-                    //add it to the list
-                    //this may not be needed
-                    //duckObjectsList.Add(deliveredDuck);
-                    //Debug.Log("APDH:Interact DuckList[0] :" + duckObjectsList[0]);
-
-                    //cycle through the deactivatePalletSOArray to find the matching pallet
-                    Debug.Log("PlayerDuckSO:" + playerDuckSO);
+                    //cycle through the deactivatePalletSOArray to find the matching pallet 
                     Container container = GetContainerWithDuckInput(playerDuckSO);
-                    Debug.Log("APDH Interact:" + container);
-
-                    //duckCount++;
-
-                    //if (duckCount == 1)
-                    //{
-                    //    OnDuckDelivered?.Invoke(this, new OnDuckDeliveredEventArgs
-                    //    {
-                    //        c
-                    //    }); 
-                    //}
-                    //else if (duckCount == 2)
-                    //{
-
-                    //}
-                        
-
-
+                    //Debug.Log("PlayerDuckSO:" + playerDuckSO);
+                    //Debug.Log("APDH Interact:" + container);
+                    //publish event to container pallets to deactivate
                     OnDuckDelivered?.Invoke(this, new OnDuckDeliveredEventArgs
                     {
                         containerToDeactivate = container
                     }); 
-
-
-
-
-                    //player.GetDuckObject().DeactivatePallet();
-
-
                     //Debug.Log("DuckHoles4: duck added to pallet SO list");
                     //destroy the duck the player is holding
                     player.GetDuckObject().DestroySelf();
@@ -459,15 +416,12 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         return null;
     }
 
-    
-
     private Container GetContainerWithDuckInput(DucksSO inputDuckSO)
     {
         foreach (DeactivatePalletSO deactivatepalletSO in DeactivatePalletSOArray)
         {
-            Debug.Log("checking:" + inputDuckSO);
-            Debug.Log("against:"+deactivatepalletSO.inputDuckObjectSO);
-
+            //Debug.Log("checking:" + inputDuckSO);
+            //Debug.Log("against:"+deactivatepalletSO.inputDuckObjectSO);
             if (deactivatepalletSO.inputDuckObjectSO == inputDuckSO)
             {
                 return deactivatepalletSO.outputPallet;
@@ -515,8 +469,5 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         return currentState == State.Corrupting;
     }
 
-    private void SwitchOffPallets(DucksSO ducksSO)
-    {
 
-    }
 }

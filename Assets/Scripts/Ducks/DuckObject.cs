@@ -105,14 +105,14 @@ public class DuckObject : MonoBehaviour
     }
     
 
-    public void DeactivatePallet()
-    {
-        containerPallet.DeactivatePallet();
-    }
+    //public void DeactivatePallet()
+    //{
+    //    containerPallet.DeactivatePallet();
+    //}
 
-    public void ReactivatePallet()
-    {
-        containerPallet.ReactivatePallet();
-    }
+    //public void ReactivatePallet()
+    //{
+    //    containerPallet.ReactivatePallet();
+    //}
 
 }
