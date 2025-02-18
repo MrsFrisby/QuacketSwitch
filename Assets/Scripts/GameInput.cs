@@ -58,7 +58,9 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Enable();
 
-        playerInputActions.Player.Interact.started += Interact_started;
+        //playerInputActions.Player.Interact.started += Interact_started;
+
+        playerInputActions.Player.Interact.performed += Interact_performed;
 
         playerInputActions.Player.Interact.canceled += Interact_canceled;
 
@@ -88,7 +90,9 @@ public class GameInput : MonoBehaviour
 
     private void OnDestroy()
     {//this unsubscribes from existing Input Actions on pause, preventing logic from the previous game preventing future use of player input actions
-        playerInputActions.Player.Interact.started -= Interact_started;
+        //playerInputActions.Player.Interact.started -= Interact_started;
+
+        playerInputActions.Player.Interact.performed -= Interact_performed;
 
         playerInputActions.Player.Interact.canceled -= Interact_canceled;
 
@@ -173,12 +177,18 @@ public class GameInput : MonoBehaviour
         OnReviveCancelAction?.Invoke(this, EventArgs.Empty);
     }
 
-    
-    private void Interact_started(InputAction.CallbackContext obj)
+    private void Interact_performed(InputAction.CallbackContext obj)
     {
         //Debug.Log("GameInputScript: E key pressed");
         OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
+
+
+    //private void Interact_started(InputAction.CallbackContext obj)
+    //{
+    //    //Debug.Log("GameInputScript: E key pressed");
+    //    OnInteractAction?.Invoke(this, EventArgs.Empty);
+    //}
 
     private void Interact_canceled(InputAction.CallbackContext obj)
     {

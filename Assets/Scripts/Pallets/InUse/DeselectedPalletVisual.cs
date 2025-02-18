@@ -12,7 +12,7 @@ public class DeselectedPalletVisual : MonoBehaviour
     private void Start()
     {
         AssemblyPalletDuckHoles.OnDuckDelivered += AssemblyPalletDuckHoles_OnDuckDelivered;
-        //Debug.Log("DPV:"+container.name);
+        Debug.Log("DPV:"+container.name);
         Hide();
         AssemblyPalletDuckHoles.onFTPDuckAssembled += AssemblyPalletDuckHoles_onFTPDuckAssembled;
     }
@@ -24,18 +24,20 @@ public class DeselectedPalletVisual : MonoBehaviour
 
     private void AssemblyPalletDuckHoles_OnDuckDelivered(object sender, AssemblyPalletDuckHoles.OnDuckDeliveredEventArgs e)
     {
-        Debug.Log("DPV:APDH_OnDuckDelivered"+e.containerToDeactivate);
+        //Debug.Log("DPV:APDH_OnDuckDelivered");
+        Debug.Log("DPV:APDH_OnDuckDelivered: Comparing:"+e.containerToDeactivate.name);
+        Debug.Log("DPV:APDH_OnDuckDelivered: with" + container.name);
 
         if (e.containerToDeactivate.name == container.name)
         {
             Show();
             Debug.Log("DPV:APDH-ODD: Match");
         }
-        else
-        {
-            Debug.Log("DPV:APDH-ODD: No match between");
-        }
-        
+        //else
+        //{
+        //    Debug.Log("DPV:APDH-ODD: No match between");
+        //}
+
     }
 
     private void Show()
@@ -51,7 +53,7 @@ public class DeselectedPalletVisual : MonoBehaviour
 
     private void Hide()
     {
-        Debug.Log("DPV:Hide()");
+        Debug.Log("DPV:Hide():"+container.name);
         foreach (GameObject visualGameObject in visualGameObjectArray)
         {
             container.isDeactivated = false;
