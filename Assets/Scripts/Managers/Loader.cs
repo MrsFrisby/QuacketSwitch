@@ -8,6 +8,7 @@ public static class Loader
     public enum Scene
     {
         GameStart,
+        Tutorial,
         QuacketSwitch,
         LoadingScene,
     }

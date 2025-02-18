@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private float startCountdownTimer = 3f;
     private float gamePlayTimer;
     [SerializeField]
-    private float gamePlayTimerMax = 300f;
+    private float gamePlayTimerMax = 300f; 
     private bool IsGamePaused = false;
 
 
@@ -36,6 +36,16 @@ public class GameManager : MonoBehaviour
     {
         GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
+        GameInput.Instance.OnJumpAction += GameInput_OnJumpAction;
+    }
+
+    private void GameInput_OnJumpAction(object sender, EventArgs e)
+    {
+        if (gameState == GameState.WaitingToStart)
+        {
+            gameState = GameState.CountdownToStart;
+            OnStateChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void GameInput_OnInteractAction(object sender, EventArgs e)

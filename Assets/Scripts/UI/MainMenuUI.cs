@@ -12,12 +12,20 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField]
     private Button quitButton;
 
+    [SerializeField]
+    private Button learnButton;
+
     private void Awake()
     {
         playButton.onClick.AddListener(() =>
         {//lambda expression
             //SceneManager.LoadScene(1);
             Loader.Load(Loader.Scene.QuacketSwitch);
+        });
+
+        learnButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.Tutorial);
         });
 
         quitButton.onClick.AddListener(() =>
