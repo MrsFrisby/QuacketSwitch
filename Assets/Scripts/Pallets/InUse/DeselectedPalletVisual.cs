@@ -29,7 +29,11 @@ public class DeselectedPalletVisual : MonoBehaviour
         if (e.containerToDeactivate.name == container.name)
         {
             Show();
-            //Debug.Log("DPV:APDH-ODD: Match");
+            Debug.Log("DPV:APDH-ODD: Match");
+        }
+        else
+        {
+            Debug.Log("DPV:APDH-ODD: No match between");
         }
         
     }

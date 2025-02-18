@@ -265,8 +265,8 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                 {//get the duckObject that has been delivered
                     //cycle through the deactivatePalletSOArray to find the matching pallet 
                     Container container = GetContainerWithDuckInput(playerDuckSO);
-                    //Debug.Log("PlayerDuckSO:" + playerDuckSO);
-                    //Debug.Log("APDH Interact:" + container);
+                    Debug.Log("PlayerDuckSO:" + playerDuckSO);
+                    Debug.Log("APDH Interact:" + container);
                     //publish event to container pallets to deactivate
                     OnDuckDelivered?.Invoke(this, new OnDuckDeliveredEventArgs
                     {
@@ -402,13 +402,14 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     {
         foreach (DeactivatePalletSO deactivatepalletSO in DeactivatePalletSOArray)
         {
-            //Debug.Log("checking:" + inputDuckSO);
-            //Debug.Log("against:"+deactivatepalletSO.inputDuckObjectSO);
+            Debug.Log("checking:" + inputDuckSO);
+            Debug.Log("against:"+deactivatepalletSO.inputDuckObjectSO);
             if (deactivatepalletSO.inputDuckObjectSO == inputDuckSO)
             {
                 return deactivatepalletSO.outputPallet;
             }
         }
+        Debug.Log("APDH:GetContainerwithDuckInput: returning null");
         return null;
     }
 
