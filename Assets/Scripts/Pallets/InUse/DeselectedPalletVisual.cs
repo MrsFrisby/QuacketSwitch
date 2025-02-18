@@ -9,16 +9,20 @@ public class DeselectedPalletVisual : MonoBehaviour
     [SerializeField] private GameObject[] visualGameObjectArray;
     //[SerializeField] private AssemblyPalletDuckHoles assemblyPalletDuckHoles;
 
+    //private bool deActivated;
+
     private void Start()
     {
-        //Player.Instance.OnSelectedPalletChanged += Player_OnSelectedPalletChanged;
         AssemblyPalletDuckHoles.Instance.OnDuckDelivered += AssemblyPalletDuckHoles_OnDuckDelivered;
-        Debug.Log("DPV:"+container.name);
+        //Debug.Log("DPV:"+container.name);
         Hide();
+        AssemblyPalletDuckHoles.Instance.onFTPDuckAssembled += AssemblyPalletDuckHoles_onFTPDuckAssembled;
     }
 
-    
-
+    private void AssemblyPalletDuckHoles_onFTPDuckAssembled(object sender, EventArgs e)
+    {
+        Hide();
+    }
 
     private void AssemblyPalletDuckHoles_OnDuckDelivered(object sender, AssemblyPalletDuckHoles.OnDuckDeliveredEventArgs e)
     {
@@ -26,42 +30,27 @@ public class DeselectedPalletVisual : MonoBehaviour
 
         if (e.containerToDeactivate.name == container.name)
         {
-
             Show();
             Debug.Log("DPV:APDH-ODD: Match");
-        }
-        else
-        {
-            Hide();
-            Debug.Log("DPV:APDH-ODD: No Match");
-        }
-    }
 
-    //private void Player_OnSelectedPalletChanged(object sender, Player.OnSelectedPalletChangedEventArgs e)
-    //{
-        //if (e.selectedPallet == basePallet)
-        //{
-            //Show();
-        //}
+        }
         //else
         //{
-            //Hide();
+        //    Hide();
+        //    Debug.Log("DPV:APDH-ODD: No Match");
         //}
-    //}
+    }
 
     private void Show()
     {
         Debug.Log("DPV:Show()");
-
         //container.DeactivatePallet();
-
         foreach (GameObject visualGameObject in visualGameObjectArray)
         {
             container.isDeactivated = true;
             visualGameObject.SetActive(true);
             Debug.Log("DVP: Show: foreach " + visualGameObject.name);
         }
-
     }
 
     private void Hide()

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 //inherits from basePallet class and HasProgress interface
 public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
@@ -27,17 +28,12 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         OnAnyCorrupt = null;
     }
 
-
-    //public event EventHandler OnPPressed;
-
-
-
     public event EventHandler OnClearIcons;
     public event EventHandler OnDestroyAll;
     public event EventHandler OnDuckSpawned;
     public event EventHandler OnDestroyLast;
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
-    public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
+
     public event EventHandler<OnDuckDeliveredEventArgs> OnDuckDelivered;
 
     public class OnDuckDeliveredEventArgs : EventArgs
@@ -45,6 +41,27 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         public Container containerToDeactivate;
     }
 
+    public event EventHandler onFTPDuckAssembled;
+
+
+
+    //public class OnDuckDeliveredEventArgs : EventArgs
+    //{
+    //    public Container FirstContainerToDeactivate { get; set; }
+    //    public Container SecondContainerToDeactivate { get; set; }
+    //    public Container ThirdContainerToDeactivate { get; set; }
+
+    //    public OnDuckDeliveredEventArgs (Container firstContainerToDeactivate,Container secondContainerToDeactivate, Container thirdContainerToDeactivete)
+    //    {
+    //        FirstContainerToDeactivate = firstContainerToDeactivate;
+    //        SecondContainerToDeactivate = secondContainerToDeactivate;
+    //        ThirdContainerToDeactivate = thirdContainerToDeactivete;
+    //    }
+    //}
+
+
+
+    public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
 
     public class OnStateChangedEventArgs : EventArgs
     {
@@ -61,11 +78,11 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
     public List<DuckObject> duckObjectsList;
 
+    //private int duckCount;
+
     [SerializeField] private DucksSO ghostDuck;
 
     [SerializeField] private List<DucksSO> validDucksSOList;
-
-    
 
     private DucksSO playerDuckSO;
 
@@ -119,6 +136,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
             Debug.LogError("Instance is not null");
         }
         Instance = this;
+
         //create a new list to keep track of ducks as the player adds them to the duck holes
         duckObjectSOList = new List<DucksSO>();
         duckObjectsList = new List<DuckObject>();
@@ -130,6 +148,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         //initialise state machine
         currentState = State.Idle;
         //OnPPressed += Testing_OnPPressed;
+        //duckCount = 0;
     }
 
     //private void Testing_OnPPressed(object sender, EventArgs e)
@@ -228,6 +247,9 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                     //play corrupting audioFX
                     OnAnyCorrupting?.Invoke(this, EventArgs.Empty);
 
+                    //notify all protocol container pallets to reactivate 
+                    onFTPDuckAssembled?.Invoke(this, EventArgs.Empty);
+
                     if (corruptionTimer > corruptionSO.corruptionTimerMax)
                     {
                         //destroy the assembly duck
@@ -284,6 +306,20 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                     Container container = GetContainerWithDuckInput(playerDuckSO);
                     Debug.Log("APDH Interact:" + container);
 
+                    //duckCount++;
+
+                    //if (duckCount == 1)
+                    //{
+                    //    OnDuckDelivered?.Invoke(this, new OnDuckDeliveredEventArgs
+                    //    {
+                    //        c
+                    //    }); 
+                    //}
+                    //else if (duckCount == 2)
+                    //{
+
+                    //}
+                        
 
 
                     OnDuckDelivered?.Invoke(this, new OnDuckDeliveredEventArgs
