@@ -164,6 +164,8 @@ MonoBehaviour:
   visualGameObjectArray:
   - {fileID: 4811683428703751924}
   - {fileID: 4720825334456472149}
+  thisContainerDucksSO: {fileID: 11400000, guid: ce0e2a9eb44fe4c4b8eadead7963df6d,
+    type: 2}
 --- !u!1 &5067029304616697068
 GameObject:
   m_ObjectHideFlags: 0

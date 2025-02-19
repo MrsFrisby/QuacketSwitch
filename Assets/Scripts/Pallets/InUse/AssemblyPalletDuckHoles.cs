@@ -34,14 +34,21 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     public event EventHandler OnDestroyLast;
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
 
+    //public static event EventHandler<OnDuckDeliveredEventArgs> OnDuckDelivered;
+
+    //public class OnDuckDeliveredEventArgs : EventArgs
+    //{
+    //    public Container containerToDeactivate;
+    //}
+
     public static event EventHandler<OnDuckDeliveredEventArgs> OnDuckDelivered;
 
     public class OnDuckDeliveredEventArgs : EventArgs
     {
-        public Container containerToDeactivate;
+        public DucksSO containerDuckSO;
     }
 
-    public static event EventHandler onFTPDuckAssembled;
+    public static event EventHandler onDuckAssembled;
 
     public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
 
@@ -218,7 +225,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                     OnAnyCorrupting?.Invoke(this, EventArgs.Empty);
 
                     //notify all protocol container pallets to reactivate 
-                    onFTPDuckAssembled?.Invoke(this, EventArgs.Empty);
+                    onDuckAssembled?.Invoke(this, EventArgs.Empty);
 
                     if (corruptionTimer > corruptionSO.corruptionTimerMax)
                     {
@@ -264,14 +271,37 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                 if (TryAddDucktoList(playerDuckSO))
                 {//get the duckObject that has been delivered
                     //cycle through the deactivatePalletSOArray to find the matching pallet 
-                    Container container = GetContainerWithDuckInput(playerDuckSO);
+                    //Container container = GetContainerWithDuckInput(playerDuckSO);
                     Debug.Log("PlayerDuckSO:" + playerDuckSO);
-                    Debug.Log("APDH Interact:" + container);
+                    //Debug.Log("APDH Interact:" + container);
+                    //string playerDuckSONameString = playerDuckSO.name.ToString();
                     //publish event to container pallets to deactivate
+                    //if (playerDuckSONameString == "FTP00")
+                    //{
+                    //    OnFTP00DuckDelivered?.Invoke(this, EventArgs.Empty);
+                    //}
+                    //else if (playerDuckSONameString == "FTP01")
+                    //{
+                    //    OnFTP01DuckDelivered?.Invoke(this, EventArgs.Empty);
+                    //}
+                    //else if (playerDuckSONameString == "FTP10")
+                    //{
+                    //    OnFTP10DuckDelivered?.Invoke(this, EventArgs.Empty);
+                    //}
+
                     OnDuckDelivered?.Invoke(this, new OnDuckDeliveredEventArgs
                     {
-                        containerToDeactivate = container
-                    }); 
+                        containerDuckSO = playerDuckSO
+                    }); ;
+
+
+
+
+
+                    //OnDuckDelivered?.Invoke(this, new OnDuckDeliveredEventArgs
+                    //{
+                    //    containerToDeactivate = container
+                    //}); 
                     //Debug.Log("DuckHoles4: duck added to pallet SO list");
                     //destroy the duck the player is holding
                     player.GetDuckObject().DestroySelf();

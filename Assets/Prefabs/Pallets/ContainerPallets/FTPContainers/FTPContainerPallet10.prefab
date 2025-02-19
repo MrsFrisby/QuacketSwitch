@@ -49,6 +49,8 @@ MonoBehaviour:
   visualGameObjectArray:
   - {fileID: 72631088552272625}
   - {fileID: 8933486338234313241}
+  thisContainerDucksSO: {fileID: 11400000, guid: 1fd22b8fc83114baaa730ebe6b1551b2,
+    type: 2}
 --- !u!1 &3468546888673190638
 GameObject:
   m_ObjectHideFlags: 0
