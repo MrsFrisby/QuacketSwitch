@@ -93,14 +93,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1218128243814217621}
-  - component: {fileID: 7858400390100222747}
+  - component: {fileID: 6564131231807241533}
   m_Layer: 0
   m_Name: PalletDeSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1218128243814217621
 Transform:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ Transform:
   - {fileID: 2476749397065186608}
   m_Father: {fileID: 1788106449238526914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7858400390100222747
+--- !u!114 &6564131231807241533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,11 +126,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 895615347067444539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8200d737c8c834a3ea30475b8cb62eb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6939f52807c92427fb036acd9e71579f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePallet: {fileID: 0}
-  visualGameObjectArray: []
+  visualGameObjectArray:
+  - {fileID: 2960271062296422282}
+  - {fileID: 8103899667716729772}
+  thisContainerDucksSO: {fileID: 11400000, guid: 567c446b4b53748f4b3905dd799bfe2b,
+    type: 2}
 --- !u!1 &2443131346001384691
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +609,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2af82d39b781e444c811d13cf87a0d79,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -623,6 +626,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2726251215276399323}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2960271062296422282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2af82d39b781e444c811d13cf87a0d79,
+    type: 3}
+  m_PrefabInstance: {fileID: 2726251215276399323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5180388243240263189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -635,7 +644,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f156795ab07854870b880f30dfe50493,
+      objectReference: {fileID: 21300000, guid: d51c2d71774cf4e8aa5e9c789b3f9023,
         type: 3}
     - target: {fileID: 3023376258050685265, guid: 2645cede778fd46cdbde8bb042c0b59d,
         type: 3}

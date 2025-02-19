@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3950029605340700318
 Transform:
   m_ObjectHideFlags: 0
@@ -492,7 +492,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2af82d39b781e444c811d13cf87a0d79,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -521,7 +521,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f7e958ed8b2ee4b45af6c83f441eddd1,
+      objectReference: {fileID: 21300000, guid: 60fbfbd467777470a96dd56086e15e5d,
         type: 3}
     - target: {fileID: 3023376258050685265, guid: 2645cede778fd46cdbde8bb042c0b59d,
         type: 3}

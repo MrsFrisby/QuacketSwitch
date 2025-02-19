@@ -200,7 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5408031445027439941}
-  - component: {fileID: 6488996107896109524}
+  - component: {fileID: 3589912582709034311}
   m_Layer: 0
   m_Name: PalletDeSelected
   m_TagString: Untagged
@@ -224,7 +224,7 @@ Transform:
   - {fileID: 8010364398240978084}
   m_Father: {fileID: 4334272948830406723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6488996107896109524
+--- !u!114 &3589912582709034311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,11 +233,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4964129593935356941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8200d737c8c834a3ea30475b8cb62eb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6939f52807c92427fb036acd9e71579f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePallet: {fileID: 0}
-  visualGameObjectArray: []
+  visualGameObjectArray:
+  - {fileID: 7233158504019037726}
+  - {fileID: 3197215397706092177}
+  thisContainerDucksSO: {fileID: 11400000, guid: 43fc229fef4cc4044974c9bb9dce60b9,
+    type: 2}
 --- !u!1 &5773873725997958941
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +699,12 @@ PrefabInstance:
       addedObject: {fileID: 3447201429867092959}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af82d39b781e444c811d13cf87a0d79, type: 3}
+--- !u!1 &7233158504019037726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2af82d39b781e444c811d13cf87a0d79,
+    type: 3}
+  m_PrefabInstance: {fileID: 7539094528983806799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8010364398240978084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2af82d39b781e444c811d13cf87a0d79,
@@ -714,7 +723,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9384d588ecd0245fcb49d377179ebaa4,
+      objectReference: {fileID: 21300000, guid: 223a6f07c41e64ff0aab06230aac70d3,
         type: 3}
     - target: {fileID: 3023376258050685265, guid: 2645cede778fd46cdbde8bb042c0b59d,
         type: 3}
