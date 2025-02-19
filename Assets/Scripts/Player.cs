@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     //singleton pattern
     public static Player Instance { get; private set; }
 
-
+    public event EventHandler OnImpact;
     public event EventHandler OnPickUp;
     public event EventHandler <OnSelectedPalletChangedEventArgs> OnSelectedPalletChanged;
     public class OnSelectedPalletChangedEventArgs : EventArgs
@@ -288,6 +288,8 @@ public class Player : MonoBehaviour, IDuckObjectParent
                     //move forward
                     rigidBody3D.AddForce(transform.forward * inputMagnitude * 30);
                 }
+
+                
             }
             else
             {
@@ -300,10 +302,17 @@ public class Player : MonoBehaviour, IDuckObjectParent
                 isJumpButtonPressed = false;
             }
 
-            if (isGrounded && isTPressed)
+            if (isTPressed)
+                //if (isGrounded && isTPressed)
             {
-                rigidBody3D.AddForce(Vector3.forward * -30, ForceMode.Impulse);
+                rigidBody3D.AddForce(moveInputVector * -20, ForceMode.Impulse);
                 isTPressed = false;
+            }
+
+            if (isRevivedButtonPressed)
+            {
+                rigidBody3D.AddForce(moveInputVector * 20, ForceMode.Impulse);
+                isRevivedButtonPressed = false;
             }
 
         }
@@ -340,6 +349,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
     void MakeRagdoll()
     {
+        OnImpact?.Invoke(this, EventArgs.Empty);
         //Update main joint
         JointDrive jointDrive = mainJoint.slerpDrive;
         jointDrive.positionSpring = 0;

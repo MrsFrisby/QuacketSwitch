@@ -10,6 +10,13 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnGamePaused;
     public event EventHandler OnGameUnPaused;
 
+    public event EventHandler<OnGameOverEventArgs> OnGameOver;
+
+    public class OnGameOverEventArgs : EventArgs
+    {
+        public int cryptoCoinsEarned;
+    }
+
     private enum GameState
     {
         WaitingToStart,
@@ -24,12 +31,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float gamePlayTimerMax = 300f; 
     private bool IsGamePaused = false;
+    private int cryptoEarned;
 
 
     private void Awake()
     {
         Instance = this;
         gameState = GameState.WaitingToStart;
+        cryptoEarned = 0;
     }
 
     private void Start()
@@ -37,6 +46,18 @@ public class GameManager : MonoBehaviour
         GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
         GameInput.Instance.OnJumpAction += GameInput_OnJumpAction;
+        AssemblyPalletDuckHoles.OnDuckDelivered += AssemblyPalletDuckHoles_OnDuckDelivered;
+        Player.Instance.OnImpact += Player_OnImpact;
+    }
+
+    private void Player_OnImpact(object sender, EventArgs e)
+    {
+        cryptoEarned--;
+    }
+
+    private void AssemblyPalletDuckHoles_OnDuckDelivered(object sender, AssemblyPalletDuckHoles.OnDuckDeliveredEventArgs e)
+    {
+        cryptoEarned++;
     }
 
     private void GameInput_OnJumpAction(object sender, EventArgs e)
@@ -89,6 +110,10 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.GameOver:
+                OnGameOver?.Invoke(this, new OnGameOverEventArgs
+                {
+                    cryptoCoinsEarned = cryptoEarned
+                }); 
                 break;
         }
         //Debug.Log(gameState);
@@ -134,5 +159,10 @@ public class GameManager : MonoBehaviour
             OnGameUnPaused?.Invoke(this, EventArgs.Empty);
         }
         
+    }
+
+    public int GetCryptoEarned()
+    {
+        return cryptoEarned;
     }
 }

@@ -7,7 +7,10 @@ public class DeselectedPalletVisual : MonoBehaviour
 {
     [SerializeField] private Container container;
     [SerializeField] private GameObject[] visualGameObjectArray;
-    
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
@@ -25,14 +28,14 @@ public class DeselectedPalletVisual : MonoBehaviour
     private void AssemblyPalletDuckHoles_OnDuckDelivered(object sender, AssemblyPalletDuckHoles.OnDuckDeliveredEventArgs e)
     {
         //Debug.Log("DPV:APDH_OnDuckDelivered");
-        Debug.Log("DPV:APDH_OnDuckDelivered: Comparing:"+e.containerToDeactivate.name);
+        //Debug.Log("DPV:APDH_OnDuckDelivered: Comparing:"+e.containerToDeactivate.name);
         Debug.Log("DPV:APDH_OnDuckDelivered: with" + container.name);
 
-        if (e.containerToDeactivate.name == container.name)
-        {
-            Show();
-            Debug.Log("DPV:APDH-ODD: Match");
-        }
+        //if (e.containerToDeactivate.name == container.name)
+        //{
+        //    Show();
+        //    Debug.Log("DPV:APDH-ODD: Match");
+        //}
         //else
         //{
         //    Debug.Log("DPV:APDH-ODD: No match between");

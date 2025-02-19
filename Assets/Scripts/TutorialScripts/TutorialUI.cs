@@ -27,10 +27,8 @@ public class TutorialUI : MonoBehaviour
     private TextMeshProUGUI reviveButtonText;
 
     [SerializeField]
-    private TextMeshProUGUI grabButtonText;
+    private TextMeshProUGUI turboBoostButtonText;
 
-    [SerializeField]
-    private TextMeshProUGUI fireButtonText;
 
     [SerializeField]
     private TextMeshProUGUI pauseButtonText;
@@ -67,8 +65,7 @@ public class TutorialUI : MonoBehaviour
         jumpButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Jump);
         interactButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
         reviveButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Revive);
-        grabButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Grab);
-        fireButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Fire);
+        turboBoostButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.InteractTutorial);
         pauseButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
     }
 
