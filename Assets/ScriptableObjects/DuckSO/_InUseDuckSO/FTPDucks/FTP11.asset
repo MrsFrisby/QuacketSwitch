@@ -15,5 +15,5 @@ MonoBehaviour:
   visualPrefab: {fileID: 5186383002779545882, guid: 4616a30c253c74bd38d7082a0c0fbb73,
     type: 3}
   prefab: {fileID: 5186383002779545882, guid: 56afac10e6099403799b7c61723bd634, type: 3}
-  sprite: {fileID: 21300000, guid: 9ef1146cc8f59455bbf77ef015c25400, type: 3}
-  objectName: 
+  sprite: {fileID: 21300000, guid: 8bf2fa3079f5a46f4b6888d2da911d8d, type: 3}
+  objectName: FTP11

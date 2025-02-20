@@ -15,5 +15,5 @@ MonoBehaviour:
   visualPrefab: {fileID: 5186383002779545882, guid: fda43946d027e4134b0ade50c64fdc3c,
     type: 3}
   prefab: {fileID: 5186383002779545882, guid: 6ab042bec31484384aa99476b65eaad9, type: 3}
-  sprite: {fileID: 21300000, guid: d66e3b0926b4f431c8e2fcb6a0ab7426, type: 3}
-  objectName: IMAP 00
+  sprite: {fileID: 21300000, guid: 5728c5e5d479f4e64aaafe0ac011a4d0, type: 3}
+  objectName: IMAP00

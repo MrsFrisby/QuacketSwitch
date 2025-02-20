@@ -15,5 +15,5 @@ MonoBehaviour:
   visualPrefab: {fileID: 5186383002779545882, guid: e6a11991ddfa24da4ad63d880cb275e6,
     type: 3}
   prefab: {fileID: 5186383002779545882, guid: 10bb842dbfb234b2591b60f439e8ce86, type: 3}
-  sprite: {fileID: 21300000, guid: b49587b52e8cd4921a3348b32cd09619, type: 3}
-  objectName: 
+  sprite: {fileID: 21300000, guid: 56e302aa0ddf3405592c4289a9432a0d, type: 3}
+  objectName: HTTPS00
