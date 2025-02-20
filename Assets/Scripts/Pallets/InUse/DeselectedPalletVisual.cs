@@ -10,7 +10,7 @@ public class DeselectedPalletVisual : MonoBehaviour
     [SerializeField] private DucksSO thisContainerDucksSO;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        
         container = this.GetComponentInParent<Container>();
     }
 

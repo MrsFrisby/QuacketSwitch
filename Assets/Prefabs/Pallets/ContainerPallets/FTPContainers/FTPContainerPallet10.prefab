@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6939f52807c92427fb036acd9e71579f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container: {fileID: 3443889379163912578}
   visualGameObjectArray:
   - {fileID: 72631088552272625}
   - {fileID: 8933486338234313241}
@@ -496,7 +495,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2af82d39b781e444c811d13cf87a0d79,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

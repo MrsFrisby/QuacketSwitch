@@ -23,6 +23,7 @@ public class AssemblyManagerUI : MonoBehaviour
         AssemblyManager.Instance.OnProtocolCompleted += AssemblyManager_OnProtocolCompleted;
 
         UpdateVisual();
+        Debug.Log("AM:Start");
     }
 
     private void AssemblyManager_OnProtocolCompleted(object sender, EventArgs e)
@@ -37,6 +38,7 @@ public class AssemblyManagerUI : MonoBehaviour
 
     private void UpdateVisual()
     {
+        Debug.Log("AM:UpdateVisual");
         foreach (Transform child in container)
         {
             if (child == protocolTemplate) continue;
@@ -45,6 +47,7 @@ public class AssemblyManagerUI : MonoBehaviour
 
         foreach (ProtocolSO protocolSO in AssemblyManager.Instance.GetWaitingProtocolSOList())
         {
+            Debug.Log("AM:UpdateVisual foreach protocol");
             Transform protocolTransform = Instantiate(protocolTemplate, container);
             protocolTransform.gameObject.SetActive(true);
             protocolTransform.GetComponent<AssemblyManagerSingleUI>().SetProtocolSO(protocolSO);
