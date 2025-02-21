@@ -28,6 +28,22 @@ public class AudioManager : MonoBehaviour
         AssemblyPalletDuckHoles.OnAnyCorrupting += AssemblyPalletDuckHoles_OnAnyCorrupting;
         AssemblyPalletDuckHoles.OnAnyCorrupt += AssemblyPalletDuckHoles_OnAnyCorrupt;
         TrashPallet.OnAnyDuckTrashed += TrashPallet_OnAnyDuckTrashed;
+        Player.Instance.OnImpact += Player_OnImpact;
+        AssemblyPalletDuckHoles.OnDuckDelivered += AssemblyPalletDuckHoles_OnDuckDelivered;
+    }
+
+    //play coin sound when duck is delivered
+    private void AssemblyPalletDuckHoles_OnDuckDelivered(object sender, AssemblyPalletDuckHoles.OnDuckDeliveredEventArgs e)
+    {
+        AssemblyPalletDuckHoles assemblyPalletDuckHoles = sender as AssemblyPalletDuckHoles;
+        PlaySound(audioClipRefsSO.cryptoCoin, assemblyPalletDuckHoles.transform.position);
+    }
+
+    private void Player_OnImpact(object sender, System.EventArgs e)
+    {
+        PlaySound(audioClipRefsSO.duckThunk, Player.Instance.transform.position);
+        PlaySound(audioClipRefsSO.characterOuch, Player.Instance.transform.position);
+
     }
 
     private void TrashPallet_OnAnyDuckTrashed(object sender, System.EventArgs e)

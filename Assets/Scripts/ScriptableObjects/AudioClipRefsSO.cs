@@ -17,4 +17,7 @@ public class AudioClipRefsSO : ScriptableObject
     public AudioClip[] corrupt;
     public AudioClip[] warning;
     public AudioClip[] idleBuzz;
+    public AudioClip[] duckThunk;
+    public AudioClip[] characterOuch;
+    public AudioClip[] cryptoCoin;
 }

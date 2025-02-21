@@ -27,7 +27,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 445b9b7efee5341838dca93abcdb21d9, type: 3}
   - {fileID: 8300000, guid: 64e0cf314c1314c29a175f0ec4d4ea49, type: 3}
   - {fileID: 8300000, guid: b202a7bb6cff442259690fbcd2286d89, type: 3}
-  - {fileID: 8300000, guid: 7cd7282cc778c41408e41d2b9546b8c1, type: 3}
   - {fileID: 8300000, guid: 2173a82ec497c4269a06c2d738f2508b, type: 3}
   - {fileID: 8300000, guid: c9b0482180d2942d6bd355de03ce5ce6, type: 3}
   assemblyDeliverySuccess:
@@ -78,3 +77,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b59c98e0066c41f42b8100f5cb180f5b, type: 3}
   idleBuzz:
   - {fileID: 8300000, guid: ea74e2ce2e74a46ee868eb45fa57e6df, type: 3}
+  duckThunk:
+  - {fileID: 8300000, guid: 43d190a0df2e14988aecfa0d0198fada, type: 3}
+  - {fileID: 8300000, guid: 14f3b166916174a84a6f78e3df8b4305, type: 3}
+  - {fileID: 8300000, guid: 903e5634c51ea400e8f93055e0fd99bb, type: 3}
+  - {fileID: 8300000, guid: f53d71d95c0e4478596af2f1ec41876c, type: 3}
+  - {fileID: 8300000, guid: 64c1a0fd9ecb94fc1a5da9fdfd7ddc27, type: 3}
+  - {fileID: 8300000, guid: a0b76821c55ed40e99136418cb4d9d58, type: 3}
+  characterOuch:
+  - {fileID: 8300000, guid: 159043e692e444270b47bcfa47a0c506, type: 3}
+  - {fileID: 8300000, guid: 900cf1edca9a5462aa141b01e4850874, type: 3}
+  cryptoCoin:
+  - {fileID: 8300000, guid: f0c96a2f749d5491d955130419b6ad39, type: 3}
