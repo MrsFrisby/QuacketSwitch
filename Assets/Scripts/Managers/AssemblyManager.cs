@@ -102,6 +102,7 @@ public class AssemblyManager : MonoBehaviour
 
     public List<ProtocolSO> GetWaitingProtocolSOList()
     {
+        //Debug.Log("AM:GetWaitingProtocolSOList");
         return waitingProtocolSOList;
     }
 

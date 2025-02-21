@@ -17,6 +17,9 @@ public class BasePallet : MonoBehaviour, IDuckObjectParent
     private Transform palletTopPoint;
     private DuckObject duckObject;
 
+    
+
+
     public virtual void Interact(Player player)
     {
         Debug.LogError("BaseCounter.Interact()");
