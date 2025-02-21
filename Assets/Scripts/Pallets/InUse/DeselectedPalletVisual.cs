@@ -16,6 +16,10 @@ public class DeselectedPalletVisual : MonoBehaviour
 
     private void Start()
     {
+        //foreach (GameObject gameObject in visualGameObjectArray)
+        //{
+        //    Debug.Log(container.name+": "+gameObject.name);
+        //}
         //AssemblyPalletDuckHoles.OnDuckDelivered += AssemblyPalletDuckHoles_OnDuckDelivered;
         //Debug.Log("DPV:"+container.name);
         Hide();
@@ -25,10 +29,10 @@ public class DeselectedPalletVisual : MonoBehaviour
 
     private void AssemblyPalletDuckHoles_OnDuckDelivered(object sender, AssemblyPalletDuckHoles.OnDuckDeliveredEventArgs e)
     {
-        Debug.Log("DPV:APDH_OnFTPDuckDelivered: with" + e.containerDuckSO);
+        //Debug.Log("DPV:APDH_OnFTPDuckDelivered: with" + e.containerDuckSO);
         if (e.containerDuckSO == thisContainerDucksSO)
         {
-            Debug.Log("Match with " + thisContainerDucksSO);
+            //Debug.Log("Match with " + thisContainerDucksSO);
             Show();
         }
     }
@@ -58,24 +62,42 @@ public class DeselectedPalletVisual : MonoBehaviour
 
     private void Show()
     {
-        Debug.Log("DPV:Show()");
-        foreach (GameObject visualGameObject in visualGameObjectArray)
+        //Debug.Log("DPV:Show()");
+        //container.isDeactivated = true;
+        for (int i = 0; i < visualGameObjectArray.Length; i++)
         {
-            //Container container = this.GetComponentInParent<Container>();
-            container.isDeactivated = true;
-            visualGameObject.SetActive(true);
-            //Debug.Log("DVP: Show: foreach " + visualGameObject.name);
+            GameObject visualGameObject = visualGameObjectArray[i];
+            if (visualGameObject != null)
+            {
+                //Container container = this.GetComponentInParent<Container>();
+                
+                visualGameObject.SetActive(true);
+                //Debug.Log("DVP: Show: foreach " + visualGameObject.name);
+            }
+            else
+            {
+                Debug.Log("This game object is null: "+visualGameObject);
+            }
         }
     }
 
     private void Hide()
     {
-        Debug.Log("DPV:Hide():"+container.name);
+        
+        // container.isDeactivated = false;
+        //Debug.Log("DPV:Hide():" + container.name);
         foreach (GameObject visualGameObject in visualGameObjectArray)
         {
-            container.isDeactivated = false;
-            visualGameObject.SetActive(false);
-            //Debug.Log("DVP: Hide: foreach " + visualGameObject.name);
+            if (visualGameObject != null)
+            {
+                //Container container = this.GetComponentInParent<Container>();
+                visualGameObject.SetActive(false);
+                //Debug.Log("DVP: Show: foreach " + visualGameObject.name);
+            }
+            else
+            {
+                Debug.Log("This game object is null: " + visualGameObject);
+            }
         }
     }
 }

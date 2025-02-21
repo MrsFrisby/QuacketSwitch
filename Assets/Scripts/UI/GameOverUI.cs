@@ -11,6 +11,9 @@ public class GameOverUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI cryptoEarnedText;
 
+    [SerializeField]
+    private CryptoCoinsUI cryptoCoinsUI;
+
     private void Start()
     {
         GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
@@ -29,7 +32,7 @@ public class GameOverUI : MonoBehaviour
         {
             Show();
             quacketsDeliveredText.text = AssemblyManager.Instance.GetSuccessfulQuackets().ToString();
-            cryptoEarnedText.text = GameManager.Instance.GetCryptoEarned().ToString();
+            cryptoEarnedText.text = cryptoCoinsUI.GetCryptoCoinBalance().ToString();
         }
         else
         {

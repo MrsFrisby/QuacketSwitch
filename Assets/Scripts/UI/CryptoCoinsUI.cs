@@ -19,7 +19,13 @@ public class CryptoCoinsUI : MonoBehaviour
         GameManager.Instance.OnGamePaused += GameManager_OnGamePaused;
         GameManager.Instance.OnGameUnPaused += GameManager_OnGameUnPaused;
         GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
+        AssemblyManager.Instance.OnProtocolSuccess += AssemblyManager_OnProtocolSuccess;
         Hide();
+    }
+
+    private void AssemblyManager_OnProtocolSuccess(object sender, System.EventArgs e)
+    {
+        coinBalance = coinBalance + 5.78f;
     }
 
     private void GameManager_OnStateChanged(object sender, System.EventArgs e)
@@ -57,8 +63,9 @@ public class CryptoCoinsUI : MonoBehaviour
 
     private void Update()
     {
-        int sucessfulQuackets = AssemblyManager.Instance.GetSuccessfulQuackets();
-        coinBalance = coinBalance+(float)(sucessfulQuackets * 5.78);
+        //can't update balance on every frame!!!
+        //int sucessfulQuackets = AssemblyManager.Instance.GetSuccessfulQuackets();
+        //coinBalance = coinBalance+(float)(sucessfulQuackets * 5.78);
         coinBalanceText.text = coinBalance.ToString();
     }
 

@@ -14,12 +14,13 @@ public class Container : BasePallet
     [SerializeField]
     private GameObject deselectedVisual;
 
-    public bool isDeactivated = false;
+    //public bool isDeactivated = false;
 
     public override void Interact(Player player)
     {
         //if the player is not already carrying something
-        if (!HasDuckObject() && !isDeactivated)
+        //if (!HasDuckObject() && !isDeactivated)
+        if (!HasDuckObject())
         {
             DuckObject.spawnDuckObject(ducksSO, player);
             OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);

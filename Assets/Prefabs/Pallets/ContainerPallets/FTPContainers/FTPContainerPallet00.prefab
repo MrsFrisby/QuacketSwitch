@@ -162,7 +162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualGameObjectArray:
   - {fileID: 4811683428703751924}
-  - {fileID: 4720825334456472149}
   thisContainerDucksSO: {fileID: 11400000, guid: ce0e2a9eb44fe4c4b8eadead7963df6d,
     type: 2}
 --- !u!1 &5067029304616697068
@@ -356,7 +355,6 @@ MonoBehaviour:
   palletTopPoint: {fileID: 6417324282816913531}
   ducksSO: {fileID: 11400000, guid: ce0e2a9eb44fe4c4b8eadead7963df6d, type: 2}
   deselectedVisual: {fileID: 4949152423814415238}
-  isDeactivated: 0
 --- !u!114 &956687449782029730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,7 +441,7 @@ PrefabInstance:
     - target: {fileID: 4304219652191692650, guid: 2645cede778fd46cdbde8bb042c0b59d,
         type: 3}
       propertyPath: mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5933421640005124559, guid: 2645cede778fd46cdbde8bb042c0b59d,
         type: 3}

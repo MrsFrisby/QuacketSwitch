@@ -32,6 +32,9 @@ public class Player : MonoBehaviour, IDuckObjectParent
     [SerializeField]
     public GameInput gameInput;
 
+    [SerializeField]
+    private int reviveTime;
+
     //Input
     Vector2 moveInputVector = Vector2.zero;
     bool isJumpButtonPressed = false;
@@ -318,7 +321,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
         }
         else
         {
-            if(isRevivedButtonPressed && (Time.time - lastTimeBecameRagdoll) > 3 )
+            if(isRevivedButtonPressed && (Time.time - lastTimeBecameRagdoll) > reviveTime )
             {
                 MakeActiveRagdoll();
             }

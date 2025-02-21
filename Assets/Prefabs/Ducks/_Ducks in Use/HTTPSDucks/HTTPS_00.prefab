@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duckObjectSO: {fileID: 11400000, guid: 9597602ac9d684f328f68882e6a53f0a, type: 2}
   displayIconUI: 0
+  containerPallet: {fileID: 0}
   duckIconsUI: {fileID: 4192268970262274801}
 --- !u!1 &4446137231056227666
 GameObject:
@@ -303,7 +304,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b49587b52e8cd4921a3348b32cd09619,
+      objectReference: {fileID: 21300000, guid: 56e302aa0ddf3405592c4289a9432a0d,
         type: 3}
     - target: {fileID: 2567131210020548400, guid: e7b34594588e642d2b0a037b2e0840bc,
         type: 3}
