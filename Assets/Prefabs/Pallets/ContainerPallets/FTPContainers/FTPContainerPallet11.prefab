@@ -402,6 +402,7 @@ MonoBehaviour:
   visualGameObjectArray:
   - {fileID: 8837046258771001422}
   - {fileID: 2212306719340100929}
+  - {fileID: 3201535859204743030}
   thisContainerDucksSO: {fileID: 11400000, guid: 7073aadb290524140bc2fe60c6f66e90,
     type: 2}
 --- !u!1001 &1143059330936328523
@@ -612,6 +613,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2645cede778fd46cdbde8bb042c0b59d, type: 3}
+--- !u!1 &3201535859204743030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4117323730833775046, guid: 2645cede778fd46cdbde8bb042c0b59d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1535041346106082992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5123460797190621055 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5933421640005124559, guid: 2645cede778fd46cdbde8bb042c0b59d,

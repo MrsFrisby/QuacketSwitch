@@ -485,6 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   palletTopPoint: {fileID: 6778632253360240719}
   duckObjectSOList: []
+  duckObjectsList: []
   ghostDuck: {fileID: 11400000, guid: 0f7ad49b9bf6d464a926706b7651d23c, type: 2}
   validDucksSOList:
   - {fileID: 11400000, guid: ce0e2a9eb44fe4c4b8eadead7963df6d, type: 2}
@@ -498,6 +499,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad7c2946d43d0486ab08e25dffc4119a, type: 2}
   - {fileID: 11400000, guid: a16b26a52d95b4ba8bb2f098d6b5bbb0, type: 2}
   - {fileID: 11400000, guid: f83c1b9060e204432961ee61776e81d9, type: 2}
+  DeactivatePalletSOArray: []
 --- !u!65 &2926692459659491018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -761,7 +763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4871471626401871540
 Transform:
   m_ObjectHideFlags: 0
@@ -2565,6 +2567,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2576,7 +2593,7 @@ PrefabInstance:
     - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.75
+      value: -1.56
       objectReference: {fileID: 0}
     - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
         type: 3}
@@ -2601,12 +2618,12 @@ PrefabInstance:
     - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.5
+      value: 2.73
       objectReference: {fileID: 0}
     - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
         type: 3}
@@ -2622,6 +2639,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453086335730407389, guid: 7b41991efa464423aa74f443a40818ee,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -200,10 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6939f52807c92427fb036acd9e71579f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container: {fileID: 1529357100888734203}
   visualGameObjectArray:
   - {fileID: 8291653867425052664}
   - {fileID: 4982598486431597385}
+  - {fileID: 3308799002510927947}
   thisContainerDucksSO: {fileID: 11400000, guid: 904afd3dea4984d818df21d9cf7828ed,
     type: 2}
 --- !u!1 &4982598486431597385
@@ -559,6 +559,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2645cede778fd46cdbde8bb042c0b59d, type: 3}
+--- !u!1 &3308799002510927947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4117323730833775046, guid: 2645cede778fd46cdbde8bb042c0b59d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1497617537036628365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5088826496431796290 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5933421640005124559, guid: 2645cede778fd46cdbde8bb042c0b59d,

@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4059700138024992337}
   m_Layer: 7
   m_Name: CorruptFloorDuck
-  m_TagString: Untagged
+  m_TagString: CauseDamage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
