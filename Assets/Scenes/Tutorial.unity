@@ -36332,17 +36332,17 @@ PrefabInstance:
     - target: {fileID: 6475784186141834389, guid: e73a24fef9f844527a0d861232133d80,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.92
+      value: -17.12
       objectReference: {fileID: 0}
     - target: {fileID: 6475784186141834389, guid: e73a24fef9f844527a0d861232133d80,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.44
+      value: 1.91
       objectReference: {fileID: 0}
     - target: {fileID: 6475784186141834389, guid: e73a24fef9f844527a0d861232133d80,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.17
+      value: 6.12
       objectReference: {fileID: 0}
     - target: {fileID: 6475784186141834389, guid: e73a24fef9f844527a0d861232133d80,
         type: 3}
@@ -71348,6 +71348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15efa46e510a544f28a8b0fad3c7c990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerMax: 3
 --- !u!4 &1976029695
 Transform:
   m_ObjectHideFlags: 0
@@ -75597,7 +75598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2100831121}
   interactionPoint: {fileID: 308424483}
-  interactionPointRadius: 0.5
+  interactionPointRadius: 0.75
   interactableMask:
     serializedVersion: 2
     m_Bits: 128

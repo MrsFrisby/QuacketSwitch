@@ -9,7 +9,9 @@ public class Timer : MonoBehaviour
     public static Timer Instance { get; private set; }
 
     private float timer;
-    private float timerMax = 3f;
+
+    [SerializeField]
+    private float timerMax = 2.5f;
 
     public event EventHandler OnReset;
 
@@ -18,7 +20,6 @@ public class Timer : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         GameManager.Instance.OnStart += GameManager_OnStart;
@@ -34,17 +35,15 @@ public class Timer : MonoBehaviour
     {
         timer = 0f;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         timer += Time.deltaTime;
         if (timer > timerMax)
         {
             TimerReset();
-
         }
-        Debug.Log("Timer: " + timer);
+        //Debug.Log("Timer: " + timer);
     }
 
     private void TimerReset()
