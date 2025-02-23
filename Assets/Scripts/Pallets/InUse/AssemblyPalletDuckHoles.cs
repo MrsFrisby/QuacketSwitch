@@ -18,6 +18,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     public static event EventHandler OnAnyCorrupting;
     public static event EventHandler OnAnyCorrupt;
     
+    
 
     //reset static data to prevent errors on restart
     new public static void ResetStaticData()
@@ -26,8 +27,10 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         OnAnyAssembling = null;
         OnAnyCorrupting = null;
         OnAnyCorrupt = null;
+        OnWrongDuck = null;
     }
 
+    public static event EventHandler OnWrongDuck;
     public event EventHandler OnClearIcons;
     public event EventHandler OnDestroyAll;
     public event EventHandler OnDuckSpawned;
@@ -142,6 +145,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     {
         //destroy last added duck if timer reaches max
         duckHoleTimer += Time.deltaTime;
+        //Debug.Log(duckHoleTimer);
         if (duckHoleTimer > duckHoleTimerMax)
         {
             duckHoleTimer = 0f;//reset timer
@@ -169,7 +173,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                 case State.Assembling://ghost ducks visible
 
                     assemblyTimer += Time.deltaTime;//start assembly timer
-
+                    
                     //reactivate pallets and remove duck objects from list
                     foreach (DuckObject duckObject in duckObjectsList)
                     {
@@ -350,6 +354,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
             }
             else
             {//No match with Valid duckSO list assigned in inspector
+                OnWrongDuck?.Invoke(this, EventArgs.Empty);
                 DucksSO deliveredDuck = player.GetDuckObject().GetDucksSO();
                 Debug.Log("Duckholes3: Wrong Duck SO for this pallet:"+ deliveredDuck);
             }

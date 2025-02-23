@@ -34,8 +34,8 @@ public class GameOverUI : MonoBehaviour
         {
             Show();
             float quacketsDelivered = AssemblyManager.Instance.GetSuccessfulQuackets();
-            quacketsDelivered = (float)Math.Round(quacketsDelivered, 2);
-            quacketsDeliveredText.text = quacketsDelivered.ToString("0.00");
+            //quacketsDelivered = (float)Math.Round(quacketsDelivered, 2);
+            quacketsDeliveredText.text = quacketsDelivered.ToString();
             //quacketsDeliveredText.text = AssemblyManager.Instance.GetSuccessfulQuackets().ToString("0.00");
             cryptoEarnedText.text = cryptoCoinsUI.GetCryptoCoinBalance().ToString("0.00");
         }

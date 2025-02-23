@@ -100,7 +100,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""InteractTutorial"",
+                    ""name"": ""Turbo"",
                     ""type"": ""Button"",
                     ""id"": ""9e73937e-3cc2-40be-a9d9-a5565977fc71"",
                     ""expectedControlType"": ""Button"",
@@ -304,7 +304,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""InteractTutorial"",
+                    ""action"": ""Turbo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -323,7 +323,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_InteractAlternate = m_Player.FindAction("InteractAlternate", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
-        m_Player_InteractTutorial = m_Player.FindAction("InteractTutorial", throwIfNotFound: true);
+        m_Player_Turbo = m_Player.FindAction("Turbo", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -393,7 +393,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_InteractAlternate;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Fire;
-    private readonly InputAction m_Player_InteractTutorial;
+    private readonly InputAction m_Player_Turbo;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -406,7 +406,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @InteractAlternate => m_Wrapper.m_Player_InteractAlternate;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
-        public InputAction @InteractTutorial => m_Wrapper.m_Player_InteractTutorial;
+        public InputAction @Turbo => m_Wrapper.m_Player_Turbo;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -440,9 +440,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
-            @InteractTutorial.started += instance.OnInteractTutorial;
-            @InteractTutorial.performed += instance.OnInteractTutorial;
-            @InteractTutorial.canceled += instance.OnInteractTutorial;
+            @Turbo.started += instance.OnTurbo;
+            @Turbo.performed += instance.OnTurbo;
+            @Turbo.canceled += instance.OnTurbo;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -471,9 +471,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
-            @InteractTutorial.started -= instance.OnInteractTutorial;
-            @InteractTutorial.performed -= instance.OnInteractTutorial;
-            @InteractTutorial.canceled -= instance.OnInteractTutorial;
+            @Turbo.started -= instance.OnTurbo;
+            @Turbo.performed -= instance.OnTurbo;
+            @Turbo.canceled -= instance.OnTurbo;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -501,6 +501,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnInteractAlternate(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
-        void OnInteractTutorial(InputAction.CallbackContext context);
+        void OnTurbo(InputAction.CallbackContext context);
     }
 }

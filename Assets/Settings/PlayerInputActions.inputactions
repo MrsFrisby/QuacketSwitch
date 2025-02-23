@@ -78,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "InteractTutorial",
+                    "name": "Turbo",
                     "type": "Button",
                     "id": "9e73937e-3cc2-40be-a9d9-a5565977fc71",
                     "expectedControlType": "Button",
@@ -282,7 +282,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "InteractTutorial",
+                    "action": "Turbo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

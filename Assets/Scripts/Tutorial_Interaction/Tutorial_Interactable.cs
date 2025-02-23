@@ -24,19 +24,81 @@ public class Tutorial_Interactable : MonoBehaviour, I_Interactable
     [SerializeField]
     private Sprite iconSprite2;
 
+    //text
+    [SerializeField]
+    private string promptText3;
+
+    //image container for icon sprite
+    [SerializeField]
+    private Sprite iconSprite3;
+
+    private float wrongDuckTimer;
+    private float wrongDuckTimerMax = 5f;
+
     public string InteractionPrompt => prompt;
 
     public Sprite InteractionSprite => iconSprite;
+    private bool correctDuck;
+
+    private bool duckAssembled;
+
+    private void Start()
+    {
+        AssemblyPalletDuckHoles.onDuckAssembled += AssemblyPalletDuckHoles_onDuckAssembled;
+        AssemblyManager.Instance.OnProtocolSuccess += AssemblyManager_OnProtocolSuccess;
+        AssemblyPalletDuckHoles.OnWrongDuck += AssemblyPalletDuckHoles_OnWrongDuck;
+        duckAssembled = false;
+        correctDuck = true;
+        wrongDuckTimer = 0;
+    }
+
+
+    private void Update()
+    {
+        wrongDuckTimer += Time.deltaTime;
+        if (wrongDuckTimer > wrongDuckTimerMax)
+        {
+            correctDuck = true;
+        }
+    }
+    private void AssemblyPalletDuckHoles_OnWrongDuck(object sender, System.EventArgs e)
+    {
+        wrongDuckTimer = 0;
+        correctDuck = false;
+    }
+
+    private void AssemblyManager_OnProtocolSuccess(object sender, System.EventArgs e)
+    {
+        duckAssembled = false;
+    }
+
+    private void AssemblyPalletDuckHoles_onDuckAssembled(object sender, System.EventArgs e)
+    {
+        duckAssembled = true;
+    }
 
     public bool TutorialInteract(Interactor interactor)
     {
-        //Debug.Log("Tutorial Interactable: "+ prompt);
-        var tutorialCanvas = interactor.GetComponent<Interactor>();
-        //Debug.Log(tutorialCanvas);
-        //Debug.Log(tutorialCanvas.interactionPromptUI.uiPanel);
-        //tutorialCanvas.interactionPromptUI.uiPanel.SetActive(false);
-        //tutorialCanvas.interactionPromptUI.IsDisplayed = false;
-        tutorialCanvas.interactionPromptUI.SetUp(promptText2, iconSprite2);
-        return true;
+        if (!duckAssembled)
+        {
+            if (!correctDuck)
+            {
+                var tutorialCanvas3 = interactor.GetComponent<Interactor>();
+                tutorialCanvas3.interactionPromptUI.SetUp(promptText3, iconSprite3);
+                return true;
+            }
+            else
+            {
+                //Debug.Log("Tutorial Interactable: "+ prompt);
+                var tutorialCanvas2 = interactor.GetComponent<Interactor>();
+                //Debug.Log(tutorialCanvas);
+                //Debug.Log(tutorialCanvas.interactionPromptUI.uiPanel);
+                //tutorialCanvas.interactionPromptUI.uiPanel.SetActive(false);
+                //tutorialCanvas.interactionPromptUI.IsDisplayed = false;
+                tutorialCanvas2.interactionPromptUI.SetUp(promptText2, iconSprite2);
+                return true;
+            }            
+        }
+        else return false;
     }
 }

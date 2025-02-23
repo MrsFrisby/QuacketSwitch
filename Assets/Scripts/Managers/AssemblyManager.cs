@@ -33,6 +33,7 @@ public class AssemblyManager : MonoBehaviour
     private void Update()
     {
         spawnProtocolTimer -= Time.deltaTime;
+        //Debug.Log("AM:"+spawnProtocolTimer);
         if (spawnProtocolTimer <= 0f)
         {
             spawnProtocolTimer = spawnProtocolTimerMax;

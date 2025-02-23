@@ -31,6 +31,20 @@ public class AudioManager : MonoBehaviour
         Player.Instance.OnImpact += Player_OnImpact;
         Player.Instance.OnRevive += Player_OnRevive;
         AssemblyPalletDuckHoles.OnDuckDelivered += AssemblyPalletDuckHoles_OnDuckDelivered;
+        AssemblyPalletDuckHoles.OnWrongDuck += AssemblyPalletDuckHoles_OnWrongDuck;
+        Player.Instance.OnBoost += Player_OnBoost;
+    }
+
+    private void Player_OnBoost(object sender, System.EventArgs e)
+    {
+        int volume = 2;
+        PlaySound(audioClipRefsSO.boost, Player.Instance.transform.position, volume);
+    }
+
+    private void AssemblyPalletDuckHoles_OnWrongDuck(object sender, System.EventArgs e)
+    {
+        AssemblyPalletDuckHoles assemblyPalletDuckHoles = sender as AssemblyPalletDuckHoles;
+        PlaySound(audioClipRefsSO.assemblyDeliveryFail, assemblyPalletDuckHoles.transform.position);
     }
 
     private void Player_OnRevive(object sender, System.EventArgs e)
@@ -50,7 +64,7 @@ public class AudioManager : MonoBehaviour
 
     private void Player_OnImpact(object sender, System.EventArgs e)
     {
-        int volume = 2;
+        int volume = 3;
         PlaySound(audioClipRefsSO.duckThunk, Player.Instance.transform.position, volume);
         PlaySound(audioClipRefsSO.characterOuch, Player.Instance.transform.position, volume * 2);
 
@@ -126,7 +140,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayFootstepsSound (Vector3 position, float volume)
     {
-        Debug.Log("footsteps");
+        //Debug.Log("footsteps");
         PlaySound(audioClipRefsSO.footstep, position, volume);
     }
 

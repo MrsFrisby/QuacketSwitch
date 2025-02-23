@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnStateChanged;
     public event EventHandler OnGamePaused;
     public event EventHandler OnGameUnPaused;
+    public event EventHandler OnStart;
 
     public event EventHandler<OnGameOverEventArgs> OnGameOver;
 
@@ -94,6 +95,8 @@ public class GameManager : MonoBehaviour
                 startCountdownTimer -= Time.deltaTime;
                 if (startCountdownTimer < 0f)
                 {
+                    OnStart?.Invoke(this, EventArgs.Empty);
+                    Debug.Log("GM: OnStart invoked");
                     gameState = GameState.GamePlaying;
                     gamePlayTimer = gamePlayTimerMax;
                     OnStateChanged?.Invoke(this, EventArgs.Empty);

@@ -20,8 +20,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnGrabCancelAction;
     public event EventHandler OnJumpAction;
     public event EventHandler OnPauseAction;
-    public event EventHandler OnInteractTutorialAction;
-    public event EventHandler OnInteractTutorialCancelAction;
+    public event EventHandler OnTurboAction;
 
     public event EventHandler OnBindingRebind;
     
@@ -78,9 +77,9 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Pause.performed += Pause_performed;
 
-        playerInputActions.Player.InteractTutorial.performed += InteractTutorial_performed;
+        playerInputActions.Player.Turbo.performed += Turbo_performed;
 
-        playerInputActions.Player.InteractTutorial.canceled += InteractTutorial_canceled;
+        
 
 
 
@@ -110,24 +109,15 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Pause.performed -= Pause_performed;
 
-        playerInputActions.Player.InteractTutorial.performed -= InteractTutorial_performed;
-
-        playerInputActions.Player.InteractTutorial.canceled -= InteractTutorial_canceled; 
+        playerInputActions.Player.Turbo.performed -= Turbo_performed;
 
         playerInputActions.Dispose();
     }
 
-    //T key pressed in Tutorial scene
-    private void InteractTutorial_performed(InputAction.CallbackContext obj)
+    //T key pressed
+    private void Turbo_performed(InputAction.CallbackContext obj)
     {
-        OnInteractTutorialAction?.Invoke(this, EventArgs.Empty);
-        Debug.Log("GameInput:T pressed");
-    }
-
-    //T key released
-    private void InteractTutorial_canceled(InputAction.CallbackContext obj)
-    {
-        OnInteractTutorialCancelAction?.Invoke(this, EventArgs.Empty);
+        OnTurboAction?.Invoke(this, EventArgs.Empty);
     }
 
     //Esc key pressed
@@ -140,7 +130,7 @@ public class GameInput : MonoBehaviour
     //AlternateInteract
     private void InteractAlternate_performed(InputAction.CallbackContext context)
     {
-        Debug.Log("GameInput:F pressed");
+        //Debug.Log("GameInput:F pressed");
         OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
     }
 

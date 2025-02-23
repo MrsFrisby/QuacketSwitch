@@ -94,3 +94,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9720e7a9aa1704ab8a7df331c49330cf, type: 3}
   - {fileID: 8300000, guid: c2dad38e1e1674f2b9ec208b8630d5f6, type: 3}
   - {fileID: 8300000, guid: 79131586cfe5942a2b064a15b39121f4, type: 3}
+  boost:
+  - {fileID: 8300000, guid: 633dc5f6708af4299928ee1072813cba, type: 3}

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     public event EventHandler OnImpact;
     public event EventHandler OnRevive;
     public event EventHandler OnPickUp;
+    public event EventHandler OnBoost;
     public event EventHandler <OnSelectedPalletChangedEventArgs> OnSelectedPalletChanged;
     public class OnSelectedPalletChangedEventArgs : EventArgs
     {
@@ -111,9 +112,14 @@ public class Player : MonoBehaviour, IDuckObjectParent
         gameInput.OnGrabAction += GameInput_OnGrabAction;
         gameInput.OnJumpAction += GameInput_OnJumpAction;
         gameInput.OnGrabCancelAction += GameInput_OnGrabCancelAction;
-        gameInput.OnInteractTutorialAction += GameInput_OnInteractTutorialAction;
-        gameInput.OnInteractTutorialCancelAction += GameInput_OnInteractTutorialCancelAction;
+        gameInput.OnTurboAction += GameInput_OnTurboAction;
+        
 
+    }
+
+    private void GameInput_OnTurboAction(object sender, EventArgs e)
+    {
+        isTPressed = true;
     }
 
     private void GameInput_OnInteractCancelAction(object sender, EventArgs e)
@@ -309,6 +315,10 @@ public class Player : MonoBehaviour, IDuckObjectParent
             if (isTPressed)
                 //if (isGrounded && isTPressed)
             {
+                if (isMoving)
+                {
+                    OnBoost?.Invoke(this, EventArgs.Empty);
+                }
                 rigidBody3D.AddForce(moveInputVector * -20, ForceMode.Impulse);
                 isTPressed = false;
             }

@@ -21,4 +21,5 @@ public class AudioClipRefsSO : ScriptableObject
     public AudioClip[] characterOuch;
     public AudioClip[] cryptoCoin;
     public AudioClip[] revive;
+    public AudioClip[] boost;
 }
