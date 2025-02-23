@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameOverUI : MonoBehaviour
@@ -31,8 +33,11 @@ public class GameOverUI : MonoBehaviour
         if (GameManager.Instance.IsGameOver())
         {
             Show();
-            quacketsDeliveredText.text = AssemblyManager.Instance.GetSuccessfulQuackets().ToString();
-            cryptoEarnedText.text = cryptoCoinsUI.GetCryptoCoinBalance().ToString();
+            float quacketsDelivered = AssemblyManager.Instance.GetSuccessfulQuackets();
+            quacketsDelivered = (float)Math.Round(quacketsDelivered, 2);
+            quacketsDeliveredText.text = quacketsDelivered.ToString("0.00");
+            //quacketsDeliveredText.text = AssemblyManager.Instance.GetSuccessfulQuackets().ToString("0.00");
+            cryptoEarnedText.text = cryptoCoinsUI.GetCryptoCoinBalance().ToString("0.00");
         }
         else
         {

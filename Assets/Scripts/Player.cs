@@ -13,6 +13,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
     public static Player Instance { get; private set; }
 
     public event EventHandler OnImpact;
+    public event EventHandler OnRevive;
     public event EventHandler OnPickUp;
     public event EventHandler <OnSelectedPalletChangedEventArgs> OnSelectedPalletChanged;
     public class OnSelectedPalletChangedEventArgs : EventArgs
@@ -371,6 +372,7 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
     void MakeActiveRagdoll()
     {
+        OnRevive?.Invoke(this, EventArgs.Empty);
         //Update main joint
         JointDrive jointDrive = mainJoint.slerpDrive;
         jointDrive.positionSpring = startSlerpPositionSpring;

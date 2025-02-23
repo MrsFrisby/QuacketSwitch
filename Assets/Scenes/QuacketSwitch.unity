@@ -58495,7 +58495,7 @@ PrefabInstance:
     - target: {fileID: 1198072782220729655, guid: 493fbfab73ac4485b8cf347fe45ec213,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1629831251569533579, guid: 493fbfab73ac4485b8cf347fe45ec213,
         type: 3}
@@ -71765,6 +71765,7 @@ MonoBehaviour:
   mainJoint: {fileID: 2100831116}
   animator: {fileID: 71879526}
   gameInput: {fileID: 2057723113}
+  reviveTime: 0
   maxSpeed: 4
   isTPressed: 0
   isEPressed: 0

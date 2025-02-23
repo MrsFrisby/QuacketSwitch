@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class CryptoCoinsUI : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class CryptoCoinsUI : MonoBehaviour
         //can't update balance on every frame!!!
         //int sucessfulQuackets = AssemblyManager.Instance.GetSuccessfulQuackets();
         //coinBalance = coinBalance+(float)(sucessfulQuackets * 5.78);
-        coinBalanceText.text = coinBalance.ToString();
+        coinBalanceText.text = coinBalance.ToString("0.00");
     }
 
     private void Show()
@@ -81,6 +82,7 @@ public class CryptoCoinsUI : MonoBehaviour
 
     public float GetCryptoCoinBalance()
     {
+        coinBalance = (float)Math.Round(coinBalance, 2);
         return coinBalance;
     }
 }
