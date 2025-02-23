@@ -89,3 +89,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 900cf1edca9a5462aa141b01e4850874, type: 3}
   cryptoCoin:
   - {fileID: 8300000, guid: f0c96a2f749d5491d955130419b6ad39, type: 3}
+  revive:
+  - {fileID: 8300000, guid: d2a872ed5e32a4de3b21a95bb0eba869, type: 3}
+  - {fileID: 8300000, guid: 9720e7a9aa1704ab8a7df331c49330cf, type: 3}
+  - {fileID: 8300000, guid: c2dad38e1e1674f2b9ec208b8630d5f6, type: 3}
+  - {fileID: 8300000, guid: 79131586cfe5942a2b064a15b39121f4, type: 3}

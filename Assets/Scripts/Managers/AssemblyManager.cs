@@ -9,6 +9,7 @@ public class AssemblyManager : MonoBehaviour
     public event EventHandler OnProtocolCompleted;
     public event EventHandler OnProtocolSuccess;
     public event EventHandler OnProtocolFailed;
+    public event EventHandler OnProtocolDelivered;
 
     public static AssemblyManager Instance { get; private set; }
 
@@ -51,6 +52,7 @@ public class AssemblyManager : MonoBehaviour
 
     public void DeliverAssembledProtocol(AssembledDuckObject assembledDuckObject)
     {
+        OnProtocolDelivered?.Invoke(this, EventArgs.Empty);
         for (int i=0; i<waitingProtocolSOList.Count; i++)
         {
             ProtocolSO waitingProtocolSO = waitingProtocolSOList[i];

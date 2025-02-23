@@ -20,4 +20,5 @@ public class AudioClipRefsSO : ScriptableObject
     public AudioClip[] duckThunk;
     public AudioClip[] characterOuch;
     public AudioClip[] cryptoCoin;
+    public AudioClip[] revive;
 }

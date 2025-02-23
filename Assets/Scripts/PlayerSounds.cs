@@ -23,7 +23,7 @@ public class PlayerSounds : MonoBehaviour
         {
             footstepTimer = footstepTimerMax;
 
-            if (player.IsMoving)
+            if (player.IsMoving && player.IsActiveRagdoll)
             {
                 float volume = 1f;
                 AudioManager.Instance.PlayFootstepsSound(player.transform.position, volume);
