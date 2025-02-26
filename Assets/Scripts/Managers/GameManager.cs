@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private float startCountdownTimer = 3f;
     private float gamePlayTimer;
     [SerializeField]
-    private float gamePlayTimerMax = 50f; 
+    private float gamePlayTimerMax; 
     private bool IsGamePaused = false;
     private int cryptoEarned;
 
