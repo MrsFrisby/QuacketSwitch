@@ -13,7 +13,6 @@ public class GameInput : MonoBehaviour
 
     public event EventHandler OnInteractAction;
     public event EventHandler OnInteractCancelAction;
-    public event EventHandler OnInteractAlternateAction;
     public event EventHandler OnReviveAction;
     public event EventHandler OnReviveCancelAction;
     public event EventHandler OnGrabAction;
@@ -32,12 +31,9 @@ public class GameInput : MonoBehaviour
         MoveLeft,
         Jump,
         Interact,
-        AltInteract,
-        Grab,
+        Turbo,
         Revive,
-        Fire,
         Pause,
-        InteractTutorial
     }
 
     private PlayerInputActions playerInputActions;
@@ -73,14 +69,9 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Jump.performed += Jump_performed;
 
-        playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
-
         playerInputActions.Player.Pause.performed += Pause_performed;
 
         playerInputActions.Player.Turbo.performed += Turbo_performed;
-
-        
-
 
 
     }
@@ -105,8 +96,6 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Jump.performed -= Jump_performed;
 
-        playerInputActions.Player.InteractAlternate.performed -= InteractAlternate_performed;
-
         playerInputActions.Player.Pause.performed -= Pause_performed;
 
         playerInputActions.Player.Turbo.performed -= Turbo_performed;
@@ -124,14 +113,6 @@ public class GameInput : MonoBehaviour
     private void Pause_performed(InputAction.CallbackContext obj)
     {
         OnPauseAction?.Invoke(this, EventArgs.Empty);
-    }
-
-
-    //AlternateInteract
-    private void InteractAlternate_performed(InputAction.CallbackContext context)
-    {
-        //Debug.Log("GameInput:F pressed");
-        OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
     }
 
     //Grabbing
@@ -212,18 +193,14 @@ public class GameInput : MonoBehaviour
                 return playerInputActions.Player.Move.bindings[4].ToDisplayString();
             case Binding.Interact:
                 return playerInputActions.Player.Interact.bindings[0].ToDisplayString();
-            case Binding.AltInteract:
-                return playerInputActions.Player.InteractAlternate.bindings[0].ToDisplayString();
-            case Binding.Grab:
-                return playerInputActions.Player.Grab.bindings[0].ToDisplayString();
+            case Binding.Turbo:
+                return playerInputActions.Player.Turbo.bindings[0].ToDisplayString();
             case Binding.Revive:
                 return playerInputActions.Player.Revive.bindings[0].ToDisplayString();
             case Binding.Jump:
                 return playerInputActions.Player.Jump.bindings[0].ToDisplayString().ToUpper();
             case Binding.Pause:
                 return playerInputActions.Player.Pause.bindings[0].ToDisplayString().ToUpper().Substring(0,3);
-            case Binding.Fire:
-                return playerInputActions.Player.Fire.bindings[0].ToDisplayString();
         }
     }
 
@@ -253,29 +230,20 @@ public class GameInput : MonoBehaviour
                 inputAction = playerInputActions.Player.Move;
                 bindingIndex = 4;
                 break;
-
             case Binding.Interact:
                 inputAction = playerInputActions.Player.Interact;
-                bindingIndex = 0;
-                break;
-            case Binding.AltInteract:
-                inputAction = playerInputActions.Player.InteractAlternate;
                 bindingIndex = 0;
                 break;
             case Binding.Jump:
                 inputAction = playerInputActions.Player.Jump;
                 bindingIndex = 0;
                 break;
-            case Binding.Grab:
-                inputAction = playerInputActions.Player.Grab;
+            case Binding.Turbo:
+                inputAction = playerInputActions.Player.Turbo;
                 bindingIndex = 0;
                 break;
             case Binding.Revive:
                 inputAction = playerInputActions.Player.Revive;
-                bindingIndex = 0;
-                break;
-            case Binding.Fire:
-                inputAction = playerInputActions.Player.Fire;
                 bindingIndex = 0;
                 break;
             case Binding.Pause:

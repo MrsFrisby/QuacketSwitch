@@ -73,27 +73,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""InteractAlternate"",
-                    ""type"": ""Button"",
-                    ""id"": ""7359ccc9-66c0-45d9-8f01-bf334dcbf35b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""0d317be1-fe04-458f-9078-bf2378d9896a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Fire"",
-                    ""type"": ""Button"",
-                    ""id"": ""439366d7-fe6b-48fe-883d-7754cb95bbff"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -266,34 +248,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b63caf9f-a030-49b2-9d45-ec5df155ffa1"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InteractAlternate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1602ef71-31d5-4df4-85b5-c01998e54e8f"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5ec20910-115d-4bbd-97b1-d380c7b19f22"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -320,9 +280,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Revive = m_Player.FindAction("Revive", throwIfNotFound: true);
         m_Player_Grab = m_Player.FindAction("Grab", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_InteractAlternate = m_Player.FindAction("InteractAlternate", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Turbo = m_Player.FindAction("Turbo", throwIfNotFound: true);
     }
 
@@ -390,9 +348,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Revive;
     private readonly InputAction m_Player_Grab;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_InteractAlternate;
     private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Turbo;
     public struct PlayerActions
     {
@@ -403,9 +359,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Revive => m_Wrapper.m_Player_Revive;
         public InputAction @Grab => m_Wrapper.m_Player_Grab;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @InteractAlternate => m_Wrapper.m_Player_InteractAlternate;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
-        public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Turbo => m_Wrapper.m_Player_Turbo;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -431,15 +385,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @InteractAlternate.started += instance.OnInteractAlternate;
-            @InteractAlternate.performed += instance.OnInteractAlternate;
-            @InteractAlternate.canceled += instance.OnInteractAlternate;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @Fire.started += instance.OnFire;
-            @Fire.performed += instance.OnFire;
-            @Fire.canceled += instance.OnFire;
             @Turbo.started += instance.OnTurbo;
             @Turbo.performed += instance.OnTurbo;
             @Turbo.canceled += instance.OnTurbo;
@@ -462,15 +410,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @InteractAlternate.started -= instance.OnInteractAlternate;
-            @InteractAlternate.performed -= instance.OnInteractAlternate;
-            @InteractAlternate.canceled -= instance.OnInteractAlternate;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @Fire.started -= instance.OnFire;
-            @Fire.performed -= instance.OnFire;
-            @Fire.canceled -= instance.OnFire;
             @Turbo.started -= instance.OnTurbo;
             @Turbo.performed -= instance.OnTurbo;
             @Turbo.canceled -= instance.OnTurbo;
@@ -498,9 +440,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnRevive(InputAction.CallbackContext context);
         void OnGrab(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnInteractAlternate(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
         void OnTurbo(InputAction.CallbackContext context);
     }
 }

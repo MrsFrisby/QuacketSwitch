@@ -12,7 +12,7 @@ using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
-    //Interaction SEtup
+    //Interaction Setup
     [SerializeField]
     private Player player;
 

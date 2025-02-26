@@ -51,27 +51,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "InteractAlternate",
-                    "type": "Button",
-                    "id": "7359ccc9-66c0-45d9-8f01-bf334dcbf35b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "0d317be1-fe04-458f-9078-bf2378d9896a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Fire",
-                    "type": "Button",
-                    "id": "439366d7-fe6b-48fe-883d-7754cb95bbff",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -244,34 +226,12 @@
                 },
                 {
                     "name": "",
-                    "id": "b63caf9f-a030-49b2-9d45-ec5df155ffa1",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InteractAlternate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1602ef71-31d5-4df4-85b5-c01998e54e8f",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5ec20910-115d-4bbd-97b1-d380c7b19f22",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -61,12 +61,11 @@ public class TutorialUI : MonoBehaviour
         downButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveDown);
         leftButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveLeft);
         rightButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.MoveRight);
-
         jumpButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Jump);
         interactButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
         reviveButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Revive);
-        turboBoostButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.InteractTutorial);
         pauseButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
+        turboBoostButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Turbo);
     }
 
     private void Show()

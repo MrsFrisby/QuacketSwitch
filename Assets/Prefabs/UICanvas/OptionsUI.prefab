@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747880042562705915}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
@@ -1206,7 +1206,7 @@ GameObject:
   - component: {fileID: 1181843350310256046}
   - component: {fileID: 977211688252695161}
   m_Layer: 5
-  m_Name: BoostButton
+  m_Name: TurboButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2162,6 +2162,7 @@ RectTransform:
   - {fileID: 3936870957804816154}
   - {fileID: 3558840795734520490}
   - {fileID: 5849747889773737696}
+  - {fileID: 838048662519154868}
   - {fileID: 3054808830477829462}
   - {fileID: 6396888692488504313}
   m_Father: {fileID: 0}
@@ -2194,8 +2195,7 @@ MonoBehaviour:
   jumpButton: {fileID: 5929142655596230022}
   interactButton: {fileID: 8700887757428907031}
   reviveButton: {fileID: 1924600184023576728}
-  grabButton: {fileID: 3580815255766820100}
-  fireButton: {fileID: 434894272819536941}
+  turboButton: {fileID: 434894272819536941}
   pauseButton: {fileID: 7868232265364883747}
   soundEffectsText: {fileID: 7409046992688095729}
   musicText: {fileID: 8405582016975468241}
@@ -2206,8 +2206,7 @@ MonoBehaviour:
   jumpButtonText: {fileID: 8739565984925660762}
   interactButtonText: {fileID: 4456081883979228738}
   reviveButtonText: {fileID: 8318697309828569739}
-  grabButtonText: {fileID: 6478781639405355374}
-  fireButtonText: {fileID: 6753862619036293695}
+  turboButtonText: {fileID: 6753862619036293695}
   pauseButtonText: {fileID: 6839665330292246739}
 --- !u!1 &3514732328697999271
 GameObject:
@@ -2650,7 +2649,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4358296614464979076}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
@@ -2940,7 +2939,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8971218711562913595}
-  - {fileID: 838048662519154868}
   m_Father: {fileID: 6752692823375646335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3037,7 +3035,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4932405407770652062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
@@ -3833,7 +3831,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6708452790358450297}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
@@ -3873,11 +3871,11 @@ RectTransform:
   - {fileID: 7664252438663145692}
   - {fileID: 145903612317381307}
   - {fileID: 3325084828711165160}
-  m_Father: {fileID: 688922310094465748}
+  m_Father: {fileID: 6752692823375646335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -74, y: -110}
+  m_AnchoredPosition: {x: 71, y: -430}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6456353860235412503
@@ -4171,7 +4169,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7078011054735549223}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
@@ -5680,7 +5678,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8317362266232324324}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
@@ -5817,7 +5815,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8429728151172975300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
@@ -6088,7 +6086,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8723795796905977252}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
@@ -6109,7 +6107,7 @@ GameObject:
   - component: {fileID: 6753862619036293695}
   - component: {fileID: 6659067445143811940}
   m_Layer: 5
-  m_Name: spawnText
+  m_Name: turboText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

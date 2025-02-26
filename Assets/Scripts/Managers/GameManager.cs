@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private float startCountdownTimer = 3f;
     private float gamePlayTimer;
     [SerializeField]
-    private float gamePlayTimerMax = 300f; 
+    private float gamePlayTimerMax = 50f; 
     private bool IsGamePaused = false;
     private int cryptoEarned;
 
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
                 if (startCountdownTimer < 0f)
                 {
                     OnStart?.Invoke(this, EventArgs.Empty);
-                    Debug.Log("GM: OnStart invoked");
+                    //Debug.Log("GM: OnStart invoked");
                     gameState = GameState.GamePlaying;
                     gamePlayTimer = gamePlayTimerMax;
                     OnStateChanged?.Invoke(this, EventArgs.Empty);

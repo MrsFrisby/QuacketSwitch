@@ -45,10 +45,8 @@ public class OptionsUI : MonoBehaviour
     private Button reviveButton;
 
     [SerializeField]
-    private Button grabButton;
+    private Button turboButton;
 
-    [SerializeField]
-    private Button fireButton;
 
     [SerializeField]
     private Button pauseButton;
@@ -85,10 +83,7 @@ public class OptionsUI : MonoBehaviour
     private TextMeshProUGUI reviveButtonText;
 
     [SerializeField]
-    private TextMeshProUGUI grabButtonText;
-
-    [SerializeField]
-    private TextMeshProUGUI fireButtonText;
+    private TextMeshProUGUI turboButtonText;
 
     [SerializeField]
     private TextMeshProUGUI pauseButtonText;
@@ -120,9 +115,8 @@ public class OptionsUI : MonoBehaviour
         moveLeftButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.MoveLeft); });
         jumpButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Jump); });
         interactButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Interact); });
-        grabButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Grab); });
+        turboButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Turbo); });
         reviveButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Revive); });
-        fireButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Fire); });
         pauseButton.onClick.AddListener(() => { RebindBinding(GameInput.Binding.Pause); });
 
 
@@ -154,8 +148,7 @@ public class OptionsUI : MonoBehaviour
         jumpButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Jump);
         interactButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
         reviveButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Revive);
-        grabButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Grab);
-        fireButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Fire);
+        turboButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Turbo);
         pauseButtonText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
     }
 
