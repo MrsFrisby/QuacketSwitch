@@ -75432,7 +75432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PROTOCOLS WAITING
+  m_text: APPLICATIONS WAITING
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9cad98fce5f8141e8a916ffef09aa740, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 9077fcbaf3acc451d9046559d9602024, type: 2}

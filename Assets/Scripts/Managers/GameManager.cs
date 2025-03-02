@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     private float gamePlayTimerMax; 
     private bool IsGamePaused = false;
     private int cryptoEarned;
+    private int quacketsCollected;
 
 
     private void Awake()
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         gameState = GameState.WaitingToStart;
         cryptoEarned = 0;
+        quacketsCollected = 0;
     }
 
     private void Start()
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
     private void AssemblyPalletDuckHoles_OnDuckDelivered(object sender, AssemblyPalletDuckHoles.OnDuckDeliveredEventArgs e)
     {
         cryptoEarned++;
+        quacketsCollected++;
     }
 
     private void GameInput_OnJumpAction(object sender, EventArgs e)
@@ -167,5 +170,10 @@ public class GameManager : MonoBehaviour
     public int GetCryptoEarned()
     {
         return cryptoEarned;
+    }
+
+    public int GetQuacketsCollected()
+    {
+        return quacketsCollected;
     }
 }

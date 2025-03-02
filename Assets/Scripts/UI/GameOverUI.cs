@@ -8,10 +8,13 @@ using UnityEngine;
 public class GameOverUI : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI quacketsDeliveredText;
+    private TextMeshProUGUI transmissionsDeliveredText;
 
     [SerializeField]
     private TextMeshProUGUI cryptoEarnedText;
+
+    [SerializeField]
+    private TextMeshProUGUI quacketsCollectedText;
 
     [SerializeField]
     private CryptoCoinsUI cryptoCoinsUI;
@@ -33,9 +36,11 @@ public class GameOverUI : MonoBehaviour
         if (GameManager.Instance.IsGameOver())
         {
             Show();
-            float quacketsDelivered = AssemblyManager.Instance.GetSuccessfulQuackets();
+            int transmissionsDelivered = AssemblyManager.Instance.GetSuccessfulTransmissions();
+            int quacketsCollected = GameManager.Instance.GetQuacketsCollected();
             //quacketsDelivered = (float)Math.Round(quacketsDelivered, 2);
-            quacketsDeliveredText.text = quacketsDelivered.ToString();
+            transmissionsDeliveredText.text = transmissionsDelivered.ToString();
+            quacketsCollectedText.text = quacketsCollected.ToString();
             //quacketsDeliveredText.text = AssemblyManager.Instance.GetSuccessfulQuackets().ToString("0.00");
             cryptoEarnedText.text = cryptoCoinsUI.GetCryptoCoinBalance().ToString();
         }
