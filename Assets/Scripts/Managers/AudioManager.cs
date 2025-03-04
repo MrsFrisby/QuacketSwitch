@@ -91,7 +91,7 @@ public class AudioManager : MonoBehaviour
     private void AssemblyPalletDuckHoles_OnAnyAssembling(object sender, System.EventArgs e)
     {
         AssemblyPalletDuckHoles assemblyPalletDuckHoles = sender as AssemblyPalletDuckHoles;
-        PlaySound(audioClipRefsSO.assembling, assemblyPalletDuckHoles.transform.position);
+        PlaySound(audioClipRefsSO.assembling, assemblyPalletDuckHoles.transform.position, volume * 0.5f);
 
 
 
@@ -141,7 +141,7 @@ public class AudioManager : MonoBehaviour
     public void PlayFootstepsSound (Vector3 position, float volume)
     {
         //Debug.Log("footsteps");
-        PlaySound(audioClipRefsSO.footstep, position, volume);
+        PlaySound(audioClipRefsSO.footstep, position, volume *0.75f);
     }
 
     public void PlayCountdownSound()

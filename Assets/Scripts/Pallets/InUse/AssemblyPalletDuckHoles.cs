@@ -199,6 +199,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
                         //destroy the ghost ducks
                         GetDuckObject().DestroySelf();
+                        Debug.Log("assembling State: assemblyS0.output: "+ assemblySO.output);
                         //spawn the correct assembled duck for the input protocol
                         DuckObject.spawnDuckObject(assemblySO.output, this);
                         currentState = State.Corrupting;
@@ -316,11 +317,11 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                         OnDuckSpawned?.Invoke(this, EventArgs.Empty);//broadcast to visual script
                         if (ducksSpawned == ducksSpawnedMax)
                         {//if player is delivering final duck
-                            //Debug.Log("DuckHoles6: player has last duck");
+                            Debug.Log("DuckHoles6: player has last duck");
                             if (HasMatchwithAssemblySOInput(playerDuckSO))
                             {//duck dropped matches assemblySO.input duck object within pallet's array
                                 //spawn ghost ducks as child duckSO of this pallet
-                                //Debug.Log("DuckHoles7: match found with Assembly SO input");
+                                Debug.Log("DuckHoles7: match found with Assembly SO input");
                                 DuckObject.spawnDuckObject(ghostDuck,this);
                                 //get the correct output assembled duck based on the last duck successfully delivered
                                 assemblySO = GetAssemblySOWithInput(playerDuckSO);
@@ -415,6 +416,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         {
             if (assemblySO.input == inputDucksSO)
             {
+                Debug.Log("GetAssemblySOWithInput:returning: " + assemblySO);
                 return assemblySO;
             }
         }
