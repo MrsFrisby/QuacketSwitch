@@ -155,7 +155,9 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
         //assembly state machine
         if (HasDuckObject())
+            
         {//if the last duck has been delivered
+            Debug.Log("Update:Current Duck Object: " + GetDuckObject().name);
             switch (currentState)
             {
                 case State.Idle:
@@ -204,7 +206,9 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                         DuckObject.spawnDuckObject(assemblySO.output, this);
                         currentState = State.Corrupting;
                         corruptionTimer = 0f;//initialise corruption timer
+                        Debug.Log("Assembling: Current Duck Object: "+GetDuckObject().name);
                         corruptionSO = GetCorruptionSOWithInput(GetDuckObject().GetDucksSO());
+                        Debug.Log("assembling State: corruptionS0: " + corruptionSO);
                         //all assembled duckSO list corrupt duck
 
                         //update state to corrupting
@@ -427,11 +431,14 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
     {
         foreach (CorruptionSO corruptionSO in CorruptionSOArray)
         {
+            Debug.Log(corruptionSO.input + " compared to " + inputDucksSO);
             if (corruptionSO.input == inputDucksSO)
             {
+                Debug.Log("GetCorruptionSOWithInput:returning: " + corruptionSO);
                 return corruptionSO;
             }
         }
+        Debug.Log("GetCorruptionSOWithInput:returning: null ");
         return null;
     }
 

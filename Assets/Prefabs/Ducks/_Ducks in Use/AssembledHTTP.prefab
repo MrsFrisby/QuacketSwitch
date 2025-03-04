@@ -77,8 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d8db30b04074a4fb2edfbf86820f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duckObjectSO: {fileID: 11400000, guid: 16e1a2738732e4dd3ba0d604329fe440, type: 2}
+  duckObjectSO: {fileID: 11400000, guid: 03731354f4f9a4e4397496b46d8b8f54, type: 2}
   displayIconUI: 0
+  containerPallet: {fileID: 0}
   duckIconsUI: {fileID: 1870844694278881402}
   duckSOList:
   - {fileID: 11400000, guid: bc2efff36b5cd4693bec7e975781ffa8, type: 2}
