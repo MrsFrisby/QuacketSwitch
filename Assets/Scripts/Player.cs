@@ -2,6 +2,8 @@
 //Made following active ragdoll tutorials by Pretty Fly Games
 //and Learn Unity Beginner?Intermediate 2024: code Monkey
 //https://www.youtube.com/watch?v=AmGSEH7QcDg&t=6477s
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -202,34 +204,6 @@ public class Player : MonoBehaviour, IDuckObjectParent
 
         HandleInteractions();
 
-        ////Test for collisions
-        //if (isTPressed)
-        //{
-        //    float interactRange = 0.5f;
-        //    Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, LayerMask.GetMask("Interact"));
-        //    foreach (Collider collider in colliderArray)
-        //    {
-        //        if (collider.TryGetComponent(out TutorialInteractable tutorialInteractable))
-        //        {
-        //            tutorialInteractable.Interact();
-        //        }
-        //    }
-        //}
-
-    }
-
-    public TutorialInteractable GetTutorialInteractable()
-    {
-        float interactRange = 0.5f;
-        Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, LayerMask.GetMask("Interact"));
-        foreach (Collider collider in colliderArray)
-        {
-            if (collider.TryGetComponent(out TutorialInteractable tutorialInteractable))
-            {
-                return tutorialInteractable;
-            }
-        }
-        return null;
     }
 
     void FixedUpdate()

@@ -157,7 +157,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         if (HasDuckObject())
             
         {//if the last duck has been delivered
-            Debug.Log("Update:Current Duck Object: " + GetDuckObject().name);
+            //Debug.Log("Update:Current Duck Object: " + GetDuckObject().name);
             switch (currentState)
             {
                 case State.Idle:
@@ -201,14 +201,14 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
 
                         //destroy the ghost ducks
                         GetDuckObject().DestroySelf();
-                        Debug.Log("assembling State: assemblyS0.output: "+ assemblySO.output);
+                        //Debug.Log("assembling State: assemblyS0.output: "+ assemblySO.output);
                         //spawn the correct assembled duck for the input protocol
                         DuckObject.spawnDuckObject(assemblySO.output, this);
                         currentState = State.Corrupting;
                         corruptionTimer = 0f;//initialise corruption timer
-                        Debug.Log("Assembling: Current Duck Object: "+GetDuckObject().name);
+                        //Debug.Log("Assembling: Current Duck Object: "+GetDuckObject().name);
                         corruptionSO = GetCorruptionSOWithInput(GetDuckObject().GetDucksSO());
-                        Debug.Log("assembling State: corruptionS0: " + corruptionSO);
+                        //Debug.Log("assembling State: corruptionS0: " + corruptionSO);
                         //all assembled duckSO list corrupt duck
 
                         //update state to corrupting
@@ -281,7 +281,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                 {//get the duckObject that has been delivered
                     //cycle through the deactivatePalletSOArray to find the matching pallet 
                     //Container container = GetContainerWithDuckInput(playerDuckSO);
-                    Debug.Log("PlayerDuckSO:" + playerDuckSO);
+                    //Debug.Log("PlayerDuckSO:" + playerDuckSO);
                     //Debug.Log("APDH Interact:" + container);
                     //string playerDuckSONameString = playerDuckSO.name.ToString();
                     //publish event to container pallets to deactivate
@@ -321,11 +321,11 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
                         OnDuckSpawned?.Invoke(this, EventArgs.Empty);//broadcast to visual script
                         if (ducksSpawned == ducksSpawnedMax)
                         {//if player is delivering final duck
-                            Debug.Log("DuckHoles6: player has last duck");
+                            //Debug.Log("DuckHoles6: player has last duck");
                             if (HasMatchwithAssemblySOInput(playerDuckSO))
                             {//duck dropped matches assemblySO.input duck object within pallet's array
                                 //spawn ghost ducks as child duckSO of this pallet
-                                Debug.Log("DuckHoles7: match found with Assembly SO input");
+                                //Debug.Log("DuckHoles7: match found with Assembly SO input");
                                 DuckObject.spawnDuckObject(ghostDuck,this);
                                 //get the correct output assembled duck based on the last duck successfully delivered
                                 assemblySO = GetAssemblySOWithInput(playerDuckSO);
@@ -420,7 +420,7 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
         {
             if (assemblySO.input == inputDucksSO)
             {
-                Debug.Log("GetAssemblySOWithInput:returning: " + assemblySO);
+                //Debug.Log("GetAssemblySOWithInput:returning: " + assemblySO);
                 return assemblySO;
             }
         }
@@ -434,11 +434,11 @@ public class AssemblyPalletDuckHoles : BasePallet, IHasProgress
             Debug.Log(corruptionSO.input + " compared to " + inputDucksSO);
             if (corruptionSO.input == inputDucksSO)
             {
-                Debug.Log("GetCorruptionSOWithInput:returning: " + corruptionSO);
+                //Debug.Log("GetCorruptionSOWithInput:returning: " + corruptionSO);
                 return corruptionSO;
             }
         }
-        Debug.Log("GetCorruptionSOWithInput:returning: null ");
+        //Debug.Log("GetCorruptionSOWithInput:returning: null ");
         return null;
     }
 
