@@ -28180,12 +28180,6 @@ Transform:
   - {fileID: 790855104}
   m_Father: {fileID: 521914727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &780782148 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5702830794725946650, guid: 4a52a227b04de433f910327d211440ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 2124624373}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &782141367
 GameObject:
   m_ObjectHideFlags: 0
@@ -39519,18 +39513,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2124624373}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1129989529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780782148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8205761e166334d3ea2ef1c37a72fa2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1136638442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4392721587289610, guid: 33023de9729a62a4d8606744bf5cf32c,
@@ -76054,11 +76036,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5702830794725946650, guid: 4a52a227b04de433f910327d211440ad,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1129989529}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a52a227b04de433f910327d211440ad, type: 3}
 --- !u!4 &2124787565 stripped
 Transform:
@@ -79612,6 +79590,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -37.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1004604181645790320, guid: c882e976a2f70490994aade1decd56e0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1831279585176530849, guid: c882e976a2f70490994aade1decd56e0,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -79707,6 +79690,29 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4077684465948086410, guid: c882e976a2f70490994aade1decd56e0,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cad98fce5f8141e8a916ffef09aa740,
+        type: 2}
+    - target: {fileID: 4077684465948086410, guid: c882e976a2f70490994aade1decd56e0,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5269730942599787096, guid: 9cad98fce5f8141e8a916ffef09aa740,
+        type: 2}
+    - target: {fileID: 4077684465948086410, guid: c882e976a2f70490994aade1decd56e0,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077684465948086410, guid: c882e976a2f70490994aade1decd56e0,
+        type: 3}
+      propertyPath: m_fontColorGradientPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8765d90fcffec41bfba80ac529fc825f,
+        type: 2}
     - target: {fileID: 6598603606192526563, guid: c882e976a2f70490994aade1decd56e0,
         type: 3}
       propertyPath: m_AnchorMax.y

@@ -91,7 +91,7 @@ public class AudioManager : MonoBehaviour
     private void AssemblyPalletDuckHoles_OnAnyAssembling(object sender, System.EventArgs e)
     {
         AssemblyPalletDuckHoles assemblyPalletDuckHoles = sender as AssemblyPalletDuckHoles;
-        PlaySound(audioClipRefsSO.assembling, assemblyPalletDuckHoles.transform.position, volume * 0.5f);
+        PlaySound(audioClipRefsSO.assembling, assemblyPalletDuckHoles.transform.position, volume);
 
 
 
@@ -116,14 +116,14 @@ public class AudioManager : MonoBehaviour
 
     private void AssemblyManager_OnProtocolFailed(object sender, System.EventArgs e)
     {
-        Debug.Log("AudioManager:OnProtocolFailed");
+        //Debug.Log("AudioManager:OnProtocolFailed");
         DeliveryPallet deliveryPallet = DeliveryPallet.Instance;
         PlaySound(audioClipRefsSO.assemblyDeliveryFail, deliveryPallet.transform.position);
     }
 
     private void AssemblyManager_OnProtocolSuccess(object sender, System.EventArgs e)
     {
-        Debug.Log("AudioManager:OnProtocolSucceeded");
+        //Debug.Log("AudioManager:OnProtocolSucceeded");
         DeliveryPallet deliveryPallet = DeliveryPallet.Instance;
         PlaySound(audioClipRefsSO.assemblyDeliverySuccess, deliveryPallet.transform.position);
     }
@@ -133,7 +133,7 @@ public class AudioManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(audioClip, position, volume);
     }
 
-    private void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volumeMultiplier = 1f)
+    private void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volumeMultiplier = 1.5f)
     {
         PlaySound(audioClipArray[Random.Range(0,audioClipArray.Length)], position, volumeMultiplier * volume);
     }
@@ -141,7 +141,7 @@ public class AudioManager : MonoBehaviour
     public void PlayFootstepsSound (Vector3 position, float volume)
     {
         //Debug.Log("footsteps");
-        PlaySound(audioClipRefsSO.footstep, position, volume *0.75f);
+        PlaySound(audioClipRefsSO.footstep, position, volume *0.5f);
     }
 
     public void PlayCountdownSound()
@@ -157,7 +157,7 @@ public class AudioManager : MonoBehaviour
     public void ChangeVolume()
     {
         volume += .1f;
-        if(volume > 1f)
+        if(volume > 2f)
         {
             volume = 0f;
         }

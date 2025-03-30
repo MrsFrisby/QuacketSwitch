@@ -61,7 +61,7 @@ public class AssemblyManager : MonoBehaviour
 
             if(waitingProtocolSO.duckObjectSOList.Count == assembledDuckObject.GetDucksSOList().Count)
             {//delivered assembled duck has same number of duck components as waiting protocol
-                Debug.Log("Match between number of ducks in waiting protocol and delivered assembled duck");
+                //Debug.Log("Match between number of ducks in waiting protocol and delivered assembled duck");
                 bool assembledDuckMatchesProtocol = true;
                 //this bool is set to false if a match can't be found 
                 foreach (DucksSO waitingProtocol_DucksSO in waitingProtocolSO.duckObjectSOList)
@@ -71,7 +71,7 @@ public class AssemblyManager : MonoBehaviour
                     {//nested loop through each duck so in the delivered assembled duck
                         if (waitingProtocol_DucksSO == assembledDuck_DucksSO)
                         {
-                            Debug.Log(waitingProtocol_DucksSO + " matches " + assembledDuck_DucksSO);
+                            //Debug.Log(waitingProtocol_DucksSO + " matches " + assembledDuck_DucksSO);
                             duckFound = true;
                             break;//stop inner loop, move to next duck in waiting protocol outer loop
                         }
@@ -79,12 +79,12 @@ public class AssemblyManager : MonoBehaviour
                     if(!duckFound)
                     {//a matching couldn't be made with at least one duck in the waiting protocol
                         assembledDuckMatchesProtocol = false;
-                        Debug.Log("Reached End of duck matching loop: no match found");
+                        //Debug.Log("Reached End of duck matching loop: no match found");
                     }
                 }
                 if (assembledDuckMatchesProtocol)
                 {//everything matches!
-                    Debug.Log("Correct Assembly Duck Delivered");
+                    //Debug.Log("Correct Assembly Duck Delivered");
                     //remove the completed protocol from the list
                     waitingProtocolSOList.RemoveAt(i);
                     OnProtocolCompleted?.Invoke(this, EventArgs.Empty);
@@ -95,11 +95,11 @@ public class AssemblyManager : MonoBehaviour
             }
             else
             {//else no match between count 
-                Debug.Log("Count match failed");
+                //Debug.Log("Count match failed");
             }  
         }
         // End of for loop - if we reach here there were No matches
-        Debug.Log("Reached End of for loop: Correct assembly not delivered");
+        //Debug.Log("Reached End of for loop: Correct assembly not delivered");
         OnProtocolFailed?.Invoke(this, EventArgs.Empty);
     }
 

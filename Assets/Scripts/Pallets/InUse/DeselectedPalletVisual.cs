@@ -94,10 +94,10 @@ public class DeselectedPalletVisual : MonoBehaviour
                 visualGameObject.SetActive(false);
                 //Debug.Log("DVP: Show: foreach " + visualGameObject.name);
             }
-            else
-            {
-                Debug.Log("This game object is null: " + visualGameObject);
-            }
+            //else
+            //{
+            //    Debug.Log("This game object is null: " + visualGameObject);
+            //}
         }
     }
 }
